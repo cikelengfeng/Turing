@@ -23,6 +23,9 @@
 		42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
 		42CA6CC0214A805C00DBA42A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CBF214A805C00DBA42A /* main.m */; };
 		42CA6CC6214A81AE00DBA42A /* TestStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */; };
+		42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC8214A875C00DBA42A /* Subroutine.swift */; };
+		42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCA214A881400DBA42A /* SubroutineManager.swift */; };
+		42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +69,9 @@
 		42CA6CBF214A805C00DBA42A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42CA6CC4214A81AE00DBA42A /* TestStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStateMachine.h; sourceTree = "<group>"; };
 		42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStateMachine.m; sourceTree = "<group>"; };
+		42CA6CC8214A875C00DBA42A /* Subroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subroutine.swift; sourceTree = "<group>"; };
+		42CA6CCA214A881400DBA42A /* SubroutineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubroutineManager.swift; sourceTree = "<group>"; };
+		42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessonGenSubroutine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		42CA6C95214A7D3000DBA42A /* Turing */ = {
 			isa = PBXGroup;
 			children = (
+				42CA6CC7214A872E00DBA42A /* Subroutine */,
 				42CA6C9D214A7D6E00DBA42A /* CodeGen */,
 				42CA6CA5214A7D6F00DBA42A /* Graph */,
 				42CA6C96214A7D3000DBA42A /* main.swift */,
@@ -149,6 +156,24 @@
 				42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */,
 			);
 			path = GenCodeTests;
+			sourceTree = "<group>";
+		};
+		42CA6CC7214A872E00DBA42A /* Subroutine */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CCC214A9BCC00DBA42A /* Impl */,
+				42CA6CC8214A875C00DBA42A /* Subroutine.swift */,
+				42CA6CCA214A881400DBA42A /* SubroutineManager.swift */,
+			);
+			path = Subroutine;
+			sourceTree = "<group>";
+		};
+		42CA6CCC214A9BCC00DBA42A /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,10 +262,13 @@
 				42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */,
 				42CA6CB2214A7D6F00DBA42A /* ProcessonDiagram.swift in Sources */,
 				42CA6CB3214A7D6F00DBA42A /* Parameter.swift in Sources */,
+				42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */,
 				42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */,
+				42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */,
 				42CA6CB4214A7D6F00DBA42A /* AdjacencyListGraph.swift in Sources */,
 				42CA6CAE214A7D6F00DBA42A /* ObjectiveCGen.swift in Sources */,
 				42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */,
+				42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */,
 				42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */,
 				42CA6C97214A7D3000DBA42A /* main.swift in Sources */,
 			);

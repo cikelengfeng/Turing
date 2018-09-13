@@ -18,7 +18,10 @@ class ObjectiveCGen: CodeGen {
     private var header: CodeWriter = CodeWriter()
     private var impl: CodeWriter = CodeWriter()
     var headerImportFileCode: String?
+    var headerTopCode: String?
     var implImportFileCode: String?
+    var implTopCode: String?
+    
     
     required convenience init(source: StateMachineSource) {
         self.init(graph: source.graph, codePath: source.codePath, name: source.name, initialVertex: source.initialVertex)
@@ -100,6 +103,9 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeImportHeaderCode(_ writer: CodeWriter) {
+        if let topCode = headerTopCode {
+            writer.writeLine(topCode)
+        }
         writer.writeLine("#import <Foundation/Foundation.h>")
         if let customImport = headerImportFileCode {
             writer.writeLine(customImport)
@@ -108,10 +114,13 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeImportImplCode(_ writer: CodeWriter) {
+        if let topCode = implTopCode {
+            writer.writeLine(topCode)
+        }
+        writer.writeLine("#import \"\(headerFileName())\"")
         if let customImport = implImportFileCode {
             writer.writeLine(customImport)
         }
-        writer.writeLine("#import \"\(headerFileName())\"")
     }
     
     private func writeImplDefinationCode(_ writer: CodeWriter) {
@@ -269,7 +278,7 @@ class ObjectiveCGen: CodeGen {
     private static let OberserExitStateMethodPrefix: String = "onExit"
     
     private func writeObserverEnterStateMethodDefinationCode(forState state: Vertex<String>, _ writer: CodeWriter) {
-        writer.writeLine("-(void)\(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):(\(stateMachineClassName()) *)\(name);")
+        writer.writeLine("-(void)\(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):(\(stateMachineClassName()) *)stateMachine;")
     }
     
     private func writeObserverEnterStateMethodCallCode(forState state: Vertex<String>, _ writer: CodeWriter) {
@@ -280,7 +289,7 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("}")
     }
     private func writeObserverExitStateMethodDefinationCode(forState state: Vertex<String>, _ writer: CodeWriter) {
-        writer.writeLine("-(void)\(ObjectiveCGen.OberserExitStateMethodPrefix)\(graph.stateName(state)):(\(stateMachineClassName()) *)\(name);")
+        writer.writeLine("-(void)\(ObjectiveCGen.OberserExitStateMethodPrefix)\(graph.stateName(state)):(\(stateMachineClassName()) *)stateMachine;")
     }
     
     private func writeObserverExitStateMethodCallCode(forState state: Vertex<String>, _ writer: CodeWriter) {
