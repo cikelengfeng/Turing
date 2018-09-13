@@ -9,6 +9,7 @@
 import Foundation
 
 private let ProcessonStateTypeName = "umlState"
+private let ProcessonEndTypeName = "umlEnd"
 private let ProcessonStartTypeName = "umlStart"
 private let ProcessonLinkerTypeName = "linker"
 
@@ -270,25 +271,34 @@ class ProcessonFileReader {
             guard let type = elementDict["name"] as? String else {
                 return
             }
-            guard type == ProcessonStateTypeName else {
-                return
+            switch type {
+            case ProcessonStateTypeName:
+                guard let textBlock = elementDict["textBlock"] as? [[String: Any]] else {
+                    return
+                }
+                guard !textBlock.isEmpty else {
+                    return
+                }
+                guard let text: String = textBlock[0]["text"] as? String else {
+                    return
+                }
+                guard let id = elementDict["id"] as? String else {
+                    return
+                }
+                guard let state = ProcessonState(id: id, content: text) else {
+                    return
+                }
+                s[state.id] = state
+            case ProcessonEndTypeName:
+                guard let id = elementDict["id"] as? String else {
+                    return
+                }
+                guard let state = ProcessonState(id: id, content: "Finish") else {
+                    return
+                }
+                s[state.id] = state
+            default:break
             }
-            guard let textBlock = elementDict["textBlock"] as? [[String: Any]] else {
-                return
-            }
-            guard !textBlock.isEmpty else {
-                return
-            }
-            guard let text: String = textBlock[0]["text"] as? String else {
-                return
-            }
-            guard let id = elementDict["id"] as? String else {
-                return
-            }
-            guard let state = ProcessonState(id: id, content: text) else {
-                return
-            }
-            s[state.id] = state
         }
         return s
     }

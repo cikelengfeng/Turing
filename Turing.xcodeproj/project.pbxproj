@@ -21,10 +21,21 @@
 		42CA6CB6214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */; };
 		42CA6CB7214A7D6F00DBA42A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAA214A7D6F00DBA42A /* Graph.swift */; };
 		42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
+		42CA6CC0214A805C00DBA42A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CBF214A805C00DBA42A /* main.m */; };
+		42CA6CC6214A81AE00DBA42A /* TestStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		42CA6C91214A7D3000DBA42A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		42CA6CBB214A805C00DBA42A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -51,10 +62,21 @@
 		42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrixGraph.swift; sourceTree = "<group>"; };
 		42CA6CAA214A7D6F00DBA42A /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		42CA6CAB214A7D6F00DBA42A /* Vertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		42CA6CBD214A805C00DBA42A /* GenCodeTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCodeTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CA6CBF214A805C00DBA42A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		42CA6CC4214A81AE00DBA42A /* TestStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStateMachine.h; sourceTree = "<group>"; };
+		42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStateMachine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		42CA6C90214A7D3000DBA42A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CA6CBA214A805C00DBA42A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -68,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				42CA6C95214A7D3000DBA42A /* Turing */,
+				42CA6CBE214A805C00DBA42A /* GenCodeTests */,
 				42CA6C94214A7D3000DBA42A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				42CA6C93214A7D3000DBA42A /* Turing */,
+				42CA6CBD214A805C00DBA42A /* GenCodeTests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +141,16 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
+		42CA6CBE214A805C00DBA42A /* GenCodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CBF214A805C00DBA42A /* main.m */,
+				42CA6CC4214A81AE00DBA42A /* TestStateMachine.h */,
+				42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */,
+			);
+			path = GenCodeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +171,23 @@
 			productReference = 42CA6C93214A7D3000DBA42A /* Turing */;
 			productType = "com.apple.product-type.tool";
 		};
+		42CA6CBC214A805C00DBA42A /* GenCodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42CA6CC1214A805C00DBA42A /* Build configuration list for PBXNativeTarget "GenCodeTests" */;
+			buildPhases = (
+				42CA6CB9214A805C00DBA42A /* Sources */,
+				42CA6CBA214A805C00DBA42A /* Frameworks */,
+				42CA6CBB214A805C00DBA42A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GenCodeTests;
+			productName = GenCodeTests;
+			productReference = 42CA6CBD214A805C00DBA42A /* GenCodeTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -148,6 +199,9 @@
 				ORGANIZATIONNAME = "dx lab";
 				TargetAttributes = {
 					42CA6C92214A7D3000DBA42A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					42CA6CBC214A805C00DBA42A = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -165,6 +219,7 @@
 			projectRoot = "";
 			targets = (
 				42CA6C92214A7D3000DBA42A /* Turing */,
+				42CA6CBC214A805C00DBA42A /* GenCodeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +243,15 @@
 				42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */,
 				42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */,
 				42CA6C97214A7D3000DBA42A /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CA6CB9214A805C00DBA42A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42CA6CC0214A805C00DBA42A /* main.m in Sources */,
+				42CA6CC6214A81AE00DBA42A /* TestStateMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +391,24 @@
 			};
 			name = Release;
 		};
+		42CA6CC2214A805C00DBA42A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		42CA6CC3214A805C00DBA42A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -344,6 +426,15 @@
 			buildConfigurations = (
 				42CA6C9B214A7D3000DBA42A /* Debug */,
 				42CA6C9C214A7D3000DBA42A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42CA6CC1214A805C00DBA42A /* Build configuration list for PBXNativeTarget "GenCodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CA6CC2214A805C00DBA42A /* Debug */,
+				42CA6CC3214A805C00DBA42A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
