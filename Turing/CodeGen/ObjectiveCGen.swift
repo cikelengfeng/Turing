@@ -135,7 +135,7 @@ class ObjectiveCGen: CodeGen {
     
     private func writeMemberInferfaceCode(_ writer: CodeWriter) {
         writer.writeLine("@property (assign, nonatomic, readonly) \(stateEnumName()) state;")
-        writer.writeLine("@property (assign, nonatomic) BOOL shouldEnterCurrentStateWhenObsverChanged;//default is YES")
+        writer.writeLine("@property (assign, nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;//default is YES")
         writer.writeLine("@property (weak, nonatomic) id<\(obersverProtocolName())> observer;")
         writer.writeLine("@property (weak, nonatomic) id<\(delegateProtocolName())> delegate;")
     }
@@ -153,7 +153,7 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("if (self) {")
         writer.pushIndent()
         writer.writeLine("_state = \(stateName(forState: initialState));")
-        writer.writeLine("_shouldEnterCurrentStateWhenObsverChanged = YES;")
+        writer.writeLine("_shouldEnterCurrentStateWhenObserverChanged = YES;")
         writer.popIndent()
         writer.writeLine("}")
         writer.writeLine("return self;")
@@ -166,7 +166,7 @@ class ObjectiveCGen: CodeGen {
         writer.pushIndent()
         writer.writeLine("BOOL obChanged = _observer != observer;")
         writer.writeLine("_observer = observer;")
-        writer.writeLine("if (self.shouldEnterCurrentStateWhenObsverChanged && obChanged) {")
+        writer.writeLine("if (!self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {")
         writer.pushIndent()
         writeObserverEnterCurrentStateMethodCallCode(observerVarName: "_observer" ,writer)
         writer.popIndent()
