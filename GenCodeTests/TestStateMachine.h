@@ -3,37 +3,38 @@
 @class TestStateMachine;
 @protocol TestObserver <NSObject>
 @optional
--(void)onEnterDark:(TestStateMachine *)stateMachine;
--(void)onExitDark:(TestStateMachine *)stateMachine;
--(void)onEnterLight1:(TestStateMachine *)stateMachine;
--(void)onExitLight1:(TestStateMachine *)stateMachine;
--(void)onEnterFinish:(TestStateMachine *)stateMachine;
--(void)onExitFinish:(TestStateMachine *)stateMachine;
--(void)onEnterLight2:(TestStateMachine *)stateMachine;
--(void)onExitLight2:(TestStateMachine *)stateMachine;
+- (void)onEnterFinish:(TestStateMachine*)stateMachine;
+- (void)onExitFinish:(TestStateMachine*)stateMachine;
+- (void)onEnterLight2:(TestStateMachine*)stateMachine;
+- (void)onExitLight2:(TestStateMachine*)stateMachine;
+- (void)onEnterDark:(TestStateMachine*)stateMachine;
+- (void)onExitDark:(TestStateMachine*)stateMachine;
+- (void)onEnterLight1:(TestStateMachine*)stateMachine;
+- (void)onExitLight1:(TestStateMachine*)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
+-(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromDarkToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
--(BOOL)shouldTransiteFromLight1ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
 -(BOOL)shouldTransiteFromLight1ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromLight1ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateDark,
-    TestStateLight1,
     TestStateFinish,
     TestStateLight2,
+    TestStateDark,
+    TestStateLight1,
 };
-@interface TestStateMachine: NSObject
+@interface TestStateMachine: NSObject 
+- (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2;
 - (void)doTurnOff;
-- (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2 ;
 - (void)doSmash;
-@property (assign, nonatomic, readonly) TestState state;
-@property (assign, nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;//default is YES
-@property (weak, nonatomic) id<TestObserver> observer;
-@property (weak, nonatomic) id<TestDelegate> delegate;
+@property (assign,nonatomic,readonly) TestState state;
+//default is YES
+@property (assign,nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;
+@property (weak,nonatomic) id<TestObserver> observer;
+@property (weak,nonatomic) id<TestDelegate> delegate;
 @end

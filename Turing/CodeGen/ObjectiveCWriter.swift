@@ -51,40 +51,43 @@ class ObjectiveCWriter {
     }
     
     private func code(protocolArr: [String]) -> String {
+        guard !protocolArr.isEmpty else {
+            return ""
+        }
         return "<" + protocolArr.joined(separator: ",") + ">"
     }
     
     func writeInterface(name: String, superInterface: String, protocolArr: [String], body: ((_ writer: ObjectiveCWriter) -> ())?) {
-        writeLine("@interface \(name): \(code(protocolArr: protocolArr))")
-        pushIndent()
+        writeLine("@interface \(name): \(superInterface) \(code(protocolArr: protocolArr))")
         body?(self)
-        popIndent()
         writeLine("@end")
     }
     
     func writeInterface(name: String, categoryName: String, protocolArr: [String], body: ((_ writer: ObjectiveCWriter) -> ())?) {
         writeLine("@interface \(name) (\(categoryName)) \(code(protocolArr: protocolArr))")
-        pushIndent()
         body?(self)
-        popIndent()
         writeLine("@end")
     }
     
-    func writeProperty(lifeCycle: [ObjectiveCLifeCycleModifier], rw: [ObjectiveCRWModifier], selector: [ObjectiveCSelectorModifier], type: String, name: String) {
+    func writeProperty(lifeCycle: [ObjectiveCLifeCycleModifier], atomic: Bool, rw: [ObjectiveCRWModifier], selector: [ObjectiveCSelectorModifier], type: String, name: String) {
         let lfs = lifeCycle.map { (m) -> String in
             return m.rawValue
         }.joined(separator: ",")
+        let ats = atomic ? "atomic" : "nonatomic"
         let rws = rw.map { (m) -> String in
             return m.rawValue
         }.joined(separator: ",")
         let ss = selector.map { (s) -> String in
             return s.asString()
         }.joined(separator: ",")
-        writeLine("@property (\([lfs, rws, ss].joined(separator: ",")) \(type) \(name)")
+        let final = [lfs, ats, rws, ss].filter { (s) -> Bool in
+            return !s.isEmpty
+        }.joined(separator: ",")
+        writeLine("@property (\(final)) \(type) \(name);")
     }
     
-    func writeMethodDeclaration(isClassMethod: Bool, returnType: String?, fragments: [(name: String, param: (type: String, name: String)?)]) {
-        let prefix = isClassMethod ? "+" : "-" + " "
+    func writeMethodDeclaration(isClassMethod: Bool, returnType: String?, prefix: String, fragments: [(name: String, param: (type: String, name: String)?)]) {
+        let methodType = isClassMethod ? "+" : "-" + " "
         let ret = "(" + (returnType ?? "void") + ")"
         let signatrue = fragments.map { (name, param) -> String in
             if let p = param {
@@ -93,14 +96,14 @@ class ObjectiveCWriter {
                 return name
             }
         }.joined(separator: " ")
-        writeLine(prefix + ret + signatrue)
+        writeLine(methodType + ret + prefix + signatrue + ";")
     }
     
     func writeEnumDefination(rawType: String, name: String, cases: [String]) {
         writeLine("typedef NS_ENUM(\(rawType), \(name)) {")
         pushIndent()
         cases.forEach { (c) in
-            writeLine("\(rawType)\(c);")
+            writeLine("\(c),")
         }
         popIndent()
         writeLine("};")
@@ -108,22 +111,18 @@ class ObjectiveCWriter {
     
     func writeImplementation(name: String, protocolArr: [String], body: ((_ writer: ObjectiveCWriter) -> ())?) {
         writeLine("@implementation \(name)\(code(protocolArr: protocolArr))")
-        pushIndent()
         body?(self)
-        popIndent()
         writeLine("@end")
     }
     
     func writeImplementation(name: String, categoryName: String, protocolArr: [String], body: ((_ writer: ObjectiveCWriter) -> ())?) {
         writeLine("@implementation \(name) (\(categoryName))\(code(protocolArr: protocolArr))")
-        pushIndent()
         body?(self)
-        popIndent()
         writeLine("@end")
     }
     
-    func writeMethodDefination(isClassMethod: Bool, returnType: String?, fragments: [(name: String, param: (type: String, name: String)?)], body: ((_ writer: ObjectiveCWriter) -> ())?) {
-        let prefix = isClassMethod ? "+" : "-" + " "
+    func writeMethodDefination(isClassMethod: Bool, returnType: String?, prefix: String, fragments: [(name: String, param: (type: String, name: String)?)], body: ((_ writer: ObjectiveCWriter) -> ())?) {
+        let methodType = isClassMethod ? "+" : "-" + " "
         let ret = "(" + (returnType ?? "void") + ")"
         let signatrue = fragments.map { (name, param) -> String in
             if let p = param {
@@ -132,10 +131,8 @@ class ObjectiveCWriter {
                 return name
             }
             }.joined(separator: " ")
-        writeLine(prefix + ret + signatrue + " {")
-        pushIndent()
+        writeLine(methodType + ret + prefix + signatrue + " {")
         body?(self)
-        popIndent()
         writeLine("}")
     }
     
@@ -164,6 +161,20 @@ class ObjectiveCWriter {
     func writeDefaultSynthesize(name: String) {
         writeLine("@synthesize " + name + " = _" + name)
     }
+    
+    func writeSharpImport(file: String) {
+        writeLine("#import " + file)
+    }
+    
+    func writeForwardClassDeclaration(type: String) {
+        writeLine("@class " + type + ";")
+    }
+    
+    func writeProtocolDeclaration(name: String, protocolArr: [String], body: ((_ writer: ObjectiveCWriter) -> ())?) {
+        writeLine("@protocol " + name + " " + code(protocolArr: protocolArr))
+        body?(self)
+        writeLine("@end")
+    }
 }
 
 extension ObjectiveCWriter: Writer {
@@ -180,6 +191,6 @@ extension ObjectiveCWriter: Writer {
     }
     
     func writeLine(_ code: String) {
-        writeLine(code)
+        writer.writeLine(code)
     }
 }
