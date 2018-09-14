@@ -127,13 +127,15 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("@implementation \(stateMachineClassName())")
         writeInitMethodCode(writer)
         writeObserverSetterCode(writer)
-        writeStateSetterCode(writer)
+//        writeStateSetterCode(writer)
+        writeObserverEnterStateMethodDefinationCode(writer)
         writePublicMethodImplCode(writer)
         writer.writeLine("@end")
     }
     
     private func writeMemberInferfaceCode(_ writer: CodeWriter) {
-        header.writeLine("@property (assign, nonatomic, readonly) \(stateEnumName()) state;")
+        writer.writeLine("@property (assign, nonatomic, readonly) \(stateEnumName()) state;")
+        writer.writeLine("@property (assign, nonatomic) BOOL shouldEnterCurrentStateWhenObsverChanged;//default is YES")
         writer.writeLine("@property (weak, nonatomic) id<\(obersverProtocolName())> observer;")
         writer.writeLine("@property (weak, nonatomic) id<\(delegateProtocolName())> delegate;")
     }
@@ -141,7 +143,6 @@ class ObjectiveCGen: CodeGen {
     private func writeMemberImplCode(_ writer: CodeWriter) {
         writer.writeLine("@interface \(stateMachineClassName())()")
         writer.writeLine("@property (assign, nonatomic) \(stateEnumName()) state;")
-        writer.writeLine("@property (assign, nonatomic) BOOL transitionOcurred;")
         writer.writeLine("@end")
     }
     
@@ -152,7 +153,7 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("if (self) {")
         writer.pushIndent()
         writer.writeLine("_state = \(stateName(forState: initialState));")
-        writer.writeLine("_transitionOcurred = NO;")
+        writer.writeLine("_shouldEnterCurrentStateWhenObsverChanged = YES;")
         writer.popIndent()
         writer.writeLine("}")
         writer.writeLine("return self;")
@@ -165,23 +166,22 @@ class ObjectiveCGen: CodeGen {
         writer.pushIndent()
         writer.writeLine("BOOL obChanged = _observer != observer;")
         writer.writeLine("_observer = observer;")
-        writer.writeLine("if (!self.transitionOcurred && obChanged) {")
+        writer.writeLine("if (self.shouldEnterCurrentStateWhenObsverChanged && obChanged) {")
         writer.pushIndent()
-        writeObserverEnterStateMethodCallCode(forState: initialState, writer);
+        writeObserverEnterCurrentStateMethodCallCode(observerVarName: "_observer" ,writer)
         writer.popIndent()
         writer.writeLine("}")
         writer.popIndent()
         writer.writeLine("}")
     }
     
-    private func writeStateSetterCode(_ writer: CodeWriter) {
-        writer.writeLine("- (void)setState:(\(stateEnumName()))state {")
-        writer.pushIndent()
-        writer.writeLine("_state = state;")
-        writer.writeLine("self.transitionOcurred = YES;")
-        writer.popIndent()
-        writer.writeLine("}")
-    }
+//    private func writeStateSetterCode(_ writer: CodeWriter) {
+//        writer.writeLine("- (void)setState:(\(stateEnumName()))state {")
+//        writer.pushIndent()
+//        writer.writeLine("_state = state;")
+//        writer.popIndent()
+//        writer.writeLine("}")
+//    }
     
     private func writePublicMethodInterfaceCode(_ writer: CodeWriter) {
         for method in publicMethodStore.keys {
@@ -227,7 +227,7 @@ class ObjectiveCGen: CodeGen {
                 writer.writeLine("}")
                 writeObserverExitStateMethodCallCode(forState: edge.from, writer)
                 writer.writeLine("self.state = \(stateName(forState: edge.to));")
-                writeObserverEnterStateMethodCallCode(forState: edge.to, writer)
+                writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, writer)
                 
             } else {
                 for edge in method.value {
@@ -239,7 +239,7 @@ class ObjectiveCGen: CodeGen {
                     writer.pushIndent()
                     writeObserverExitStateMethodCallCode(forState: edge.from, writer)
                     writer.writeLine("self.state = \(stateName(forState: edge.to));")
-                    writeObserverEnterStateMethodCallCode(forState: edge.to, writer)
+                    writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, writer)
                     writer.popIndent()
                     writer.writeLine("}")
                     writer.popIndent()
@@ -281,10 +281,33 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("-(void)\(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):(\(stateMachineClassName()) *)stateMachine;")
     }
     
-    private func writeObserverEnterStateMethodCallCode(forState state: Vertex<String>, _ writer: CodeWriter) {
-        writer.writeLine("if ([self.observer respondsToSelector:@selector(\(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):)]) {")
+    private func writeObserverEnterCurrentStateMethodCallCode(observerVarName: String, _ writer: CodeWriter) {
+        writer.writeLine("[self notifyObserverEnterCurrentState:\(observerVarName)];")
+    }
+    
+    private func writeObserverEnterStateMethodDefinationCode(_ writer: CodeWriter) {
+        writer.writeLine("- (void)notifyObserverEnterCurrentState:(id<\(obersverProtocolName())>)obs {")
         writer.pushIndent()
-        writer.writeLine("[self.observer \(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):self];")
+        writer.writeLine("switch (self.state) {")
+        writer.pushIndent()
+        for state in graph.vertices {
+            writer.writeLine("case \(stateName(forState: state)): {")
+            writer.pushIndent()
+            writeObserverEnterStateMethodCallCode(observerVarName: "obs" ,forState: state, writer)
+            writer.writeLine("break;")
+            writer.popIndent()
+            writer.writeLine("}")
+        }
+        writer.popIndent()
+        writer.writeLine("}")
+        writer.popIndent()
+        writer.writeLine("}")
+    }
+    
+    private func writeObserverEnterStateMethodCallCode(observerVarName: String, forState state: Vertex<String>, _ writer: CodeWriter) {
+        writer.writeLine("if ([\(observerVarName) respondsToSelector:@selector(\(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):)]) {")
+        writer.pushIndent()
+        writer.writeLine("[\(observerVarName) \(ObjectiveCGen.OberserEnterStateMethodPrefix)\(graph.stateName(state)):self];")
         writer.popIndent()
         writer.writeLine("}")
     }

@@ -2,29 +2,97 @@
 #import "TestStateMachine.h"
 @interface TestStateMachine()
 @property (assign, nonatomic) TestState state;
-@property (assign, nonatomic) BOOL transitionOcurred;
 @end
 @implementation TestStateMachine
 - (instancetype)init {
     self = [super init];
     if (self) {
         _state = TestStateDark;
-        _transitionOcurred = NO;
+        _shouldEnterCurrentStateWhenObsverChanged = YES;
     }
     return self;
 }
 - (void)setObserver:(id<TestObserver>)observer {
     BOOL obChanged = _observer != observer;
     _observer = observer;
-    if (!self.transitionOcurred && obChanged) {
-        if ([self.observer respondsToSelector:@selector(onEnterDark:)]) {
-            [self.observer onEnterDark:self];
+    if (self.shouldEnterCurrentStateWhenObsverChanged && obChanged) {
+        [self notifyObserverEnterCurrentState:_observer];
+    }
+}
+- (void)notifyObserverEnterCurrentState:(id<TestObserver>)obs {
+    switch (self.state) {
+        case TestStateLight2: {
+            if ([obs respondsToSelector:@selector(onEnterLight2:)]) {
+                [obs onEnterLight2:self];
+            }
+            break;
+        }
+        case TestStateLight1: {
+            if ([obs respondsToSelector:@selector(onEnterLight1:)]) {
+                [obs onEnterLight1:self];
+            }
+            break;
+        }
+        case TestStateFinish: {
+            if ([obs respondsToSelector:@selector(onEnterFinish:)]) {
+                [obs onEnterFinish:self];
+            }
+            break;
+        }
+        case TestStateDark: {
+            if ([obs respondsToSelector:@selector(onEnterDark:)]) {
+                [obs onEnterDark:self];
+            }
+            break;
         }
     }
 }
-- (void)setState:(TestState)state {
-    _state = state;
-    self.transitionOcurred = YES;
+- (void)doSmash {
+    if (TestStateLight2 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromLight2ToFinishWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromLight2ToFinishWithStateMachine:self ];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitLight2:)]) {
+                [self.observer onExitLight2:self];
+            }
+            self.state = TestStateFinish;
+            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
+                [self.observer onEnterFinish:self];
+            }
+        }
+    }
+    if (TestStateLight1 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromLight1ToFinishWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromLight1ToFinishWithStateMachine:self ];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitLight1:)]) {
+                [self.observer onExitLight1:self];
+            }
+            self.state = TestStateFinish;
+            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
+                [self.observer onEnterFinish:self];
+            }
+        }
+    }
+    if (TestStateDark == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromDarkToFinishWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromDarkToFinishWithStateMachine:self ];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitDark:)]) {
+                [self.observer onExitDark:self];
+            }
+            self.state = TestStateFinish;
+            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
+                [self.observer onEnterFinish:self];
+            }
+        }
+    }
 }
 - (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2  {
     if (TestStateDark == self.state) {
@@ -86,53 +154,6 @@
             self.state = TestStateDark;
             if ([self.observer respondsToSelector:@selector(onEnterDark:)]) {
                 [self.observer onEnterDark:self];
-            }
-        }
-    }
-}
-- (void)doSmash {
-    if (TestStateLight2 == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromLight2ToFinishWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromLight2ToFinishWithStateMachine:self ];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitLight2:)]) {
-                [self.observer onExitLight2:self];
-            }
-            self.state = TestStateFinish;
-            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
-                [self.observer onEnterFinish:self];
-            }
-        }
-    }
-    if (TestStateDark == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromDarkToFinishWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromDarkToFinishWithStateMachine:self ];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitDark:)]) {
-                [self.observer onExitDark:self];
-            }
-            self.state = TestStateFinish;
-            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
-                [self.observer onEnterFinish:self];
-            }
-        }
-    }
-    if (TestStateLight1 == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromLight1ToFinishWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromLight1ToFinishWithStateMachine:self ];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitLight1:)]) {
-                [self.observer onExitLight1:self];
-            }
-            self.state = TestStateFinish;
-            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
-                [self.observer onEnterFinish:self];
             }
         }
     }
