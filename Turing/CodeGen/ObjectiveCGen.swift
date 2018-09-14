@@ -386,6 +386,7 @@ class ObjectiveCGen: CodeGen {
     
     var publicMethodStore: [TransitionDescription: [Edge<String>]] = [:]
     
+    //有很多边的TransitionDescription是一样的，这些边会合并为一个方法
     private func setupPublicMethodStore() {
         for edge in graph.edges {
             let transition = graph.transition(edge)
