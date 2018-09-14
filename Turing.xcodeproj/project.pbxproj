@@ -26,6 +26,7 @@
 		42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC8214A875C00DBA42A /* Subroutine.swift */; };
 		42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCA214A881400DBA42A /* SubroutineManager.swift */; };
 		42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
+		42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +73,7 @@
 		42CA6CC8214A875C00DBA42A /* Subroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subroutine.swift; sourceTree = "<group>"; };
 		42CA6CCA214A881400DBA42A /* SubroutineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubroutineManager.swift; sourceTree = "<group>"; };
 		42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessonGenSubroutine.swift; sourceTree = "<group>"; };
+		42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveCWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */,
 				42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */,
+				42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */,
 				42CA6CA0214A7D6E00DBA42A /* ObjectiveCGen.swift */,
 				42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */,
 				42CA6CA2214A7D6E00DBA42A /* StateMachineSource.swift */,
@@ -266,6 +269,7 @@
 				42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */,
 				42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */,
 				42CA6CB4214A7D6F00DBA42A /* AdjacencyListGraph.swift in Sources */,
+				42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */,
 				42CA6CAE214A7D6F00DBA42A /* ObjectiveCGen.swift in Sources */,
 				42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */,
 				42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */,

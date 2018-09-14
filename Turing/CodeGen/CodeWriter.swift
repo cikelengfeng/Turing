@@ -8,7 +8,14 @@
 
 import Foundation
 
-class CodeWriter {
+protocol Writer {
+    func pushIndent()
+    func popIndent()
+    func writeLine(_ code: String)
+    func write(_ code: String)
+}
+
+class CodeWriter: Writer {
     var indent: Int = 0
     var fileHandle: FileHandle!
     func setup(_ filePath: String) {
