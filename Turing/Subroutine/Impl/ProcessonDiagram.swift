@@ -11,8 +11,6 @@ import Foundation
 class ProcessonDiagram: StateMachineSource {
     
     let fileReader: ProcessonFileReader
-    let codePath: String
-    let name: String
     var graph: AbstractGraph<String> {
         get {
             return fileReader.getGraph()
@@ -24,10 +22,8 @@ class ProcessonDiagram: StateMachineSource {
         }
     }
     
-    init(filePath: String, codePath: String, name: String) {
+    init(filePath: String) {
         fileReader = ProcessonFileReader(filePath: filePath)
-        self.codePath = codePath
-        self.name = name
     }
 
 }

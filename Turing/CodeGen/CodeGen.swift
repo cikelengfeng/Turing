@@ -9,6 +9,6 @@
 import Foundation
 
 protocol CodeGen {
-    init(source: StateMachineSource)
+    init(graph: AbstractGraph<String>, codePath: String, name: String, initialVertex: Vertex<String>)
     func gen()
 }

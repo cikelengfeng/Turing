@@ -3,35 +3,36 @@
 @class TestStateMachine;
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterFinish:(TestStateMachine*)stateMachine;
-- (void)onExitFinish:(TestStateMachine*)stateMachine;
 - (void)onEnterLight2:(TestStateMachine*)stateMachine;
 - (void)onExitLight2:(TestStateMachine*)stateMachine;
-- (void)onEnterDark:(TestStateMachine*)stateMachine;
-- (void)onExitDark:(TestStateMachine*)stateMachine;
 - (void)onEnterLight1:(TestStateMachine*)stateMachine;
 - (void)onExitLight1:(TestStateMachine*)stateMachine;
+- (void)onEnterFinish:(TestStateMachine*)stateMachine;
+- (void)onExitFinish:(TestStateMachine*)stateMachine;
+- (void)onEnterDark:(TestStateMachine*)stateMachine;
+- (void)onExitDark:(TestStateMachine*)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
 -(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromDarkToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
--(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
 -(BOOL)shouldTransiteFromLight1ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromLight1ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
+-(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
+-(BOOL)shouldTransiteFromDarkToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateFinish,
     TestStateLight2,
-    TestStateDark,
     TestStateLight1,
+    TestStateFinish,
+    TestStateDark,
 };
 @interface TestStateMachine: NSObject 
 - (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2;
-- (void)doTurnOff;
 - (void)doSmash;
+- (void)doTurnOff;
+- (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES
 @property (assign,nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;

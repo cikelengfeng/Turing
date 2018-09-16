@@ -10,7 +10,5 @@ import Foundation
 
 protocol StateMachineSource {
     var graph: AbstractGraph<String> {get}
-    var codePath: String {get}
-    var name: String {get}
     var initialVertex: Vertex<String> {get}
 }

@@ -23,11 +23,7 @@ class ObjectiveCGen: CodeGen {
     var implTopCode: String?
     
     
-    required convenience init(source: StateMachineSource) {
-        self.init(graph: source.graph, codePath: source.codePath, name: source.name, initialVertex: source.initialVertex)
-    }
-    
-    init(graph: AbstractGraph<String>, codePath: String, name: String, initialVertex: Vertex<String>) {
+    required init(graph: AbstractGraph<String>, codePath: String, name: String, initialVertex: Vertex<String>) {
         self.graph = graph
         self.name = name
         self.initialState = initialVertex
@@ -139,16 +135,21 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeInitMethodCode(_ writer: ObjectiveCWriter) {
-        writer.writeMethodDefination(isClassMethod: false, returnType: "instancetype", prefix: "init", fragments: []) { (w) in
+        writer.writeMethodDefination(isClassMethod: false, returnType: "instancetype", prefix: "initWith", fragments: [(name: "State", param: (type: stateEnumName(), name: "state"))]) { (w) in
             writer.pushIndent()
             writer.writeLine("self = [super init];")
             writer.writeLine("if (self) {")
             writer.pushIndent()
-            writer.writeLine("_state = \(self.stateName(forState: self.initialState));")
+            writer.writeLine("_state = state;")
             writer.writeLine("_shouldEnterCurrentStateWhenObserverChanged = YES;")
             writer.popIndent()
             writer.writeLine("}")
             writer.writeLine("return self;")
+            writer.popIndent()
+        }
+        writer.writeMethodDefination(isClassMethod: false, returnType: "instancetype", prefix: "init", fragments: []) { (w) in
+            writer.pushIndent()
+            writer.writeLine("return [self initWithState:\(self.stateName(forState: self.initialState))];")
             writer.popIndent()
         }
     }
@@ -185,6 +186,8 @@ class ObjectiveCGen: CodeGen {
             let with = f.isEmpty ? "": "With"
             writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: "do" + method.name + with, fragments: f)
         }
+        
+        writer.writeMethodDeclaration(isClassMethod: false, returnType: "instancetype", prefix: "initWith", fragments: [(name: "State", param: (type: stateEnumName(), name: "state"))])
     }
     
     private func writePublicMethodImplCode(_ writer: ObjectiveCWriter) {
