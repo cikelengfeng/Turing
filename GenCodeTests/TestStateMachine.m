@@ -57,21 +57,6 @@
     }
 }
 - (void)doEOF {
-    if (TestStateAcceptA == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToFaultWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptAToFaultWithStateMachine:self ];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
-                [self.observer onExitAcceptA:self];
-            }
-            self.state = TestStateFault;
-            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
-                [self.observer onEnterFault:self];
-            }
-        }
-    }
     if (TestStateAcceptAB == self.state) {
         BOOL shouldTransition = YES;
         if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToFaultWithStateMachine:)]) {
@@ -80,6 +65,21 @@
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
                 [self.observer onExitAcceptAB:self];
+            }
+            self.state = TestStateFault;
+            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
+                [self.observer onEnterFault:self];
+            }
+        }
+    }
+    if (TestStateAcceptA == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToFaultWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptAToFaultWithStateMachine:self ];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
+                [self.observer onExitAcceptA:self];
             }
             self.state = TestStateFault;
             if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {

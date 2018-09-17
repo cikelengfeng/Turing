@@ -34,10 +34,10 @@ int main(int argc, const char * argv[]) {
         }
         [sm doEOF];
         if (sm.state == TestStateFault) {
-            NSLog(@"%@ is not a*b*", input);
+            NSLog(@"%@ is not a+b+", input);
         }
         if (sm.state == TestStateFinish) {
-            NSLog(@"%@ is a*b*", input);
+            NSLog(@"%@ is a+b+", input);
         }
     }
     return 0;

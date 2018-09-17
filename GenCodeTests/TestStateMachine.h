@@ -16,14 +16,14 @@
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromAcceptAToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptAToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptABToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptABToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptBEOFToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptBEOFToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
     TestStateAcceptA,

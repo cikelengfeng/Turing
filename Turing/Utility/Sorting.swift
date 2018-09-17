@@ -21,11 +21,15 @@ extension AbstractGraph where T == String {
     
     private func edgeSortingString(_ edge: Edge<T>) -> String {
         let t = transition(edge)
-        return t.sortingString()
+        return edge.from.data + edge.to.data + t.sortingString()
     }
     
-    func sortedEdgesInLocalizedStandard() -> Array<Edge<T>> {
-        return self.edges.sorted(by: { (e1, e2) -> Bool in
+    func sortedEdgesInLocalizedStandard() -> [Edge<T>] {
+        return sortedEdgesInLocalizedStandard(self.edges)
+    }
+    
+    func sortedEdgesInLocalizedStandard(_ edges: [Edge<T>]) -> [Edge<T>] {
+        return edges.sorted(by: { (e1, e2) -> Bool in
             return edgeSortingString(e1).localizedStandardCompare(edgeSortingString(e2)) == .orderedAscending
         })
     }

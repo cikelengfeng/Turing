@@ -71,7 +71,7 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeStateDefinationCode(_ writer: ObjectiveCWriter) {
-        let cases = vertices().map { (v) -> String in
+        let cases = sortedVertices().map { (v) -> String in
             return stateName(forState: v)
         }
         writer.writeEnumDefination(rawType: "NSUInteger", name: stateEnumName(), cases: cases)
@@ -222,7 +222,7 @@ class ObjectiveCGen: CodeGen {
                     self.writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, w)
                     
                 } else {
-                    for edge in edges {
+                    for edge in self.sortedEdges(edges) {
                         w.writeLine("if (\(self.stateName(forState: edge.from)) == self.state) {")
                         w.pushIndent()
                         w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
@@ -258,7 +258,7 @@ class ObjectiveCGen: CodeGen {
     private func writeObserverDefinationCode(_ writer: ObjectiveCWriter) {
         writer.writeProtocolDeclaration(name: obersverProtocolName(), protocolArr: ["NSObject"]) { (w) in
             writer.writeLine("@optional")
-            for state in self.vertices() {
+            for state in self.sortedVertices() {
                 self.writeObserverEnterStateMethodDefinationCode(forState: state, writer)
                 self.writeObserverExitStateMethodDefinationCode(forState: state, writer)
             }
@@ -281,7 +281,7 @@ class ObjectiveCGen: CodeGen {
             w.pushIndent()
             w.writeLine("switch (self.state) {")
             w.pushIndent()
-            for state in self.vertices() {
+            for state in self.sortedVertices() {
                 w.writeLine("case \(self.stateName(forState: state)): {")
                 w.pushIndent()
                 self.writeObserverEnterStateMethodCallCode(observerVarName: "obs" ,forState: state, w)
@@ -318,7 +318,7 @@ class ObjectiveCGen: CodeGen {
     private func writeDelegateDefinationCode(_ writer: ObjectiveCWriter) {
         writer.writeProtocolDeclaration(name: delegateProtocolName(), protocolArr: ["NSObject"]) { (w) in
             w.writeLine("@optional")
-            for transition in self.graph.edges {
+            for transition in self.sortedEdges() {
                 self.writeDelegateShouldTransiteStateMethodDefinationCode(forTransition: transition, w)
             }
         }
@@ -387,11 +387,15 @@ class ObjectiveCGen: CodeGen {
         }
     }
     
-    private func vertices() -> [Vertex<String>] {
+    private func sortedVertices() -> [Vertex<String>] {
         return graph.vertices.sortedInLocalizedStandard()
     }
     
-    private func edges() -> [Edge<String>] {
+    private func sortedEdges() -> [Edge<String>] {
         return graph.sortedEdgesInLocalizedStandard()
+    }
+    
+    private func sortedEdges(_ edges: [Edge<String>]) -> [Edge<String>] {
+        return graph.sortedEdgesInLocalizedStandard(edges)
     }
 }
