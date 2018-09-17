@@ -12,5 +12,7 @@ import Foundation
 let manager = SubroutineManager()
 let processGen = ProcessonGenSubroutine()
 manager.register(processGen)
+let multidimensionGen = MultiDimensionGenSubroutine()
+manager.register(multidimensionGen)
 
 manager.run()

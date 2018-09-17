@@ -11,7 +11,7 @@ import Foundation
 class ProcessonGenSubroutine: Subroutine {
     var commandSequence: [String] {
         get {
-            return []
+            return ["pos"]
         }
     }
     

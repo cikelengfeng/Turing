@@ -3,35 +3,35 @@
 @class TestStateMachine;
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterLight2:(TestStateMachine*)stateMachine;
-- (void)onExitLight2:(TestStateMachine*)stateMachine;
 - (void)onEnterLight1:(TestStateMachine*)stateMachine;
 - (void)onExitLight1:(TestStateMachine*)stateMachine;
 - (void)onEnterFinish:(TestStateMachine*)stateMachine;
 - (void)onExitFinish:(TestStateMachine*)stateMachine;
 - (void)onEnterDark:(TestStateMachine*)stateMachine;
 - (void)onExitDark:(TestStateMachine*)stateMachine;
+- (void)onEnterLight2:(TestStateMachine*)stateMachine;
+- (void)onExitLight2:(TestStateMachine*)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromLight1ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromLight1ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
 -(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
 -(BOOL)shouldTransiteFromDarkToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
+-(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateLight2,
     TestStateLight1,
     TestStateFinish,
     TestStateDark,
+    TestStateLight2,
 };
 @interface TestStateMachine: NSObject 
-- (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2;
-- (void)doSmash;
 - (void)doTurnOff;
+- (void)doSmash;
+- (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2;
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES
