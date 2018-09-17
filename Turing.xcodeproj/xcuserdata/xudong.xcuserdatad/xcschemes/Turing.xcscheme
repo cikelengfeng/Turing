@@ -71,7 +71,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/xudong/Downloads/Light.pos"
+            argument = "/Users/xudong/Downloads/abr.pos"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

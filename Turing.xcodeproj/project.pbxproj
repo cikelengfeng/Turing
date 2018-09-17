@@ -28,6 +28,7 @@
 		42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
 		42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
 		42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
+		42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,7 @@
 		42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessonGenSubroutine.swift; sourceTree = "<group>"; };
 		42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveCWriter.swift; sourceTree = "<group>"; };
 		42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDimensionGenSubroutine.swift; sourceTree = "<group>"; };
+		42CA6CD7214F87A500DBA42A /* NameFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		42CA6C95214A7D3000DBA42A /* Turing */ = {
 			isa = PBXGroup;
 			children = (
+				42CA6CD6214F878200DBA42A /* Utility */,
 				42CA6CC7214A872E00DBA42A /* Subroutine */,
 				42CA6C9D214A7D6E00DBA42A /* CodeGen */,
 				42CA6CA5214A7D6F00DBA42A /* Graph */,
@@ -180,6 +183,14 @@
 				42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */,
 			);
 			path = Impl;
+			sourceTree = "<group>";
+		};
+		42CA6CD6214F878200DBA42A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CD7214F87A500DBA42A /* NameFormat.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 				42CA6CAC214A7D6F00DBA42A /* GraphProtocol.swift in Sources */,
 				42CA6CB6214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift in Sources */,
 				42CA6CAF214A7D6F00DBA42A /* ProcessonFileReader.swift in Sources */,
+				42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */,
 				42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */,
 				42CA6CB2214A7D6F00DBA42A /* ProcessonDiagram.swift in Sources */,
 				42CA6CB3214A7D6F00DBA42A /* Parameter.swift in Sources */,

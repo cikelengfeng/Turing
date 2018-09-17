@@ -15,4 +15,41 @@ extension AbstractGraph {
     func transition(_ edge: Edge<T>) -> TransitionDescription {
         return transition(from: edge.from, to: edge.to)
     }
+    
+}
+
+extension TransitionDescription {
+    func upperCased() -> TransitionDescription {
+        let newParam = self.param.map { (p) -> ParameterDescription in
+            let newP = ParameterDescription(name: p.name.upperFirstLetter(), type: p.type.upperFirstLetter())
+            return newP
+        }
+        let ret = TransitionDescription(name: self.name.upperFirstLetter(), param: newParam)
+        return ret
+    }
+}
+
+extension AbstractGraph where T == String {
+    func createUpperCasedVertex(_ vertex: Vertex<T>) -> Vertex<T> {
+        return createVertex(vertex.data.upperFirstLetter())
+    }
+}
+
+extension AbstractGraph where T == String {
+    func upperCased() -> AbstractGraph {
+        let ret = type(of: self).init()
+        
+        self.vertices.forEach { (v) in
+            _ = ret.createUpperCasedVertex(v)
+        }
+        
+        self.edges.forEach { (e) in
+            let newFrom = ret.createVertex(e.from.data.upperFirstLetter())
+            let newTo = ret.createVertex(e.to.data.upperFirstLetter())
+            let newT = self.transition(e).upperCased()
+            ret.addDirectedEdge(newFrom, to: newTo, withWeight: e.weight, desc: newT)
+        }
+        
+        return ret
+    }
 }

@@ -3,35 +3,39 @@
 @class TestStateMachine;
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterLight1:(TestStateMachine*)stateMachine;
-- (void)onExitLight1:(TestStateMachine*)stateMachine;
+- (void)onEnterFault:(TestStateMachine*)stateMachine;
+- (void)onExitFault:(TestStateMachine*)stateMachine;
+- (void)onEnterAcceptBEOF:(TestStateMachine*)stateMachine;
+- (void)onExitAcceptBEOF:(TestStateMachine*)stateMachine;
 - (void)onEnterFinish:(TestStateMachine*)stateMachine;
 - (void)onExitFinish:(TestStateMachine*)stateMachine;
-- (void)onEnterDark:(TestStateMachine*)stateMachine;
-- (void)onExitDark:(TestStateMachine*)stateMachine;
-- (void)onEnterLight2:(TestStateMachine*)stateMachine;
-- (void)onExitLight2:(TestStateMachine*)stateMachine;
+- (void)onEnterAcceptA:(TestStateMachine*)stateMachine;
+- (void)onExitAcceptA:(TestStateMachine*)stateMachine;
+- (void)onEnterAcceptAB:(TestStateMachine*)stateMachine;
+- (void)onExitAcceptAB:(TestStateMachine*)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromLight1ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromLight1ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromDarkToLight1WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
--(BOOL)shouldTransiteFromDarkToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromDarkToLight2WithStateMachine:(TestStateMachine *)stateMachine p1:( NSString *)p1 p2:( NSNumber *)p2 ;
--(BOOL)shouldTransiteFromLight2ToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromLight2ToDarkWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateLight1,
+    TestStateFault,
+    TestStateAcceptBEOF,
     TestStateFinish,
-    TestStateDark,
-    TestStateLight2,
+    TestStateAcceptA,
+    TestStateAcceptAB,
 };
 @interface TestStateMachine: NSObject 
-- (void)doTurnOff;
-- (void)doSmash;
-- (void)doTurnOnWithp1:( NSString *)p1 p2:( NSNumber *)p2;
+- (void)doInputA;
+- (void)doInputB;
+- (void)doEOF;
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES

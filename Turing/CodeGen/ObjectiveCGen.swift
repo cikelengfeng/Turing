@@ -24,9 +24,9 @@ class ObjectiveCGen: CodeGen {
     
     
     required init(graph: AbstractGraph<String>, codePath: String, name: String, initialVertex: Vertex<String>) {
-        self.graph = graph
-        self.name = name
-        self.initialState = initialVertex
+        self.graph = graph.upperCased()
+        self.name = name.upperFirstLetter()
+        self.initialState = self.graph.createUpperCasedVertex(initialVertex)
         self.codePath = codePath
     }
     
@@ -180,7 +180,7 @@ class ObjectiveCGen: CodeGen {
         for method in publicMethodStore.keys {
             
             let f = method.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
-                return (name: p.name, param: (type: p.type, name: p.name))
+                return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
             }
             
             let with = f.isEmpty ? "": "With"
@@ -195,7 +195,7 @@ class ObjectiveCGen: CodeGen {
         for kv in publicMethodStore {
             
             let f = kv.key.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
-                return (name: p.name, param: (type: p.type, name: p.name))
+                return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
             }
             
             let with = f.isEmpty ? "": "With"
@@ -351,9 +351,9 @@ class ObjectiveCGen: CodeGen {
         for paramDesc in graph.transition(transition).param {
             switch type {
             case .defination:
-                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name) ")
+                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name.lowerFirstLetter()) ")
             case .call:
-                codeSnippets.append("\(paramDesc.name):\(paramDesc.name) ")
+                codeSnippets.append("\(paramDesc.name):\(paramDesc.name.lowerFirstLetter()) ")
             case .selector:
                 codeSnippets.append("\(paramDesc.name):")
             }
