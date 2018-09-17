@@ -29,6 +29,7 @@
 		42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
 		42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
 		42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
+		42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD9214F96E400DBA42A /* Sorting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 		42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveCWriter.swift; sourceTree = "<group>"; };
 		42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDimensionGenSubroutine.swift; sourceTree = "<group>"; };
 		42CA6CD7214F87A500DBA42A /* NameFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormat.swift; sourceTree = "<group>"; };
+		42CA6CD9214F96E400DBA42A /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				42CA6CD7214F87A500DBA42A /* NameFormat.swift */,
+				42CA6CD9214F96E400DBA42A /* Sorting.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */,
 				42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */,
 				42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */,
+				42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */,
 				42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */,
 				42CA6C97214A7D3000DBA42A /* main.swift in Sources */,
 			);

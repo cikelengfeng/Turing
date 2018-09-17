@@ -3,39 +3,39 @@
 @class TestStateMachine;
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterFault:(TestStateMachine*)stateMachine;
-- (void)onExitFault:(TestStateMachine*)stateMachine;
-- (void)onEnterAcceptBEOF:(TestStateMachine*)stateMachine;
-- (void)onExitAcceptBEOF:(TestStateMachine*)stateMachine;
-- (void)onEnterFinish:(TestStateMachine*)stateMachine;
-- (void)onExitFinish:(TestStateMachine*)stateMachine;
 - (void)onEnterAcceptA:(TestStateMachine*)stateMachine;
 - (void)onExitAcceptA:(TestStateMachine*)stateMachine;
 - (void)onEnterAcceptAB:(TestStateMachine*)stateMachine;
 - (void)onExitAcceptAB:(TestStateMachine*)stateMachine;
+- (void)onEnterAcceptBEOF:(TestStateMachine*)stateMachine;
+- (void)onExitAcceptBEOF:(TestStateMachine*)stateMachine;
+- (void)onEnterFault:(TestStateMachine*)stateMachine;
+- (void)onExitFault:(TestStateMachine*)stateMachine;
+- (void)onEnterFinish:(TestStateMachine*)stateMachine;
+- (void)onExitFinish:(TestStateMachine*)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromAcceptBEOFToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptAToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptAToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptABToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
 -(BOOL)shouldTransiteFromAcceptABToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateFault,
-    TestStateAcceptBEOF,
-    TestStateFinish,
     TestStateAcceptA,
     TestStateAcceptAB,
+    TestStateAcceptBEOF,
+    TestStateFault,
+    TestStateFinish,
 };
 @interface TestStateMachine: NSObject 
+- (void)doEOF;
 - (void)doInputA;
 - (void)doInputB;
-- (void)doEOF;
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES

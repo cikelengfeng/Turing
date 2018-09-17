@@ -71,7 +71,7 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeStateDefinationCode(_ writer: ObjectiveCWriter) {
-        let cases = graph.vertices.map { (v) -> String in
+        let cases = vertices().map { (v) -> String in
             return stateName(forState: v)
         }
         writer.writeEnumDefination(rawType: "NSUInteger", name: stateEnumName(), cases: cases)
@@ -177,7 +177,7 @@ class ObjectiveCGen: CodeGen {
 //    }
     
     private func writePublicMethodInterfaceCode(_ writer: ObjectiveCWriter) {
-        for method in publicMethodStore.keys {
+        for method in publicMethodStore.sortedKeysInLocalizedStandard() {
             
             let f = method.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
                 return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
@@ -192,17 +192,18 @@ class ObjectiveCGen: CodeGen {
     
     private func writePublicMethodImplCode(_ writer: ObjectiveCWriter) {
         let shouldTransitionVarName = "shouldTransition"
-        for kv in publicMethodStore {
+        for method in publicMethodStore.sortedKeysInLocalizedStandard() {
             
-            let f = kv.key.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
+            let edges = publicMethodStore[method]!
+            let f = method.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
                 return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
             }
             
             let with = f.isEmpty ? "": "With"
-            writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "do" + kv.key.name + with, fragments: f) { (w) in
+            writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "do" + method.name + with, fragments: f) { (w) in
                 w.pushIndent()
-                if kv.value.count == 1 {
-                    let edge = kv.value[0]
+                if edges.count == 1 {
+                    let edge = edges[0]
                     
                     w.writeLine("if (\(self.stateName(forState: edge.from)) != self.state) {")
                     w.pushIndent()
@@ -221,7 +222,7 @@ class ObjectiveCGen: CodeGen {
                     self.writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, w)
                     
                 } else {
-                    for edge in kv.value {
+                    for edge in edges {
                         w.writeLine("if (\(self.stateName(forState: edge.from)) == self.state) {")
                         w.pushIndent()
                         w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
@@ -257,7 +258,7 @@ class ObjectiveCGen: CodeGen {
     private func writeObserverDefinationCode(_ writer: ObjectiveCWriter) {
         writer.writeProtocolDeclaration(name: obersverProtocolName(), protocolArr: ["NSObject"]) { (w) in
             writer.writeLine("@optional")
-            for state in self.graph.vertices {
+            for state in self.vertices() {
                 self.writeObserverEnterStateMethodDefinationCode(forState: state, writer)
                 self.writeObserverExitStateMethodDefinationCode(forState: state, writer)
             }
@@ -280,7 +281,7 @@ class ObjectiveCGen: CodeGen {
             w.pushIndent()
             w.writeLine("switch (self.state) {")
             w.pushIndent()
-            for state in self.graph.vertices {
+            for state in self.vertices() {
                 w.writeLine("case \(self.stateName(forState: state)): {")
                 w.pushIndent()
                 self.writeObserverEnterStateMethodCallCode(observerVarName: "obs" ,forState: state, w)
@@ -384,5 +385,13 @@ class ObjectiveCGen: CodeGen {
             edgesWithTheSameTransition.append(edge)
             publicMethodStore[transition] = edgesWithTheSameTransition
         }
+    }
+    
+    private func vertices() -> [Vertex<String>] {
+        return graph.vertices.sortedInLocalizedStandard()
+    }
+    
+    private func edges() -> [Edge<String>] {
+        return graph.sortedEdgesInLocalizedStandard()
     }
 }
