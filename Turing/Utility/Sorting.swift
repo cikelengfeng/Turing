@@ -20,8 +20,7 @@ extension Array where Element == Vertex<String> {
 extension AbstractGraph where T == String {
     
     private func edgeSortingString(_ edge: Edge<T>) -> String {
-        let t = transition(edge)
-        return edge.from.data + edge.to.data + t.sortingString()
+        return edge.from.data + edge.to.data
     }
     
     func sortedEdgesInLocalizedStandard() -> [Edge<T>] {
@@ -40,6 +39,14 @@ extension TransitionDescription {
         return self.name + self.param.map({ (p) -> String in
             return p.name + p.type
         }).joined()
+    }
+}
+
+extension Array where Element == TransitionDescription {
+    func sortedInLocalizedStandard() -> Array {
+        return self.sorted(by: { (t1, t2) -> Bool in
+            return t1.sortingString().localizedStandardCompare(t2.sortingString()) == .orderedAscending
+        })
     }
 }
 

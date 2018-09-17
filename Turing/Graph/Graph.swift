@@ -15,8 +15,10 @@ open class AbstractGraph<T>: CustomStringConvertible where T: Hashable {
     for edge in graph.edges {
         let from = createVertex(edge.from.data)
         let to = createVertex(edge.to.data)
-        let transition = graph.transition(from: from, to: to)
-      addDirectedEdge(from, to: to, withWeight: edge.weight, desc: transition)
+        let transitions = graph.transitionDesc(from: from, to: to)
+        transitions.forEach { (t) in
+            self.addDirectedEdge(from, to: to, withWeight: edge.weight, desc: t)
+        }
     }
   }
 
@@ -39,8 +41,7 @@ open class AbstractGraph<T>: CustomStringConvertible where T: Hashable {
   }
 
     open func addDirectedEdge(_ from: Vertex<T>, to: Vertex<T>, withWeight weight: Double?, desc: TransitionDescription) {
-        let key = transitionStoreKey(from: from, to: to)
-        transitionStore[key] = desc
+        addTransition(from: from, to: to, desc)
   }
 
   open func weightFrom(_ sourceVertex: Vertex<T>, to destinationVertex: Vertex<T>) -> Double? {
@@ -50,22 +51,35 @@ open class AbstractGraph<T>: CustomStringConvertible where T: Hashable {
   open func edgesFrom(_ sourceVertex: Vertex<T>) -> [Edge<T>] {
     fatalError("abstract function called")
   }
-    final func transition(from: Vertex<T>, to: Vertex<T>) -> TransitionDescription {
-        return transitionStore[transitionStoreKey(from: from, to: to)]!
+    
+    private func addTransition(from: Vertex<T>, to: Vertex<T>, _ t: TransitionDescription) {
+        let key = transitionDescStoreKey(from: from, to: to)
+        var ts: [TransitionDescription]
+        if let exsit = transitionDescStore[key] {
+            ts = exsit
+        } else {
+            ts = []
+        }
+        ts.append(t)
+        transitionDescStore[key] = ts
     }
     
-    final func allTransition() -> [TransitionDescription] {
-        return transitionStore.values.map({ (t) -> TransitionDescription in
+    final func transitionDesc(from: Vertex<T>, to: Vertex<T>) -> [TransitionDescription] {
+        return transitionDescStore[transitionDescStoreKey(from: from, to: to)]!
+    }
+    
+    final func allTransitionDesc() -> [TransitionDescription] {
+        return transitionDescStore.values.flatMap({ (t) -> [TransitionDescription] in
             return t
         })
     }
     
-    private func transitionStoreKey(from: Vertex<T>, to: Vertex<T>) -> Int {
+    private func transitionDescStoreKey(from: Vertex<T>, to: Vertex<T>) -> Int {
         return "\(from.index)_\(to.index)".hashValue
     }
     
     private var paths: [[Vertex<T>]] = []
-    private var transitionStore: [Int: TransitionDescription] = [:]
+    private var transitionDescStore: [Int: [TransitionDescription]] = [:]
     
     func findPaths(fromVertex: Vertex<T>, toVertex: Vertex<T>) -> [[Vertex<T>]] {
         paths.removeAll()

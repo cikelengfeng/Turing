@@ -12,8 +12,8 @@ extension AbstractGraph {
     func stateName(_ vertex: Vertex<T>) -> String {
         return "\(vertex.data)"
     }
-    func transition(_ edge: Edge<T>) -> TransitionDescription {
-        return transition(from: edge.from, to: edge.to)
+    func transitionDesc(_ edge: Edge<T>) -> [TransitionDescription] {
+        return transitionDesc(from: edge.from, to: edge.to)
     }
     
 }
@@ -46,8 +46,10 @@ extension AbstractGraph where T == String {
         self.edges.forEach { (e) in
             let newFrom = ret.createVertex(e.from.data.upperFirstLetter())
             let newTo = ret.createVertex(e.to.data.upperFirstLetter())
-            let newT = self.transition(e).upperCased()
-            ret.addDirectedEdge(newFrom, to: newTo, withWeight: e.weight, desc: newT)
+            self.transitionDesc(e).forEach({ (t) in
+                let newT = t.upperCased()
+                ret.addDirectedEdge(newFrom, to: newTo, withWeight: e.weight, desc: newT)
+            })
         }
         
         return ret

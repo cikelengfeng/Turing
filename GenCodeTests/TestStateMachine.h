@@ -16,14 +16,15 @@
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldTransiteFromAcceptAToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptABToAcceptABWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptABToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptAToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToFaultWithStateMachine:(TestStateMachine *)stateMachine ;
--(BOOL)shouldTransiteFromAcceptBEOFToFinishWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToAcceptABWhenInputAWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToAcceptABWhenInputAWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToAcceptBEOFWhenInputBWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptABToFaultWhenEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToFaultWhenEOFWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptAToFaultWhenInputBWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToAcceptBEOFWhenInputBWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFaultWhenInputAWithStateMachine:(TestStateMachine *)stateMachine ;
+-(BOOL)shouldTransiteFromAcceptBEOFToFinishWhenEOFWithStateMachine:(TestStateMachine *)stateMachine ;
 @end
 typedef NS_ENUM(NSUInteger, TestState) {
     TestStateAcceptA,

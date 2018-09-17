@@ -59,8 +59,8 @@
 - (void)doEOF {
     if (TestStateAcceptAB == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToFaultWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptABToFaultWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToFaultWhenEOFWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptABToFaultWhenEOFWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
@@ -74,8 +74,8 @@
     }
     if (TestStateAcceptA == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToFaultWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptAToFaultWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToFaultWhenEOFWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptAToFaultWhenEOFWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
@@ -89,8 +89,8 @@
     }
     if (TestStateAcceptBEOF == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToFinishWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToFinishWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToFinishWhenEOFWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToFinishWhenEOFWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
@@ -106,8 +106,8 @@
 - (void)doInputA {
     if (TestStateAcceptA == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToAcceptABWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptAToAcceptABWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToAcceptABWhenInputAWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptAToAcceptABWhenInputAWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
@@ -121,8 +121,8 @@
     }
     if (TestStateAcceptAB == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToAcceptABWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptABToAcceptABWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToAcceptABWhenInputAWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptABToAcceptABWhenInputAWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
@@ -136,8 +136,8 @@
     }
     if (TestStateAcceptBEOF == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToFaultWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToFaultWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToFaultWhenInputAWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToFaultWhenInputAWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
@@ -153,8 +153,8 @@
 - (void)doInputB {
     if (TestStateAcceptAB == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptABToAcceptBEOFWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptABToAcceptBEOFWhenInputBWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptABToAcceptBEOFWhenInputBWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
@@ -166,10 +166,25 @@
             }
         }
     }
+    if (TestStateAcceptA == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptAToFaultWhenInputBWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptAToFaultWhenInputBWithStateMachine:self ];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
+                [self.observer onExitAcceptA:self];
+            }
+            self.state = TestStateFault;
+            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
+                [self.observer onEnterFault:self];
+            }
+        }
+    }
     if (TestStateAcceptBEOF == self.state) {
         BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:)]) {
-            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToAcceptBEOFWithStateMachine:self ];
+        if ([self.delegate respondsToSelector:@selector(shouldTransiteFromAcceptBEOFToAcceptBEOFWhenInputBWithStateMachine:)]) {
+            shouldTransition = [self.delegate shouldTransiteFromAcceptBEOFToAcceptBEOFWhenInputBWithStateMachine:self ];
         }
         if (shouldTransition) {
             if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
