@@ -96,10 +96,11 @@ struct ProcessonTransition {
 
 extension ProcessonTransition {
     func asTransitionDescription() -> TransitionDescription {
-        let p = params.map { (pp) -> ParameterDescription in
-            return ParameterDescription(name: pp.name, type: pp.type)
-        }
-        let t = TransitionDescription(name: name, param: p)
+        //目前先不支持参数了
+//        let p = params.map { (pp) -> ParameterDescription in
+//            return ParameterDescription(name: pp.name, type: pp.type)
+//        }
+        let t = TransitionDescription(name: name, param: [])
         return t
     }
 }

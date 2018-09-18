@@ -47,9 +47,9 @@ class ObjectiveCGen: CodeGen {
         setupWriter()
         
         writeImportHeaderCode(header)
+        writeStateDefinationCode(header)
         writeObserverDefinationCode(header)
         writeDelegateDefinationCode(header)
-        writeStateDefinationCode(header)
         writeInterfaceDefinationCode(header)
         
         
@@ -210,7 +210,7 @@ class ObjectiveCGen: CodeGen {
                     w.popIndent()
                     w.writeLine("}")
                     w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
-                    self.writeDelegateShouldTransiteStateMethodCallCode(forTransition: edge, desc: method, shouldTransiteVarName: shouldTransitionVarName, w)
+                    self.writeDelegateShouldTransiteStateMethodCallCode(transitionDesc: method, shouldTransiteVarName: shouldTransitionVarName, paramName: self.stateName(forState: edge.to), w)
                     w.writeLine("if (!\(shouldTransitionVarName)) {")
                     w.pushIndent()
                     w.writeLine("return;")
@@ -224,7 +224,7 @@ class ObjectiveCGen: CodeGen {
                         w.writeLine("if (\(self.stateName(forState: edge.from)) == self.state) {")
                         w.pushIndent()
                         w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
-                        self.writeDelegateShouldTransiteStateMethodCallCode(forTransition: edge, desc: method, shouldTransiteVarName: shouldTransitionVarName, w)
+                        self.writeDelegateShouldTransiteStateMethodCallCode(transitionDesc: method, shouldTransiteVarName: shouldTransitionVarName, paramName: self.stateName(forState: edge.to), w)
                         w.writeLine("if (\(shouldTransitionVarName)) {")
                         w.pushIndent()
                         self.writeObserverExitStateMethodCallCode(forState: edge.from, w)
@@ -268,7 +268,7 @@ class ObjectiveCGen: CodeGen {
     private static let OberserExitStateMethodPrefix: String = "onExit"
     
     private func writeObserverEnterStateMethodDefinationCode(forState state: Vertex<String>, _ writer: ObjectiveCWriter) {
-        writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: ObjectiveCGen.OberserEnterStateMethodPrefix, fragments: [(name: graph.stateName(state), param: (type: stateMachineClassName() + "*", name: "stateMachine"))])
+        writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: ObjectiveCGen.OberserEnterStateMethodPrefix, fragments: [(name: graph.stateName(state), param: (type: stateMachineClassName() + " *", name: "stateMachine"))])
     }
     
     private func writeObserverEnterCurrentStateMethodCallCode(observerVarName: String, _ writer: ObjectiveCWriter) {
@@ -302,7 +302,7 @@ class ObjectiveCGen: CodeGen {
         writer.writeLine("}")
     }
     private func writeObserverExitStateMethodDefinationCode(forState state: Vertex<String>, _ writer: ObjectiveCWriter) {
-        writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: ObjectiveCGen.OberserExitStateMethodPrefix, fragments: [(name: graph.stateName(state), param: (type: stateMachineClassName() + "*", name: "stateMachine"))])
+        writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: ObjectiveCGen.OberserExitStateMethodPrefix, fragments: [(name: graph.stateName(state), param: (type: stateMachineClassName() + " *", name: "stateMachine"))])
     }
     
     private func writeObserverExitStateMethodCallCode(forState state: Vertex<String>, _ writer: ObjectiveCWriter) {
@@ -317,16 +317,11 @@ class ObjectiveCGen: CodeGen {
     private func writeDelegateDefinationCode(_ writer: ObjectiveCWriter) {
         writer.writeProtocolDeclaration(name: delegateProtocolName(), protocolArr: ["NSObject"]) { (w) in
             w.writeLine("@optional")
-            for transition in self.sortedEdges() {
-                self.sortedDesc(transition).forEach({ (desc) in
-                    self.writeDelegateShouldTransiteStateMethodDefinationCode(forTransition: transition, desc: desc, w)
-                })
+            for desc in self.publicMethodStore.sortedKeysInLocalizedStandard() {
+                self.writeDelegateShouldTransiteStateMethodDefinationCode(transitionDesc: desc, w)
             }
         }
     }
-    
-    static let DelegateShouldTransitionStateMethodPrefix: String = "shouldTransiteFrom"
-    static let DelegateShouldTransitionStateMethodMiddle: String = "To"
     
     
     private enum MethodCodeType {
@@ -335,43 +330,39 @@ class ObjectiveCGen: CodeGen {
         case call
     }
     
-    private func delegateShouldTransiteStateMethodCode(forTransition transition: Edge<String>, desc: TransitionDescription, type: MethodCodeType) -> String {
-        var codeSnippets: [String] = []
-        if type == .defination {
-            codeSnippets.append("-(BOOL)")
-        }
+    //如果类型是call，才需要paramNameForCall，其他情况传空字符串即可
+    private func delegateShouldTransiteStateMethodCode(transitionDesc desc: TransitionDescription, type: MethodCodeType, paramNameForCall: String) -> String {
         
-        codeSnippets.append("\(ObjectiveCGen.DelegateShouldTransitionStateMethodPrefix)\(graph.stateName(transition.from))\(ObjectiveCGen.DelegateShouldTransitionStateMethodMiddle)\(graph.stateName(transition.to))When\(desc.name)")
         switch type {
         case .defination:
-            codeSnippets.append("WithStateMachine:(\(stateMachineClassName()) *)stateMachine ")
+            return "-(BOOL)shouldSM:(\(stateMachineClassName()) *)stateMachine do\(desc.name)ThenTransiteFrom:(\(stateEnumName()))from to:(\(stateEnumName()))to"
         case .call:
-            codeSnippets.append("WithStateMachine:self ")
+            return "shouldSM:self do\(desc.name)ThenTransiteFrom:self.state to:\(paramNameForCall)"
         case .selector:
-            codeSnippets.append("WithStateMachine:")
+            return "shouldSM:do\(desc.name)ThenTransiteFrom:to:"
         }
-        for paramDesc in desc.param {
-            switch type {
-            case .defination:
-                //后边留一个空格是为了多参数情况下中间有个空格分开，别删哈
-                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name.lowerFirstLetter()) ")
-            case .call:
-                codeSnippets.append("\(paramDesc.name):\(paramDesc.name.lowerFirstLetter()) ")
-            case .selector:
-                codeSnippets.append("\(paramDesc.name):")
-            }
-        }
-        return codeSnippets.joined(separator: "")
+        //z目前先将参数去掉，感觉参数没啥用
+//        for paramDesc in desc.param {
+//            switch type {
+//            case .defination:
+//                //后边留一个空格是为了多参数情况下中间有个空格分开，别删哈
+//                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name.lowerFirstLetter()) ")
+//            case .call:
+//                codeSnippets.append("\(paramDesc.name):\(paramDesc.name.lowerFirstLetter()) ")
+//            case .selector:
+//                codeSnippets.append("\(paramDesc.name):")
+//            }
+//        }
     }
     
-    private func writeDelegateShouldTransiteStateMethodDefinationCode(forTransition transition: Edge<String>, desc: TransitionDescription, _ writer: ObjectiveCWriter) {
-        writer.writeLine(delegateShouldTransiteStateMethodCode(forTransition: transition, desc: desc, type: .defination) + ";")
+    private func writeDelegateShouldTransiteStateMethodDefinationCode(transitionDesc desc: TransitionDescription, _ writer: ObjectiveCWriter) {
+        writer.writeLine(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .defination, paramNameForCall: "") + ";")
     }
     
-    private func writeDelegateShouldTransiteStateMethodCallCode(forTransition transition: Edge<String>, desc: TransitionDescription, shouldTransiteVarName: String, _ writer: ObjectiveCWriter) {
-        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(forTransition: transition, desc: desc, type: .selector)))]) {")
+    private func writeDelegateShouldTransiteStateMethodCallCode(transitionDesc desc: TransitionDescription, shouldTransiteVarName: String, paramName: String, _ writer: ObjectiveCWriter) {
+        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .selector, paramNameForCall: "")))]) {")
         writer.pushIndent()
-        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(forTransition: transition, desc: desc, type: .call))];")
+        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .call, paramNameForCall: paramName))];")
         writer.popIndent()
         writer.writeLine("}")
     }
