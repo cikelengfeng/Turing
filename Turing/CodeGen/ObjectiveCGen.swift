@@ -353,9 +353,10 @@ class ObjectiveCGen: CodeGen {
         for paramDesc in desc.param {
             switch type {
             case .defination:
-                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name.lowerFirstLetter())")
+                //后边留一个空格是为了多参数情况下中间有个空格分开，别删哈
+                codeSnippets.append("\(paramDesc.name):(\(paramDesc.type))\(paramDesc.name.lowerFirstLetter()) ")
             case .call:
-                codeSnippets.append("\(paramDesc.name):\(paramDesc.name.lowerFirstLetter())")
+                codeSnippets.append("\(paramDesc.name):\(paramDesc.name.lowerFirstLetter()) ")
             case .selector:
                 codeSnippets.append("\(paramDesc.name):")
             }
