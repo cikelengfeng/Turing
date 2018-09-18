@@ -230,6 +230,7 @@ class ObjectiveCGen: CodeGen {
                         self.writeObserverExitStateMethodCallCode(forState: edge.from, w)
                         w.writeLine("self.state = \(self.stateName(forState: edge.to));")
                         self.writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, w)
+                        w.writeLine("return;")
                         w.popIndent()
                         w.writeLine("}")
                         w.popIndent()
