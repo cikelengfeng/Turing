@@ -21,7 +21,7 @@ extension AbstractGraph {
 extension TransitionDescription {
     func upperCased() -> TransitionDescription {
         let newParam = self.param.map { (p) -> ParameterDescription in
-            let newP = ParameterDescription(name: p.name.upperFirstLetter(), type: p.type.upperFirstLetter())
+            let newP = ParameterDescription(name: p.name.upperFirstLetter(), type: p.type)
             return newP
         }
         let ret = TransitionDescription(name: self.name.upperFirstLetter(), param: newParam)
