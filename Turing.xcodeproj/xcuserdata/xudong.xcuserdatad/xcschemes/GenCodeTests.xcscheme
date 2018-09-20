@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42CA6C92214A7D3000DBA42A"
-               BuildableName = "Turing"
-               BlueprintName = "Turing"
+               BlueprintIdentifier = "42CA6CBC214A805C00DBA42A"
+               BuildableName = "GenCodeTests"
+               BlueprintName = "GenCodeTests"
                ReferencedContainer = "container:Turing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42CA6C92214A7D3000DBA42A"
-            BuildableName = "Turing"
-            BlueprintName = "Turing"
+            BlueprintIdentifier = "42CA6CBC214A805C00DBA42A"
+            BuildableName = "GenCodeTests"
+            BlueprintName = "GenCodeTests"
             ReferencedContainer = "container:Turing.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,58 +55,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42CA6C92214A7D3000DBA42A"
-            BuildableName = "Turing"
-            BlueprintName = "Turing"
+            BlueprintIdentifier = "42CA6CBC214A805C00DBA42A"
+            BuildableName = "GenCodeTests"
+            BlueprintName = "GenCodeTests"
             ReferencedContainer = "container:Turing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "md"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "pos"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/xudong/Downloads/abr.pos"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/xudong/Downloads/PDA.pos"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/xudong/git/Turing/GenCodeTests/"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "Test"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "A"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "B"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "C"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "D"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "E"
-            isEnabled = "NO">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -120,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42CA6C92214A7D3000DBA42A"
-            BuildableName = "Turing"
-            BlueprintName = "Turing"
+            BlueprintIdentifier = "42CA6CBC214A805C00DBA42A"
+            BuildableName = "GenCodeTests"
+            BlueprintName = "GenCodeTests"
             ReferencedContainer = "container:Turing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -30,7 +30,46 @@
 		42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
 		42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
 		42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD9214F96E400DBA42A /* Sorting.swift */; };
+		42E473AC215368E300551EB9 /* LibTuring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E473A3215368E300551EB9 /* LibTuring.framework */; };
+		42E473B1215368E300551EB9 /* LibTuringPosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E473B0215368E300551EB9 /* LibTuringPosTests.swift */; };
+		42E473B3215368E300551EB9 /* LibTuring.h in Headers */ = {isa = PBXBuildFile; fileRef = 42E473A5215368E300551EB9 /* LibTuring.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42E473BA2153697D00551EB9 /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
+		42E473BB2153697D00551EB9 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD9214F96E400DBA42A /* Sorting.swift */; };
+		42E473BC2153697D00551EB9 /* ProcessonDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA4214A7D6E00DBA42A /* ProcessonDiagram.swift */; };
+		42E473BD2153697D00551EB9 /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
+		42E473BE2153697D00551EB9 /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
+		42E473BF2153697D00551EB9 /* Subroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC8214A875C00DBA42A /* Subroutine.swift */; };
+		42E473C02153697D00551EB9 /* SubroutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCA214A881400DBA42A /* SubroutineManager.swift */; };
+		42E473C12153697D00551EB9 /* GraphProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */; };
+		42E473C22153697D00551EB9 /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */; };
+		42E473C32153697D00551EB9 /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
+		42E473C42153697D00551EB9 /* ObjectiveCGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA0214A7D6E00DBA42A /* ObjectiveCGen.swift */; };
+		42E473C52153697D00551EB9 /* ProcessonFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */; };
+		42E473C62153697D00551EB9 /* StateMachineSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA2214A7D6E00DBA42A /* StateMachineSource.swift */; };
+		42E473C72153697D00551EB9 /* CodeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA3214A7D6E00DBA42A /* CodeGen.swift */; };
+		42E473C82153697D00551EB9 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA6214A7D6F00DBA42A /* Parameter.swift */; };
+		42E473C92153697D00551EB9 /* AdjacencyListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA7214A7D6F00DBA42A /* AdjacencyListGraph.swift */; };
+		42E473CA2153697D00551EB9 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA8214A7D6F00DBA42A /* Edge.swift */; };
+		42E473CB2153697D00551EB9 /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */; };
+		42E473CC2153697D00551EB9 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAA214A7D6F00DBA42A /* Graph.swift */; };
+		42E473CD2153697D00551EB9 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
+		42E473D121536A6600551EB9 /* FSM.pos in Resources */ = {isa = PBXBuildFile; fileRef = 42E473D021536A6600551EB9 /* FSM.pos */; };
+		42E473D42153728500551EB9 /* POSTestStateMachineImpl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42E473D22153728500551EB9 /* POSTestStateMachineImpl.txt */; };
+		42E473D52153728500551EB9 /* POSTestStateMachineHeader.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42E473D32153728500551EB9 /* POSTestStateMachineHeader.txt */; };
+		42E473DC2153736700551EB9 /* MDTestStateMachineImpl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42E473D92153736700551EB9 /* MDTestStateMachineImpl.txt */; };
+		42E473DD2153736700551EB9 /* MDTestStateMachineHeader.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42E473DA2153736700551EB9 /* MDTestStateMachineHeader.txt */; };
+		42E473DE2153736700551EB9 /* LibTuringMDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E473DB2153736700551EB9 /* LibTuringMDTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42E473AD215368E300551EB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42CA6C8B214A7D3000DBA42A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42E473A2215368E300551EB9;
+			remoteInfo = LibTuring;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		42CA6C91214A7D3000DBA42A /* CopyFiles */ = {
@@ -80,6 +119,18 @@
 		42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDimensionGenSubroutine.swift; sourceTree = "<group>"; };
 		42CA6CD7214F87A500DBA42A /* NameFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameFormat.swift; sourceTree = "<group>"; };
 		42CA6CD9214F96E400DBA42A /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		42E473A3215368E300551EB9 /* LibTuring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibTuring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42E473A5215368E300551EB9 /* LibTuring.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibTuring.h; sourceTree = "<group>"; };
+		42E473A6215368E300551EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42E473AB215368E300551EB9 /* LibTuringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibTuringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42E473B0215368E300551EB9 /* LibTuringPosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibTuringPosTests.swift; sourceTree = "<group>"; };
+		42E473B2215368E300551EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42E473D021536A6600551EB9 /* FSM.pos */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FSM.pos; sourceTree = "<group>"; };
+		42E473D22153728500551EB9 /* POSTestStateMachineImpl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = POSTestStateMachineImpl.txt; sourceTree = "<group>"; };
+		42E473D32153728500551EB9 /* POSTestStateMachineHeader.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = POSTestStateMachineHeader.txt; sourceTree = "<group>"; };
+		42E473D92153736700551EB9 /* MDTestStateMachineImpl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MDTestStateMachineImpl.txt; sourceTree = "<group>"; };
+		42E473DA2153736700551EB9 /* MDTestStateMachineHeader.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MDTestStateMachineHeader.txt; sourceTree = "<group>"; };
+		42E473DB2153736700551EB9 /* LibTuringMDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibTuringMDTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,15 +148,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		42E473A0215368E300551EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42E473A8215368E300551EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42E473AC215368E300551EB9 /* LibTuring.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42AFAAA12152436B0071F57C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		42CA6C8A214A7D3000DBA42A = {
 			isa = PBXGroup;
 			children = (
 				42CA6C95214A7D3000DBA42A /* Turing */,
 				42CA6CBE214A805C00DBA42A /* GenCodeTests */,
+				42E473A4215368E300551EB9 /* LibTuring */,
+				42E473AF215368E300551EB9 /* LibTuringTests */,
 				42CA6C94214A7D3000DBA42A /* Products */,
+				42AFAAA12152436B0071F57C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +190,8 @@
 			children = (
 				42CA6C93214A7D3000DBA42A /* Turing */,
 				42CA6CBD214A805C00DBA42A /* GenCodeTests */,
+				42E473A3215368E300551EB9 /* LibTuring.framework */,
+				42E473AB215368E300551EB9 /* LibTuringTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,7 +274,58 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		42E473A4215368E300551EB9 /* LibTuring */ = {
+			isa = PBXGroup;
+			children = (
+				42E473A5215368E300551EB9 /* LibTuring.h */,
+				42E473A6215368E300551EB9 /* Info.plist */,
+			);
+			path = LibTuring;
+			sourceTree = "<group>";
+		};
+		42E473AF215368E300551EB9 /* LibTuringTests */ = {
+			isa = PBXGroup;
+			children = (
+				42E473D72153730E00551EB9 /* MD */,
+				42E473D62153730600551EB9 /* Pos */,
+				42E473B2215368E300551EB9 /* Info.plist */,
+			);
+			path = LibTuringTests;
+			sourceTree = "<group>";
+		};
+		42E473D62153730600551EB9 /* Pos */ = {
+			isa = PBXGroup;
+			children = (
+				42E473D021536A6600551EB9 /* FSM.pos */,
+				42E473D32153728500551EB9 /* POSTestStateMachineHeader.txt */,
+				42E473D22153728500551EB9 /* POSTestStateMachineImpl.txt */,
+				42E473B0215368E300551EB9 /* LibTuringPosTests.swift */,
+			);
+			path = Pos;
+			sourceTree = "<group>";
+		};
+		42E473D72153730E00551EB9 /* MD */ = {
+			isa = PBXGroup;
+			children = (
+				42E473DB2153736700551EB9 /* LibTuringMDTests.swift */,
+				42E473DA2153736700551EB9 /* MDTestStateMachineHeader.txt */,
+				42E473D92153736700551EB9 /* MDTestStateMachineImpl.txt */,
+			);
+			path = MD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		42E4739E215368E300551EB9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42E473B3215368E300551EB9 /* LibTuring.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		42CA6C92214A7D3000DBA42A /* Turing */ = {
@@ -233,6 +362,42 @@
 			productReference = 42CA6CBD214A805C00DBA42A /* GenCodeTests */;
 			productType = "com.apple.product-type.tool";
 		};
+		42E473A2215368E300551EB9 /* LibTuring */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42E473B4215368E300551EB9 /* Build configuration list for PBXNativeTarget "LibTuring" */;
+			buildPhases = (
+				42E4739E215368E300551EB9 /* Headers */,
+				42E4739F215368E300551EB9 /* Sources */,
+				42E473A0215368E300551EB9 /* Frameworks */,
+				42E473A1215368E300551EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LibTuring;
+			productName = LibTuring;
+			productReference = 42E473A3215368E300551EB9 /* LibTuring.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		42E473AA215368E300551EB9 /* LibTuringTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42E473B7215368E300551EB9 /* Build configuration list for PBXNativeTarget "LibTuringTests" */;
+			buildPhases = (
+				42E473A7215368E300551EB9 /* Sources */,
+				42E473A8215368E300551EB9 /* Frameworks */,
+				42E473A9215368E300551EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42E473AE215368E300551EB9 /* PBXTargetDependency */,
+			);
+			name = LibTuringTests;
+			productName = LibTuringTests;
+			productReference = 42E473AB215368E300551EB9 /* LibTuringTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,6 +413,12 @@
 						LastSwiftMigration = 1000;
 					};
 					42CA6CBC214A805C00DBA42A = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					42E473A2215368E300551EB9 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					42E473AA215368E300551EB9 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -266,9 +437,33 @@
 			targets = (
 				42CA6C92214A7D3000DBA42A /* Turing */,
 				42CA6CBC214A805C00DBA42A /* GenCodeTests */,
+				42E473A2215368E300551EB9 /* LibTuring */,
+				42E473AA215368E300551EB9 /* LibTuringTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42E473A1215368E300551EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42E473A9215368E300551EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42E473D42153728500551EB9 /* POSTestStateMachineImpl.txt in Resources */,
+				42E473D121536A6600551EB9 /* FSM.pos in Resources */,
+				42E473DD2153736700551EB9 /* MDTestStateMachineHeader.txt in Resources */,
+				42E473DC2153736700551EB9 /* MDTestStateMachineImpl.txt in Resources */,
+				42E473D52153728500551EB9 /* POSTestStateMachineHeader.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42CA6C8F214A7D3000DBA42A /* Sources */ = {
@@ -308,7 +503,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		42E4739F215368E300551EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42E473BB2153697D00551EB9 /* Sorting.swift in Sources */,
+				42E473BD2153697D00551EB9 /* ProcessonGenSubroutine.swift in Sources */,
+				42E473C12153697D00551EB9 /* GraphProtocol.swift in Sources */,
+				42E473C92153697D00551EB9 /* AdjacencyListGraph.swift in Sources */,
+				42E473C02153697D00551EB9 /* SubroutineManager.swift in Sources */,
+				42E473CA2153697D00551EB9 /* Edge.swift in Sources */,
+				42E473BA2153697D00551EB9 /* NameFormat.swift in Sources */,
+				42E473C72153697D00551EB9 /* CodeGen.swift in Sources */,
+				42E473C82153697D00551EB9 /* Parameter.swift in Sources */,
+				42E473C62153697D00551EB9 /* StateMachineSource.swift in Sources */,
+				42E473C42153697D00551EB9 /* ObjectiveCGen.swift in Sources */,
+				42E473BF2153697D00551EB9 /* Subroutine.swift in Sources */,
+				42E473C32153697D00551EB9 /* ObjectiveCWriter.swift in Sources */,
+				42E473CD2153697D00551EB9 /* Vertex.swift in Sources */,
+				42E473BE2153697D00551EB9 /* MultiDimensionGenSubroutine.swift in Sources */,
+				42E473CB2153697D00551EB9 /* AdjacencyMatrixGraph.swift in Sources */,
+				42E473C22153697D00551EB9 /* CodeWriter.swift in Sources */,
+				42E473BC2153697D00551EB9 /* ProcessonDiagram.swift in Sources */,
+				42E473CC2153697D00551EB9 /* Graph.swift in Sources */,
+				42E473C52153697D00551EB9 /* ProcessonFileReader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42E473A7215368E300551EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42E473B1215368E300551EB9 /* LibTuringPosTests.swift in Sources */,
+				42E473DE2153736700551EB9 /* LibTuringMDTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42E473AE215368E300551EB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42E473A2215368E300551EB9 /* LibTuring */;
+			targetProxy = 42E473AD215368E300551EB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		42CA6C98214A7D3000DBA42A /* Debug */ = {
@@ -462,6 +701,106 @@
 			};
 			name = Release;
 		};
+		42E473B5215368E300551EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = LibTuring/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuring;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		42E473B6215368E300551EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = LibTuring/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuring;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		42E473B8215368E300551EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				INFOPLIST_FILE = LibTuringTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuringTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		42E473B9215368E300551EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				INFOPLIST_FILE = LibTuringTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuringTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -488,6 +827,24 @@
 			buildConfigurations = (
 				42CA6CC2214A805C00DBA42A /* Debug */,
 				42CA6CC3214A805C00DBA42A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42E473B4215368E300551EB9 /* Build configuration list for PBXNativeTarget "LibTuring" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42E473B5215368E300551EB9 /* Debug */,
+				42E473B6215368E300551EB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42E473B7215368E300551EB9 /* Build configuration list for PBXNativeTarget "LibTuringTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42E473B8215368E300551EB9 /* Debug */,
+				42E473B9215368E300551EB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

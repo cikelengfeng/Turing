@@ -1,0 +1,83 @@
+//这是自动生成的文件，不要修改，否则你的修改将被覆盖
+#import <Foundation/Foundation.h>
+@class TestStateMachine;
+typedef NS_ENUM(NSUInteger, TestState) {
+    TestStateS0,
+    TestStateS1,
+    TestStateS2,
+    TestStateS3,
+    TestStateS4,
+    TestStateS5,
+    TestStateS6,
+    TestStateS7,
+    TestStateS8,
+    TestStateS9,
+    TestStateS10,
+    TestStateS11,
+    TestStateS12,
+    TestStateS13,
+    TestStateS14,
+    TestStateS15,
+};
+@protocol TestObserver <NSObject>
+@optional
+- (void)onEnterS0:(TestStateMachine *)stateMachine;
+- (void)onExitS0:(TestStateMachine *)stateMachine;
+- (void)onEnterS1:(TestStateMachine *)stateMachine;
+- (void)onExitS1:(TestStateMachine *)stateMachine;
+- (void)onEnterS2:(TestStateMachine *)stateMachine;
+- (void)onExitS2:(TestStateMachine *)stateMachine;
+- (void)onEnterS3:(TestStateMachine *)stateMachine;
+- (void)onExitS3:(TestStateMachine *)stateMachine;
+- (void)onEnterS4:(TestStateMachine *)stateMachine;
+- (void)onExitS4:(TestStateMachine *)stateMachine;
+- (void)onEnterS5:(TestStateMachine *)stateMachine;
+- (void)onExitS5:(TestStateMachine *)stateMachine;
+- (void)onEnterS6:(TestStateMachine *)stateMachine;
+- (void)onExitS6:(TestStateMachine *)stateMachine;
+- (void)onEnterS7:(TestStateMachine *)stateMachine;
+- (void)onExitS7:(TestStateMachine *)stateMachine;
+- (void)onEnterS8:(TestStateMachine *)stateMachine;
+- (void)onExitS8:(TestStateMachine *)stateMachine;
+- (void)onEnterS9:(TestStateMachine *)stateMachine;
+- (void)onExitS9:(TestStateMachine *)stateMachine;
+- (void)onEnterS10:(TestStateMachine *)stateMachine;
+- (void)onExitS10:(TestStateMachine *)stateMachine;
+- (void)onEnterS11:(TestStateMachine *)stateMachine;
+- (void)onExitS11:(TestStateMachine *)stateMachine;
+- (void)onEnterS12:(TestStateMachine *)stateMachine;
+- (void)onExitS12:(TestStateMachine *)stateMachine;
+- (void)onEnterS13:(TestStateMachine *)stateMachine;
+- (void)onExitS13:(TestStateMachine *)stateMachine;
+- (void)onEnterS14:(TestStateMachine *)stateMachine;
+- (void)onExitS14:(TestStateMachine *)stateMachine;
+- (void)onEnterS15:(TestStateMachine *)stateMachine;
+- (void)onExitS15:(TestStateMachine *)stateMachine;
+@end
+@protocol TestDelegate <NSObject>
+@optional
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doDismissAThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doDismissBThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doDismissCThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doDismissDThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doGetAThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doGetBThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doGetCThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doGetDThenTransiteFrom:(TestState)from to:(TestState)to;
+@end
+@interface TestStateMachine: NSObject 
+- (void)doDismissA;
+- (void)doDismissB;
+- (void)doDismissC;
+- (void)doDismissD;
+- (void)doGetA;
+- (void)doGetB;
+- (void)doGetC;
+- (void)doGetD;
+- (instancetype)initWithState:(TestState)state;
+@property (assign,nonatomic,readonly) TestState state;
+//default is YES
+@property (assign,nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;
+@property (weak,nonatomic) id<TestObserver> observer;
+@property (weak,nonatomic) id<TestDelegate> delegate;
+@end

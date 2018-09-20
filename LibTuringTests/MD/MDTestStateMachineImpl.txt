@@ -1,0 +1,1165 @@
+//这是自动生成的文件，不要修改，否则你的修改将被覆盖
+#import "TestStateMachine.h"
+@interface TestStateMachine () 
+@property (assign,nonatomic) TestState state;
+@end
+@implementation TestStateMachine
+- (instancetype)initWithState:(TestState)state {
+    self = [super init];
+    if (self) {
+        _state = state;
+        _shouldEnterCurrentStateWhenObserverChanged = YES;
+    }
+    return self;
+}
+- (instancetype)init {
+    return [self initWithState:TestStateS0];
+}
+- (void)setObserver:(id<TestObserver>)observer {
+    BOOL obChanged = _observer != observer;
+    _observer = observer;
+    if (!self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {
+        [self notifyObserverEnterCurrentState:_observer];
+    }
+}
+- (void)notifyObserverEnterCurrentState:(id<TestObserver>)obs {
+    switch (self.state) {
+        case TestStateS0: {
+            if ([obs respondsToSelector:@selector(onEnterS0:)]) {
+                [obs onEnterS0:self];
+            }
+            break;
+        }
+        case TestStateS1: {
+            if ([obs respondsToSelector:@selector(onEnterS1:)]) {
+                [obs onEnterS1:self];
+            }
+            break;
+        }
+        case TestStateS2: {
+            if ([obs respondsToSelector:@selector(onEnterS2:)]) {
+                [obs onEnterS2:self];
+            }
+            break;
+        }
+        case TestStateS3: {
+            if ([obs respondsToSelector:@selector(onEnterS3:)]) {
+                [obs onEnterS3:self];
+            }
+            break;
+        }
+        case TestStateS4: {
+            if ([obs respondsToSelector:@selector(onEnterS4:)]) {
+                [obs onEnterS4:self];
+            }
+            break;
+        }
+        case TestStateS5: {
+            if ([obs respondsToSelector:@selector(onEnterS5:)]) {
+                [obs onEnterS5:self];
+            }
+            break;
+        }
+        case TestStateS6: {
+            if ([obs respondsToSelector:@selector(onEnterS6:)]) {
+                [obs onEnterS6:self];
+            }
+            break;
+        }
+        case TestStateS7: {
+            if ([obs respondsToSelector:@selector(onEnterS7:)]) {
+                [obs onEnterS7:self];
+            }
+            break;
+        }
+        case TestStateS8: {
+            if ([obs respondsToSelector:@selector(onEnterS8:)]) {
+                [obs onEnterS8:self];
+            }
+            break;
+        }
+        case TestStateS9: {
+            if ([obs respondsToSelector:@selector(onEnterS9:)]) {
+                [obs onEnterS9:self];
+            }
+            break;
+        }
+        case TestStateS10: {
+            if ([obs respondsToSelector:@selector(onEnterS10:)]) {
+                [obs onEnterS10:self];
+            }
+            break;
+        }
+        case TestStateS11: {
+            if ([obs respondsToSelector:@selector(onEnterS11:)]) {
+                [obs onEnterS11:self];
+            }
+            break;
+        }
+        case TestStateS12: {
+            if ([obs respondsToSelector:@selector(onEnterS12:)]) {
+                [obs onEnterS12:self];
+            }
+            break;
+        }
+        case TestStateS13: {
+            if ([obs respondsToSelector:@selector(onEnterS13:)]) {
+                [obs onEnterS13:self];
+            }
+            break;
+        }
+        case TestStateS14: {
+            if ([obs respondsToSelector:@selector(onEnterS14:)]) {
+                [obs onEnterS14:self];
+            }
+            break;
+        }
+        case TestStateS15: {
+            if ([obs respondsToSelector:@selector(onEnterS15:)]) {
+                [obs onEnterS15:self];
+            }
+            break;
+        }
+    }
+}
+- (void)doDismissA {
+    if (TestStateS1 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS0];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS1:)]) {
+                [self.observer onExitS1:self];
+            }
+            self.state = TestStateS0;
+            if ([self.observer respondsToSelector:@selector(onEnterS0:)]) {
+                [self.observer onEnterS0:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS3 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS2];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS3:)]) {
+                [self.observer onExitS3:self];
+            }
+            self.state = TestStateS2;
+            if ([self.observer respondsToSelector:@selector(onEnterS2:)]) {
+                [self.observer onEnterS2:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS5 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS4];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS5:)]) {
+                [self.observer onExitS5:self];
+            }
+            self.state = TestStateS4;
+            if ([self.observer respondsToSelector:@selector(onEnterS4:)]) {
+                [self.observer onEnterS4:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS7 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS6];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS7:)]) {
+                [self.observer onExitS7:self];
+            }
+            self.state = TestStateS6;
+            if ([self.observer respondsToSelector:@selector(onEnterS6:)]) {
+                [self.observer onEnterS6:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS9 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS8];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS9:)]) {
+                [self.observer onExitS9:self];
+            }
+            self.state = TestStateS8;
+            if ([self.observer respondsToSelector:@selector(onEnterS8:)]) {
+                [self.observer onEnterS8:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS11 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS10];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS11:)]) {
+                [self.observer onExitS11:self];
+            }
+            self.state = TestStateS10;
+            if ([self.observer respondsToSelector:@selector(onEnterS10:)]) {
+                [self.observer onEnterS10:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS13 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS12];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS13:)]) {
+                [self.observer onExitS13:self];
+            }
+            self.state = TestStateS12;
+            if ([self.observer respondsToSelector:@selector(onEnterS12:)]) {
+                [self.observer onEnterS12:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS15 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissAThenTransiteFrom:self.state to:TestStateS14];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS15:)]) {
+                [self.observer onExitS15:self];
+            }
+            self.state = TestStateS14;
+            if ([self.observer respondsToSelector:@selector(onEnterS14:)]) {
+                [self.observer onEnterS14:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doDismissB {
+    if (TestStateS2 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS0];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS2:)]) {
+                [self.observer onExitS2:self];
+            }
+            self.state = TestStateS0;
+            if ([self.observer respondsToSelector:@selector(onEnterS0:)]) {
+                [self.observer onEnterS0:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS3 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS1];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS3:)]) {
+                [self.observer onExitS3:self];
+            }
+            self.state = TestStateS1;
+            if ([self.observer respondsToSelector:@selector(onEnterS1:)]) {
+                [self.observer onEnterS1:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS6 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS4];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS6:)]) {
+                [self.observer onExitS6:self];
+            }
+            self.state = TestStateS4;
+            if ([self.observer respondsToSelector:@selector(onEnterS4:)]) {
+                [self.observer onEnterS4:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS7 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS5];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS7:)]) {
+                [self.observer onExitS7:self];
+            }
+            self.state = TestStateS5;
+            if ([self.observer respondsToSelector:@selector(onEnterS5:)]) {
+                [self.observer onEnterS5:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS10 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS8];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS10:)]) {
+                [self.observer onExitS10:self];
+            }
+            self.state = TestStateS8;
+            if ([self.observer respondsToSelector:@selector(onEnterS8:)]) {
+                [self.observer onEnterS8:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS11 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS9];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS11:)]) {
+                [self.observer onExitS11:self];
+            }
+            self.state = TestStateS9;
+            if ([self.observer respondsToSelector:@selector(onEnterS9:)]) {
+                [self.observer onEnterS9:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS14 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS12];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS14:)]) {
+                [self.observer onExitS14:self];
+            }
+            self.state = TestStateS12;
+            if ([self.observer respondsToSelector:@selector(onEnterS12:)]) {
+                [self.observer onEnterS12:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS15 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissBThenTransiteFrom:self.state to:TestStateS13];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS15:)]) {
+                [self.observer onExitS15:self];
+            }
+            self.state = TestStateS13;
+            if ([self.observer respondsToSelector:@selector(onEnterS13:)]) {
+                [self.observer onEnterS13:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doDismissC {
+    if (TestStateS4 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS0];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS4:)]) {
+                [self.observer onExitS4:self];
+            }
+            self.state = TestStateS0;
+            if ([self.observer respondsToSelector:@selector(onEnterS0:)]) {
+                [self.observer onEnterS0:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS5 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS1];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS5:)]) {
+                [self.observer onExitS5:self];
+            }
+            self.state = TestStateS1;
+            if ([self.observer respondsToSelector:@selector(onEnterS1:)]) {
+                [self.observer onEnterS1:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS6 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS2];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS6:)]) {
+                [self.observer onExitS6:self];
+            }
+            self.state = TestStateS2;
+            if ([self.observer respondsToSelector:@selector(onEnterS2:)]) {
+                [self.observer onEnterS2:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS7 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS3];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS7:)]) {
+                [self.observer onExitS7:self];
+            }
+            self.state = TestStateS3;
+            if ([self.observer respondsToSelector:@selector(onEnterS3:)]) {
+                [self.observer onEnterS3:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS12 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS8];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS12:)]) {
+                [self.observer onExitS12:self];
+            }
+            self.state = TestStateS8;
+            if ([self.observer respondsToSelector:@selector(onEnterS8:)]) {
+                [self.observer onEnterS8:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS13 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS9];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS13:)]) {
+                [self.observer onExitS13:self];
+            }
+            self.state = TestStateS9;
+            if ([self.observer respondsToSelector:@selector(onEnterS9:)]) {
+                [self.observer onEnterS9:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS14 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS10];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS14:)]) {
+                [self.observer onExitS14:self];
+            }
+            self.state = TestStateS10;
+            if ([self.observer respondsToSelector:@selector(onEnterS10:)]) {
+                [self.observer onEnterS10:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS15 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissCThenTransiteFrom:self.state to:TestStateS11];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS15:)]) {
+                [self.observer onExitS15:self];
+            }
+            self.state = TestStateS11;
+            if ([self.observer respondsToSelector:@selector(onEnterS11:)]) {
+                [self.observer onEnterS11:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doDismissD {
+    if (TestStateS8 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS0];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS8:)]) {
+                [self.observer onExitS8:self];
+            }
+            self.state = TestStateS0;
+            if ([self.observer respondsToSelector:@selector(onEnterS0:)]) {
+                [self.observer onEnterS0:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS9 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS1];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS9:)]) {
+                [self.observer onExitS9:self];
+            }
+            self.state = TestStateS1;
+            if ([self.observer respondsToSelector:@selector(onEnterS1:)]) {
+                [self.observer onEnterS1:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS10 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS2];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS10:)]) {
+                [self.observer onExitS10:self];
+            }
+            self.state = TestStateS2;
+            if ([self.observer respondsToSelector:@selector(onEnterS2:)]) {
+                [self.observer onEnterS2:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS11 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS3];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS11:)]) {
+                [self.observer onExitS11:self];
+            }
+            self.state = TestStateS3;
+            if ([self.observer respondsToSelector:@selector(onEnterS3:)]) {
+                [self.observer onEnterS3:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS12 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS4];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS12:)]) {
+                [self.observer onExitS12:self];
+            }
+            self.state = TestStateS4;
+            if ([self.observer respondsToSelector:@selector(onEnterS4:)]) {
+                [self.observer onEnterS4:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS13 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS5];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS13:)]) {
+                [self.observer onExitS13:self];
+            }
+            self.state = TestStateS5;
+            if ([self.observer respondsToSelector:@selector(onEnterS5:)]) {
+                [self.observer onEnterS5:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS14 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS6];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS14:)]) {
+                [self.observer onExitS14:self];
+            }
+            self.state = TestStateS6;
+            if ([self.observer respondsToSelector:@selector(onEnterS6:)]) {
+                [self.observer onEnterS6:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS15 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doDismissDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doDismissDThenTransiteFrom:self.state to:TestStateS7];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS15:)]) {
+                [self.observer onExitS15:self];
+            }
+            self.state = TestStateS7;
+            if ([self.observer respondsToSelector:@selector(onEnterS7:)]) {
+                [self.observer onEnterS7:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doGetA {
+    if (TestStateS0 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS1];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS0:)]) {
+                [self.observer onExitS0:self];
+            }
+            self.state = TestStateS1;
+            if ([self.observer respondsToSelector:@selector(onEnterS1:)]) {
+                [self.observer onEnterS1:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS2 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS3];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS2:)]) {
+                [self.observer onExitS2:self];
+            }
+            self.state = TestStateS3;
+            if ([self.observer respondsToSelector:@selector(onEnterS3:)]) {
+                [self.observer onEnterS3:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS4 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS5];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS4:)]) {
+                [self.observer onExitS4:self];
+            }
+            self.state = TestStateS5;
+            if ([self.observer respondsToSelector:@selector(onEnterS5:)]) {
+                [self.observer onEnterS5:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS6 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS7];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS6:)]) {
+                [self.observer onExitS6:self];
+            }
+            self.state = TestStateS7;
+            if ([self.observer respondsToSelector:@selector(onEnterS7:)]) {
+                [self.observer onEnterS7:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS8 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS9];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS8:)]) {
+                [self.observer onExitS8:self];
+            }
+            self.state = TestStateS9;
+            if ([self.observer respondsToSelector:@selector(onEnterS9:)]) {
+                [self.observer onEnterS9:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS10 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS11];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS10:)]) {
+                [self.observer onExitS10:self];
+            }
+            self.state = TestStateS11;
+            if ([self.observer respondsToSelector:@selector(onEnterS11:)]) {
+                [self.observer onEnterS11:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS12 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS13];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS12:)]) {
+                [self.observer onExitS12:self];
+            }
+            self.state = TestStateS13;
+            if ([self.observer respondsToSelector:@selector(onEnterS13:)]) {
+                [self.observer onEnterS13:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS14 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetAThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetAThenTransiteFrom:self.state to:TestStateS15];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS14:)]) {
+                [self.observer onExitS14:self];
+            }
+            self.state = TestStateS15;
+            if ([self.observer respondsToSelector:@selector(onEnterS15:)]) {
+                [self.observer onEnterS15:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doGetB {
+    if (TestStateS0 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS2];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS0:)]) {
+                [self.observer onExitS0:self];
+            }
+            self.state = TestStateS2;
+            if ([self.observer respondsToSelector:@selector(onEnterS2:)]) {
+                [self.observer onEnterS2:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS1 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS3];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS1:)]) {
+                [self.observer onExitS1:self];
+            }
+            self.state = TestStateS3;
+            if ([self.observer respondsToSelector:@selector(onEnterS3:)]) {
+                [self.observer onEnterS3:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS4 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS6];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS4:)]) {
+                [self.observer onExitS4:self];
+            }
+            self.state = TestStateS6;
+            if ([self.observer respondsToSelector:@selector(onEnterS6:)]) {
+                [self.observer onEnterS6:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS5 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS7];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS5:)]) {
+                [self.observer onExitS5:self];
+            }
+            self.state = TestStateS7;
+            if ([self.observer respondsToSelector:@selector(onEnterS7:)]) {
+                [self.observer onEnterS7:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS8 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS10];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS8:)]) {
+                [self.observer onExitS8:self];
+            }
+            self.state = TestStateS10;
+            if ([self.observer respondsToSelector:@selector(onEnterS10:)]) {
+                [self.observer onEnterS10:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS9 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS11];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS9:)]) {
+                [self.observer onExitS9:self];
+            }
+            self.state = TestStateS11;
+            if ([self.observer respondsToSelector:@selector(onEnterS11:)]) {
+                [self.observer onEnterS11:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS12 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS14];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS12:)]) {
+                [self.observer onExitS12:self];
+            }
+            self.state = TestStateS14;
+            if ([self.observer respondsToSelector:@selector(onEnterS14:)]) {
+                [self.observer onEnterS14:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS13 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetBThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetBThenTransiteFrom:self.state to:TestStateS15];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS13:)]) {
+                [self.observer onExitS13:self];
+            }
+            self.state = TestStateS15;
+            if ([self.observer respondsToSelector:@selector(onEnterS15:)]) {
+                [self.observer onEnterS15:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doGetC {
+    if (TestStateS0 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS4];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS0:)]) {
+                [self.observer onExitS0:self];
+            }
+            self.state = TestStateS4;
+            if ([self.observer respondsToSelector:@selector(onEnterS4:)]) {
+                [self.observer onEnterS4:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS1 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS5];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS1:)]) {
+                [self.observer onExitS1:self];
+            }
+            self.state = TestStateS5;
+            if ([self.observer respondsToSelector:@selector(onEnterS5:)]) {
+                [self.observer onEnterS5:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS2 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS6];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS2:)]) {
+                [self.observer onExitS2:self];
+            }
+            self.state = TestStateS6;
+            if ([self.observer respondsToSelector:@selector(onEnterS6:)]) {
+                [self.observer onEnterS6:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS3 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS7];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS3:)]) {
+                [self.observer onExitS3:self];
+            }
+            self.state = TestStateS7;
+            if ([self.observer respondsToSelector:@selector(onEnterS7:)]) {
+                [self.observer onEnterS7:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS8 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS12];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS8:)]) {
+                [self.observer onExitS8:self];
+            }
+            self.state = TestStateS12;
+            if ([self.observer respondsToSelector:@selector(onEnterS12:)]) {
+                [self.observer onEnterS12:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS9 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS13];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS9:)]) {
+                [self.observer onExitS9:self];
+            }
+            self.state = TestStateS13;
+            if ([self.observer respondsToSelector:@selector(onEnterS13:)]) {
+                [self.observer onEnterS13:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS10 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS14];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS10:)]) {
+                [self.observer onExitS10:self];
+            }
+            self.state = TestStateS14;
+            if ([self.observer respondsToSelector:@selector(onEnterS14:)]) {
+                [self.observer onEnterS14:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS11 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetCThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetCThenTransiteFrom:self.state to:TestStateS15];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS11:)]) {
+                [self.observer onExitS11:self];
+            }
+            self.state = TestStateS15;
+            if ([self.observer respondsToSelector:@selector(onEnterS15:)]) {
+                [self.observer onEnterS15:self];
+            }
+            return;
+        }
+    }
+}
+- (void)doGetD {
+    if (TestStateS0 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS8];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS0:)]) {
+                [self.observer onExitS0:self];
+            }
+            self.state = TestStateS8;
+            if ([self.observer respondsToSelector:@selector(onEnterS8:)]) {
+                [self.observer onEnterS8:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS1 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS9];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS1:)]) {
+                [self.observer onExitS1:self];
+            }
+            self.state = TestStateS9;
+            if ([self.observer respondsToSelector:@selector(onEnterS9:)]) {
+                [self.observer onEnterS9:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS2 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS10];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS2:)]) {
+                [self.observer onExitS2:self];
+            }
+            self.state = TestStateS10;
+            if ([self.observer respondsToSelector:@selector(onEnterS10:)]) {
+                [self.observer onEnterS10:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS3 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS11];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS3:)]) {
+                [self.observer onExitS3:self];
+            }
+            self.state = TestStateS11;
+            if ([self.observer respondsToSelector:@selector(onEnterS11:)]) {
+                [self.observer onEnterS11:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS4 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS12];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS4:)]) {
+                [self.observer onExitS4:self];
+            }
+            self.state = TestStateS12;
+            if ([self.observer respondsToSelector:@selector(onEnterS12:)]) {
+                [self.observer onEnterS12:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS5 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS13];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS5:)]) {
+                [self.observer onExitS5:self];
+            }
+            self.state = TestStateS13;
+            if ([self.observer respondsToSelector:@selector(onEnterS13:)]) {
+                [self.observer onEnterS13:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS6 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS14];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS6:)]) {
+                [self.observer onExitS6:self];
+            }
+            self.state = TestStateS14;
+            if ([self.observer respondsToSelector:@selector(onEnterS14:)]) {
+                [self.observer onEnterS14:self];
+            }
+            return;
+        }
+    }
+    if (TestStateS7 == self.state) {
+        BOOL shouldTransition = YES;
+        if ([self.delegate respondsToSelector:@selector(shouldSM:doGetDThenTransiteFrom:to:)]) {
+            shouldTransition = [self.delegate shouldSM:self doGetDThenTransiteFrom:self.state to:TestStateS15];
+        }
+        if (shouldTransition) {
+            if ([self.observer respondsToSelector:@selector(onExitS7:)]) {
+                [self.observer onExitS7:self];
+            }
+            self.state = TestStateS15;
+            if ([self.observer respondsToSelector:@selector(onEnterS15:)]) {
+                [self.observer onEnterS15:self];
+            }
+            return;
+        }
+    }
+}
+@end
