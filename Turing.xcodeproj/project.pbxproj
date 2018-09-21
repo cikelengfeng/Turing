@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4251056E2153C9B30088CF36 /* TuringX.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 4251056D2153C9B30088CF36 /* TuringX.xcscheme */; };
+		425105702153C9B30088CF36 /* TuringX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251056F2153C9B30088CF36 /* TuringX.swift */; };
+		425105722153C9B30088CF36 /* NSObject_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425105712153C9B30088CF36 /* NSObject_Extension.swift */; };
+		428A6A902154A1ED008F7856 /* TuringGrammarGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */; };
+		428A6A932154BC1B008F7856 /* TuringGrammarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */; };
 		42CA6C97214A7D3000DBA42A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C96214A7D3000DBA42A /* main.swift */; };
 		42CA6CAC214A7D6F00DBA42A /* GraphProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */; };
 		42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */; };
@@ -93,6 +98,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4251056A2153C9B30088CF36 /* TuringX.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TuringX.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		4251056D2153C9B30088CF36 /* TuringX.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = TuringX.xcscheme; path = TuringX.xcodeproj/xcshareddata/xcschemes/TuringX.xcscheme; sourceTree = SOURCE_ROOT; };
+		4251056F2153C9B30088CF36 /* TuringX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringX.swift; sourceTree = "<group>"; };
+		425105712153C9B30088CF36 /* NSObject_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject_Extension.swift; sourceTree = "<group>"; };
+		425105732153C9B30088CF36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringGrammarGenSubroutine.swift; sourceTree = "<group>"; };
+		428A6A912154BBC5008F7856 /* Turing.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Turing.g4; sourceTree = "<group>"; };
+		428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringGrammarParser.swift; sourceTree = "<group>"; };
 		42CA6C93214A7D3000DBA42A /* Turing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Turing; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CA6C96214A7D3000DBA42A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphProtocol.swift; sourceTree = "<group>"; };
@@ -166,6 +179,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4251056B2153C9B30088CF36 /* TuringX */ = {
+			isa = PBXGroup;
+			children = (
+				4251056F2153C9B30088CF36 /* TuringX.swift */,
+				425105712153C9B30088CF36 /* NSObject_Extension.swift */,
+				425105732153C9B30088CF36 /* Info.plist */,
+				4251056C2153C9B30088CF36 /* Supporting Files */,
+			);
+			path = TuringX;
+			sourceTree = "<group>";
+		};
+		4251056C2153C9B30088CF36 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4251056D2153C9B30088CF36 /* TuringX.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		428A6A8B2154A10F008F7856 /* StateMachineSource */ = {
+			isa = PBXGroup;
+			children = (
+				428A6A8E2154A143008F7856 /* TuringGrammar */,
+				428A6A8D2154A138008F7856 /* MultiDimension */,
+				428A6A8C2154A12E008F7856 /* Processon */,
+			);
+			path = StateMachineSource;
+			sourceTree = "<group>";
+		};
+		428A6A8C2154A12E008F7856 /* Processon */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */,
+				42CA6CA4214A7D6E00DBA42A /* ProcessonDiagram.swift */,
+				42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */,
+			);
+			path = Processon;
+			sourceTree = "<group>";
+		};
+		428A6A8D2154A138008F7856 /* MultiDimension */ = {
+			isa = PBXGroup;
+			children = (
+				42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */,
+			);
+			path = MultiDimension;
+			sourceTree = "<group>";
+		};
+		428A6A8E2154A143008F7856 /* TuringGrammar */ = {
+			isa = PBXGroup;
+			children = (
+				428A6A912154BBC5008F7856 /* Turing.g4 */,
+				428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */,
+				428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */,
+			);
+			path = TuringGrammar;
+			sourceTree = "<group>";
+		};
 		42AFAAA12152436B0071F57C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +250,7 @@
 				42CA6CBE214A805C00DBA42A /* GenCodeTests */,
 				42E473A4215368E300551EB9 /* LibTuring */,
 				42E473AF215368E300551EB9 /* LibTuringTests */,
+				4251056B2153C9B30088CF36 /* TuringX */,
 				42CA6C94214A7D3000DBA42A /* Products */,
 				42AFAAA12152436B0071F57C /* Frameworks */,
 			);
@@ -192,6 +263,7 @@
 				42CA6CBD214A805C00DBA42A /* GenCodeTests */,
 				42E473A3215368E300551EB9 /* LibTuring.framework */,
 				42E473AB215368E300551EB9 /* LibTuringTests.xctest */,
+				4251056A2153C9B30088CF36 /* TuringX.xcplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,6 +271,7 @@
 		42CA6C95214A7D3000DBA42A /* Turing */ = {
 			isa = PBXGroup;
 			children = (
+				428A6A8B2154A10F008F7856 /* StateMachineSource */,
 				42CA6CD6214F878200DBA42A /* Utility */,
 				42CA6CC7214A872E00DBA42A /* Subroutine */,
 				42CA6C9D214A7D6E00DBA42A /* CodeGen */,
@@ -215,7 +288,6 @@
 				42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */,
 				42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */,
 				42CA6CA0214A7D6E00DBA42A /* ObjectiveCGen.swift */,
-				42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */,
 				42CA6CA2214A7D6E00DBA42A /* StateMachineSource.swift */,
 				42CA6CA3214A7D6E00DBA42A /* CodeGen.swift */,
 			);
@@ -248,21 +320,10 @@
 		42CA6CC7214A872E00DBA42A /* Subroutine */ = {
 			isa = PBXGroup;
 			children = (
-				42CA6CCC214A9BCC00DBA42A /* Impl */,
 				42CA6CC8214A875C00DBA42A /* Subroutine.swift */,
 				42CA6CCA214A881400DBA42A /* SubroutineManager.swift */,
 			);
 			path = Subroutine;
-			sourceTree = "<group>";
-		};
-		42CA6CCC214A9BCC00DBA42A /* Impl */ = {
-			isa = PBXGroup;
-			children = (
-				42CA6CA4214A7D6E00DBA42A /* ProcessonDiagram.swift */,
-				42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */,
-				42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */,
-			);
-			path = Impl;
 			sourceTree = "<group>";
 		};
 		42CA6CD6214F878200DBA42A /* Utility */ = {
@@ -328,6 +389,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		425105692153C9B30088CF36 /* TuringX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 425105762153C9B30088CF36 /* Build configuration list for PBXNativeTarget "TuringX" */;
+			buildPhases = (
+				425105672153C9B30088CF36 /* Sources */,
+				425105682153C9B30088CF36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TuringX;
+			productName = TuringX;
+			productReference = 4251056A2153C9B30088CF36 /* TuringX.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
 		42CA6C92214A7D3000DBA42A /* Turing */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42CA6C9A214A7D3000DBA42A /* Build configuration list for PBXNativeTarget "Turing" */;
@@ -408,6 +485,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "dx lab";
 				TargetAttributes = {
+					425105692153C9B30088CF36 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					42CA6C92214A7D3000DBA42A = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
@@ -439,11 +519,20 @@
 				42CA6CBC214A805C00DBA42A /* GenCodeTests */,
 				42E473A2215368E300551EB9 /* LibTuring */,
 				42E473AA215368E300551EB9 /* LibTuringTests */,
+				425105692153C9B30088CF36 /* TuringX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		425105682153C9B30088CF36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4251056E2153C9B30088CF36 /* TuringX.xcscheme in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42E473A1215368E300551EB9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +555,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		425105672153C9B30088CF36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				425105702153C9B30088CF36 /* TuringX.swift in Sources */,
+				425105722153C9B30088CF36 /* NSObject_Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42CA6C8F214A7D3000DBA42A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +580,7 @@
 				42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */,
 				42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */,
 				42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */,
+				428A6A902154A1ED008F7856 /* TuringGrammarGenSubroutine.swift in Sources */,
 				42CA6CB4214A7D6F00DBA42A /* AdjacencyListGraph.swift in Sources */,
 				42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */,
 				42CA6CAE214A7D6F00DBA42A /* ObjectiveCGen.swift in Sources */,
@@ -491,6 +590,7 @@
 				42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */,
 				42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */,
 				42CA6C97214A7D3000DBA42A /* main.swift in Sources */,
+				428A6A932154BC1B008F7856 /* TuringGrammarParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +650,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		425105742153C9B30088CF36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				DSTROOT = "$(HOME)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = TuringX/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LD_RUNPATH_SEARCH_PATHS = "$(DT_TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.TuringX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		425105752153C9B30088CF36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				DSTROOT = "$(HOME)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = TuringX/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LD_RUNPATH_SEARCH_PATHS = "$(DT_TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.TuringX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
 		42CA6C98214A7D3000DBA42A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -804,6 +946,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		425105762153C9B30088CF36 /* Build configuration list for PBXNativeTarget "TuringX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				425105742153C9B30088CF36 /* Debug */,
+				425105752153C9B30088CF36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		42CA6C8E214A7D3000DBA42A /* Build configuration list for PBXProject "Turing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
