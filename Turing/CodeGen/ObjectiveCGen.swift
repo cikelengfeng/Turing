@@ -327,17 +327,16 @@ class ObjectiveCGen: CodeGen {
     private enum MethodCodeType {
         case defination
         case selector
-        case call
+        case call(paramName: String)
     }
     
-    //如果类型是call，才需要paramNameForCall，其他情况传空字符串即可
-    private func delegateShouldTransiteStateMethodCode(transitionDesc desc: TransitionDescription, type: MethodCodeType, paramNameForCall: String) -> String {
+    private func delegateShouldTransiteStateMethodCode(transitionDesc desc: TransitionDescription, type: MethodCodeType) -> String {
         
         switch type {
         case .defination:
             return "-(BOOL)shouldSM:(\(stateMachineClassName()) *)stateMachine do\(desc.name)ThenTransiteFrom:(\(stateEnumName()))from to:(\(stateEnumName()))to"
-        case .call:
-            return "shouldSM:self do\(desc.name)ThenTransiteFrom:self.state to:\(paramNameForCall)"
+        case .call(let paramName):
+            return "shouldSM:self do\(desc.name)ThenTransiteFrom:self.state to:\(paramName)"
         case .selector:
             return "shouldSM:do\(desc.name)ThenTransiteFrom:to:"
         }
@@ -356,13 +355,13 @@ class ObjectiveCGen: CodeGen {
     }
     
     private func writeDelegateShouldTransiteStateMethodDefinationCode(transitionDesc desc: TransitionDescription, _ writer: ObjectiveCWriter) {
-        writer.writeLine(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .defination, paramNameForCall: "") + ";")
+        writer.writeLine(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .defination) + ";")
     }
     
     private func writeDelegateShouldTransiteStateMethodCallCode(transitionDesc desc: TransitionDescription, shouldTransiteVarName: String, paramName: String, _ writer: ObjectiveCWriter) {
-        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .selector, paramNameForCall: "")))]) {")
+        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .selector)))]) {")
         writer.pushIndent()
-        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .call, paramNameForCall: paramName))];")
+        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .call(paramName: paramName)))];")
         writer.popIndent()
         writer.writeLine("}")
     }
