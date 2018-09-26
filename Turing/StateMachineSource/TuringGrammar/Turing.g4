@@ -28,10 +28,10 @@ input
     :   IDENTIFIER
     ;
 stack_op
-    :   check_stack? (push_stack | pop_stack)?
+    :   LEFT_SQUARE_BRACKET check_stack? (push_stack | pop_stack)? RIGHT_SQUARE_BRACKET
     ;
 check_stack
-    :   LEFT_SQUARE_BRACKET IDENTIFIER RIGHT_SQUARE_BRACKET
+    :   CHECK IDENTIFIER
     ;
 push_stack
     :   PUSH IDENTIFIER
@@ -40,6 +40,10 @@ pop_stack
     :   POP
     ;
 
+
+CHECK
+    :   'check'
+    ;
 
 PUSH
     :   'push'

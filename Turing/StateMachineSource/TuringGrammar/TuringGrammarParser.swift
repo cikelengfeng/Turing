@@ -8,4 +8,11 @@
 
 import Foundation
 
-static private let 
+class TuringGrammarParser {
+    
+    
+    
+//    func comsume(char: Character) -> Bool {
+//        
+//    }
+}
