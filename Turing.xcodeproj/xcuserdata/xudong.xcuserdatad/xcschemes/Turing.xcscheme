@@ -83,7 +83,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/xudong/git/Turing/GenCodeTests/TuringGrammarTest.tg"
+            argument = "/Users/xudong/git/Turing/LibTuringTests/TuringGrammar/TuringGrammarTest.tg"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
