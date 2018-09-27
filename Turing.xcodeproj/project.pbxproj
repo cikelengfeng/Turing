@@ -45,6 +45,10 @@
 		427FBD38215CBD110015551C /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */; };
 		427FBD39215CBD110015551C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAA214A7D6F00DBA42A /* Graph.swift */; };
 		427FBD3A215CBD110015551C /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
+		427FBD3D215CBE700015551C /* LibTuringTGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD3C215CBE700015551C /* LibTuringTGTests.swift */; };
+		427FBD40215CBED40015551C /* TGTestStateMachine.h.txt in Resources */ = {isa = PBXBuildFile; fileRef = 427FBD3E215CBED40015551C /* TGTestStateMachine.h.txt */; };
+		427FBD41215CBED40015551C /* TGTestStateMachine.m.txt in Resources */ = {isa = PBXBuildFile; fileRef = 427FBD3F215CBED40015551C /* TGTestStateMachine.m.txt */; };
+		427FBD42215CBF380015551C /* TuringGrammarTest.tg in Resources */ = {isa = PBXBuildFile; fileRef = 427FBD12215CA7960015551C /* TuringGrammarTest.tg */; };
 		42CA6C97214A7D3000DBA42A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C96214A7D3000DBA42A /* main.swift */; };
 		42CA6CC0214A805C00DBA42A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CBF214A805C00DBA42A /* main.m */; };
 		42CA6CC6214A81AE00DBA42A /* TestStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */; };
@@ -147,6 +151,9 @@
 		427FBD0A215CA35C0015551C /* TuringParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringParserATN.swift; sourceTree = "<group>"; };
 		427FBD0B215CA35C0015551C /* TuringLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringLexer.swift; sourceTree = "<group>"; };
 		427FBD12215CA7960015551C /* TuringGrammarTest.tg */ = {isa = PBXFileReference; lastKnownFileType = text; path = TuringGrammarTest.tg; sourceTree = "<group>"; };
+		427FBD3C215CBE700015551C /* LibTuringTGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibTuringTGTests.swift; sourceTree = "<group>"; };
+		427FBD3E215CBED40015551C /* TGTestStateMachine.h.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TGTestStateMachine.h.txt; sourceTree = "<group>"; };
+		427FBD3F215CBED40015551C /* TGTestStateMachine.m.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TGTestStateMachine.m.txt; sourceTree = "<group>"; };
 		428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringGrammarGenSubroutine.swift; sourceTree = "<group>"; };
 		428A6A912154BBC5008F7856 /* Turing.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Turing.g4; sourceTree = "<group>"; };
 		42CA6C93214A7D3000DBA42A /* Turing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Turing; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +273,17 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
+		427FBD3B215CBDFD0015551C /* TuringGrammar */ = {
+			isa = PBXGroup;
+			children = (
+				427FBD3E215CBED40015551C /* TGTestStateMachine.h.txt */,
+				427FBD3F215CBED40015551C /* TGTestStateMachine.m.txt */,
+				427FBD12215CA7960015551C /* TuringGrammarTest.tg */,
+				427FBD3C215CBE700015551C /* LibTuringTGTests.swift */,
+			);
+			path = TuringGrammar;
+			sourceTree = "<group>";
+		};
 		428A6A8B2154A10F008F7856 /* StateMachineSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				42CA6CBF214A805C00DBA42A /* main.m */,
-				427FBD12215CA7960015551C /* TuringGrammarTest.tg */,
 				42CA6CC4214A81AE00DBA42A /* TestStateMachine.h */,
 				42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */,
 			);
@@ -417,6 +434,7 @@
 		42E473AF215368E300551EB9 /* LibTuringTests */ = {
 			isa = PBXGroup;
 			children = (
+				427FBD3B215CBDFD0015551C /* TuringGrammar */,
 				42E473D72153730E00551EB9 /* MD */,
 				42E473D62153730600551EB9 /* Pos */,
 				42E473B2215368E300551EB9 /* Info.plist */,
@@ -640,8 +658,11 @@
 			files = (
 				42E473D42153728500551EB9 /* POSTestStateMachineImpl.txt in Resources */,
 				42E473D121536A6600551EB9 /* FSM.pos in Resources */,
+				427FBD40215CBED40015551C /* TGTestStateMachine.h.txt in Resources */,
 				42E473DD2153736700551EB9 /* MDTestStateMachineHeader.txt in Resources */,
 				42E473DC2153736700551EB9 /* MDTestStateMachineImpl.txt in Resources */,
+				427FBD42215CBF380015551C /* TuringGrammarTest.tg in Resources */,
+				427FBD41215CBED40015551C /* TGTestStateMachine.m.txt in Resources */,
 				42E473D52153728500551EB9 /* POSTestStateMachineHeader.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +763,7 @@
 			files = (
 				42E473B1215368E300551EB9 /* LibTuringPosTests.swift in Sources */,
 				42E473DE2153736700551EB9 /* LibTuringMDTests.swift in Sources */,
+				427FBD3D215CBE700015551C /* LibTuringTGTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
