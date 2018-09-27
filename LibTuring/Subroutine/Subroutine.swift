@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Subroutine {
+public protocol Subroutine {
     var commandSequence: [String] {get}
     func run(arguments: [String])
 }

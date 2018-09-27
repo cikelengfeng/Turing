@@ -1,4 +1,3 @@
-//这是自动生成的文件，不要修改，否则你的修改将被覆盖
 #import "TestStateMachine.h"
 @interface TestStateMachine () 
 @property (assign,nonatomic) TestState state;
@@ -13,7 +12,7 @@
     return self;
 }
 - (instancetype)init {
-    return [self initWithState:TestStateAcceptA];
+    return [self initWithState:TestStateDark];
 }
 - (void)setObserver:(id<TestObserver>)observer {
     BOOL obChanged = _observer != observer;
@@ -24,186 +23,56 @@
 }
 - (void)notifyObserverEnterCurrentState:(id<TestObserver>)obs {
     switch (self.state) {
-        case TestStateAcceptA: {
-            if ([obs respondsToSelector:@selector(onEnterAcceptA:)]) {
-                [obs onEnterAcceptA:self];
+        case TestStateDark: {
+            if ([obs respondsToSelector:@selector(onEnterDark:)]) {
+                [obs onEnterDark:self];
             }
             break;
         }
-        case TestStateAcceptAB: {
-            if ([obs respondsToSelector:@selector(onEnterAcceptAB:)]) {
-                [obs onEnterAcceptAB:self];
-            }
-            break;
-        }
-        case TestStateAcceptBEOF: {
-            if ([obs respondsToSelector:@selector(onEnterAcceptBEOF:)]) {
-                [obs onEnterAcceptBEOF:self];
-            }
-            break;
-        }
-        case TestStateFault: {
-            if ([obs respondsToSelector:@selector(onEnterFault:)]) {
-                [obs onEnterFault:self];
-            }
-            break;
-        }
-        case TestStateFinish: {
-            if ([obs respondsToSelector:@selector(onEnterFinish:)]) {
-                [obs onEnterFinish:self];
+        case TestStateLight: {
+            if ([obs respondsToSelector:@selector(onEnterLight:)]) {
+                [obs onEnterLight:self];
             }
             break;
         }
     }
 }
-- (void)doEOF {
-    if (TestStateAcceptAB == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doEOFThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doEOFThenTransiteFrom:self.state to:TestStateFault];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
-                [self.observer onExitAcceptAB:self];
-            }
-            self.state = TestStateFault;
-            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
-                [self.observer onEnterFault:self];
-            }
-            return;
-        }
+- (void)doTurnOff {
+    if (TestStateLight != self.state) {
+        return;
     }
-    if (TestStateAcceptA == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doEOFThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doEOFThenTransiteFrom:self.state to:TestStateFault];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
-                [self.observer onExitAcceptA:self];
-            }
-            self.state = TestStateFault;
-            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
-                [self.observer onEnterFault:self];
-            }
-            return;
-        }
+    BOOL shouldTransition = YES;
+    if ([self.delegate respondsToSelector:@selector(shouldSM:doTurnOffThenTransiteFrom:to:)]) {
+        shouldTransition = [self.delegate shouldSM:self doTurnOffThenTransiteFrom:self.state to:TestStateDark];
     }
-    if (TestStateAcceptBEOF == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doEOFThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doEOFThenTransiteFrom:self.state to:TestStateFinish];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
-                [self.observer onExitAcceptBEOF:self];
-            }
-            self.state = TestStateFinish;
-            if ([self.observer respondsToSelector:@selector(onEnterFinish:)]) {
-                [self.observer onEnterFinish:self];
-            }
-            return;
-        }
+    if (!shouldTransition) {
+        return;
+    }
+    if ([self.observer respondsToSelector:@selector(onExitLight:)]) {
+        [self.observer onExitLight:self];
+    }
+    self.state = TestStateDark;
+    if ([self.observer respondsToSelector:@selector(onEnterDark:)]) {
+        [self.observer onEnterDark:self];
     }
 }
-- (void)doInputA {
-    if (TestStateAcceptA == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputAThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputAThenTransiteFrom:self.state to:TestStateAcceptAB];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
-                [self.observer onExitAcceptA:self];
-            }
-            self.state = TestStateAcceptAB;
-            if ([self.observer respondsToSelector:@selector(onEnterAcceptAB:)]) {
-                [self.observer onEnterAcceptAB:self];
-            }
-            return;
-        }
+- (void)doTurnOn {
+    if (TestStateDark != self.state) {
+        return;
     }
-    if (TestStateAcceptAB == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputAThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputAThenTransiteFrom:self.state to:TestStateAcceptAB];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
-                [self.observer onExitAcceptAB:self];
-            }
-            self.state = TestStateAcceptAB;
-            if ([self.observer respondsToSelector:@selector(onEnterAcceptAB:)]) {
-                [self.observer onEnterAcceptAB:self];
-            }
-            return;
-        }
+    BOOL shouldTransition = YES;
+    if ([self.delegate respondsToSelector:@selector(shouldSM:doTurnOnThenTransiteFrom:to:)]) {
+        shouldTransition = [self.delegate shouldSM:self doTurnOnThenTransiteFrom:self.state to:TestStateLight];
     }
-    if (TestStateAcceptBEOF == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputAThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputAThenTransiteFrom:self.state to:TestStateFault];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
-                [self.observer onExitAcceptBEOF:self];
-            }
-            self.state = TestStateFault;
-            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
-                [self.observer onEnterFault:self];
-            }
-            return;
-        }
+    if (!shouldTransition) {
+        return;
     }
-}
-- (void)doInputB {
-    if (TestStateAcceptAB == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputBThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputBThenTransiteFrom:self.state to:TestStateAcceptBEOF];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptAB:)]) {
-                [self.observer onExitAcceptAB:self];
-            }
-            self.state = TestStateAcceptBEOF;
-            if ([self.observer respondsToSelector:@selector(onEnterAcceptBEOF:)]) {
-                [self.observer onEnterAcceptBEOF:self];
-            }
-            return;
-        }
+    if ([self.observer respondsToSelector:@selector(onExitDark:)]) {
+        [self.observer onExitDark:self];
     }
-    if (TestStateAcceptA == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputBThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputBThenTransiteFrom:self.state to:TestStateFault];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptA:)]) {
-                [self.observer onExitAcceptA:self];
-            }
-            self.state = TestStateFault;
-            if ([self.observer respondsToSelector:@selector(onEnterFault:)]) {
-                [self.observer onEnterFault:self];
-            }
-            return;
-        }
-    }
-    if (TestStateAcceptBEOF == self.state) {
-        BOOL shouldTransition = YES;
-        if ([self.delegate respondsToSelector:@selector(shouldSM:doInputBThenTransiteFrom:to:)]) {
-            shouldTransition = [self.delegate shouldSM:self doInputBThenTransiteFrom:self.state to:TestStateAcceptBEOF];
-        }
-        if (shouldTransition) {
-            if ([self.observer respondsToSelector:@selector(onExitAcceptBEOF:)]) {
-                [self.observer onExitAcceptBEOF:self];
-            }
-            self.state = TestStateAcceptBEOF;
-            if ([self.observer respondsToSelector:@selector(onEnterAcceptBEOF:)]) {
-                [self.observer onEnterAcceptBEOF:self];
-            }
-            return;
-        }
+    self.state = TestStateLight;
+    if ([self.observer respondsToSelector:@selector(onEnterLight:)]) {
+        [self.observer onEnterLight:self];
     }
 }
 @end

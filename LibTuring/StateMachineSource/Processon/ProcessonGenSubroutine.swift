@@ -8,14 +8,19 @@
 
 import Foundation
 
-class ProcessonGenSubroutine: Subroutine {
-    var commandSequence: [String] {
+public class ProcessonGenSubroutine: Subroutine {
+    
+    public init() {
+        
+    }
+    
+    public var commandSequence: [String] {
         get {
             return ["pos"]
         }
     }
     
-    func run(arguments: [String]) {
+    public func run(arguments: [String]) {
         guard arguments.count >= 3 else {
             fatalError("缺少参数 processonFilePath, outputPath, classPrefix")
         }

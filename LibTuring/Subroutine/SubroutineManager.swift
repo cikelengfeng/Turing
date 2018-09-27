@@ -18,16 +18,16 @@ private class CommandNode {
     }
 }
 
-class SubroutineManager {
+public class SubroutineManager {
     var subroutines: [Subroutine]
     private var commandTrie: CommandNode
     
-    init() {
+    public init() {
         subroutines = []
         commandTrie = CommandNode()
     }
     
-    func register(_ subroutine: Subroutine) {
+    public func register(_ subroutine: Subroutine) {
         
         var anchorPoint = commandTrie
         subroutine.commandSequence.forEach { (command) in
@@ -46,7 +46,7 @@ class SubroutineManager {
         return "no subroutine can handle such input"
     }
     
-    func run() {
+    public func run() {
         var arguments = CommandLine.arguments
         arguments.removeFirst()
         var commandNode = commandTrie

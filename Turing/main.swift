@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LibTuring
 
 
 let manager = SubroutineManager()
@@ -14,5 +15,7 @@ let processGen = ProcessonGenSubroutine()
 manager.register(processGen)
 let multidimensionGen = MultiDimensionGenSubroutine()
 manager.register(multidimensionGen)
+let turingGrammarGen = TuringGrammarGenSubroutine()
+manager.register(turingGrammarGen)
 
 manager.run()

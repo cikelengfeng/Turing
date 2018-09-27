@@ -68,6 +68,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "pos"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "tg"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -76,6 +80,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/xudong/Downloads/PDA.pos"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/xudong/git/Turing/GenCodeTests/TuringGrammarTest.tg"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

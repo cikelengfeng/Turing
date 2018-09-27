@@ -1,36 +1,24 @@
-//这是自动生成的文件，不要修改，否则你的修改将被覆盖
 #import <Foundation/Foundation.h>
 @class TestStateMachine;
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateAcceptA,
-    TestStateAcceptAB,
-    TestStateAcceptBEOF,
-    TestStateFault,
-    TestStateFinish,
+    TestStateDark,
+    TestStateLight,
 };
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterAcceptA:(TestStateMachine *)stateMachine;
-- (void)onExitAcceptA:(TestStateMachine *)stateMachine;
-- (void)onEnterAcceptAB:(TestStateMachine *)stateMachine;
-- (void)onExitAcceptAB:(TestStateMachine *)stateMachine;
-- (void)onEnterAcceptBEOF:(TestStateMachine *)stateMachine;
-- (void)onExitAcceptBEOF:(TestStateMachine *)stateMachine;
-- (void)onEnterFault:(TestStateMachine *)stateMachine;
-- (void)onExitFault:(TestStateMachine *)stateMachine;
-- (void)onEnterFinish:(TestStateMachine *)stateMachine;
-- (void)onExitFinish:(TestStateMachine *)stateMachine;
+- (void)onEnterDark:(TestStateMachine *)stateMachine;
+- (void)onExitDark:(TestStateMachine *)stateMachine;
+- (void)onEnterLight:(TestStateMachine *)stateMachine;
+- (void)onExitLight:(TestStateMachine *)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldSM:(TestStateMachine *)stateMachine doEOFThenTransiteFrom:(TestState)from to:(TestState)to;
--(BOOL)shouldSM:(TestStateMachine *)stateMachine doInputAThenTransiteFrom:(TestState)from to:(TestState)to;
--(BOOL)shouldSM:(TestStateMachine *)stateMachine doInputBThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doTurnOffThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doTurnOnThenTransiteFrom:(TestState)from to:(TestState)to;
 @end
 @interface TestStateMachine: NSObject 
-- (void)doEOF;
-- (void)doInputA;
-- (void)doInputB;
+- (void)doTurnOff;
+- (void)doTurnOn;
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES

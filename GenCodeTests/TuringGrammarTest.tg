@@ -1,0 +1,4 @@
+stack p1 p2 p3
+initial dark
+dark > turnOn > light
+light > turnOff > dark 

@@ -10,31 +10,44 @@
 		4251056E2153C9B30088CF36 /* TuringX.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 4251056D2153C9B30088CF36 /* TuringX.xcscheme */; };
 		425105702153C9B30088CF36 /* TuringX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251056F2153C9B30088CF36 /* TuringX.swift */; };
 		425105722153C9B30088CF36 /* NSObject_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425105712153C9B30088CF36 /* NSObject_Extension.swift */; };
-		428A6A902154A1ED008F7856 /* TuringGrammarGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */; };
-		428A6A932154BC1B008F7856 /* TuringGrammarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */; };
+		427FBD13215CB5C60015551C /* TuringBaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD04215CA35C0015551C /* TuringBaseListener.swift */; };
+		427FBD14215CB5DB0015551C /* TuringGrammarGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */; };
+		427FBD17215CB5F80015551C /* Antlr4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427FBCFB215CA1F50015551C /* Antlr4.framework */; };
+		427FBD1B215CB6820015551C /* TuringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD05215CA35C0015551C /* TuringParser.swift */; };
+		427FBD1C215CB6860015551C /* TuringLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD06215CA35C0015551C /* TuringLexerATN.swift */; };
+		427FBD1D215CB68A0015551C /* TuringListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD07215CA35C0015551C /* TuringListener.swift */; };
+		427FBD1E215CB6930015551C /* TuringParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD0A215CA35C0015551C /* TuringParserATN.swift */; };
+		427FBD1F215CB6970015551C /* TuringLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD0B215CA35C0015551C /* TuringLexer.swift */; };
+		427FBD20215CBCF10015551C /* TuringBaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD04215CA35C0015551C /* TuringBaseListener.swift */; };
+		427FBD21215CBCF10015551C /* TuringParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD05215CA35C0015551C /* TuringParser.swift */; };
+		427FBD22215CBCF10015551C /* TuringLexerATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD06215CA35C0015551C /* TuringLexerATN.swift */; };
+		427FBD23215CBCF10015551C /* TuringListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD07215CA35C0015551C /* TuringListener.swift */; };
+		427FBD24215CBCF10015551C /* TuringParserATN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD0A215CA35C0015551C /* TuringParserATN.swift */; };
+		427FBD25215CBCF10015551C /* TuringLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427FBD0B215CA35C0015551C /* TuringLexer.swift */; };
+		427FBD26215CBCF70015551C /* TuringGrammarGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */; };
+		427FBD27215CBCFD0015551C /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
+		427FBD28215CBCFD0015551C /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
+		427FBD29215CBCFD0015551C /* ProcessonDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA4214A7D6E00DBA42A /* ProcessonDiagram.swift */; };
+		427FBD2A215CBCFD0015551C /* ProcessonFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */; };
+		427FBD2B215CBD110015551C /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
+		427FBD2C215CBD110015551C /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD9214F96E400DBA42A /* Sorting.swift */; };
+		427FBD2D215CBD110015551C /* Subroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC8214A875C00DBA42A /* Subroutine.swift */; };
+		427FBD2E215CBD110015551C /* SubroutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCA214A881400DBA42A /* SubroutineManager.swift */; };
+		427FBD2F215CBD110015551C /* GraphProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */; };
+		427FBD30215CBD110015551C /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */; };
+		427FBD31215CBD110015551C /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
+		427FBD32215CBD110015551C /* ObjectiveCGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA0214A7D6E00DBA42A /* ObjectiveCGen.swift */; };
+		427FBD33215CBD110015551C /* StateMachineSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA2214A7D6E00DBA42A /* StateMachineSource.swift */; };
+		427FBD34215CBD110015551C /* CodeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA3214A7D6E00DBA42A /* CodeGen.swift */; };
+		427FBD35215CBD110015551C /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA6214A7D6F00DBA42A /* Parameter.swift */; };
+		427FBD36215CBD110015551C /* AdjacencyListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA7214A7D6F00DBA42A /* AdjacencyListGraph.swift */; };
+		427FBD37215CBD110015551C /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA8214A7D6F00DBA42A /* Edge.swift */; };
+		427FBD38215CBD110015551C /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */; };
+		427FBD39215CBD110015551C /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAA214A7D6F00DBA42A /* Graph.swift */; };
+		427FBD3A215CBD110015551C /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
 		42CA6C97214A7D3000DBA42A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C96214A7D3000DBA42A /* main.swift */; };
-		42CA6CAC214A7D6F00DBA42A /* GraphProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */; };
-		42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6C9F214A7D6E00DBA42A /* CodeWriter.swift */; };
-		42CA6CAE214A7D6F00DBA42A /* ObjectiveCGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA0214A7D6E00DBA42A /* ObjectiveCGen.swift */; };
-		42CA6CAF214A7D6F00DBA42A /* ProcessonFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA1214A7D6E00DBA42A /* ProcessonFileReader.swift */; };
-		42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA2214A7D6E00DBA42A /* StateMachineSource.swift */; };
-		42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA3214A7D6E00DBA42A /* CodeGen.swift */; };
-		42CA6CB2214A7D6F00DBA42A /* ProcessonDiagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA4214A7D6E00DBA42A /* ProcessonDiagram.swift */; };
-		42CA6CB3214A7D6F00DBA42A /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA6214A7D6F00DBA42A /* Parameter.swift */; };
-		42CA6CB4214A7D6F00DBA42A /* AdjacencyListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA7214A7D6F00DBA42A /* AdjacencyListGraph.swift */; };
-		42CA6CB5214A7D6F00DBA42A /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA8214A7D6F00DBA42A /* Edge.swift */; };
-		42CA6CB6214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CA9214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift */; };
-		42CA6CB7214A7D6F00DBA42A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAA214A7D6F00DBA42A /* Graph.swift */; };
-		42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CAB214A7D6F00DBA42A /* Vertex.swift */; };
 		42CA6CC0214A805C00DBA42A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CBF214A805C00DBA42A /* main.m */; };
 		42CA6CC6214A81AE00DBA42A /* TestStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */; };
-		42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CC8214A875C00DBA42A /* Subroutine.swift */; };
-		42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCA214A881400DBA42A /* SubroutineManager.swift */; };
-		42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCD214A9C0400DBA42A /* ProcessonGenSubroutine.swift */; };
-		42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CCF214B763600DBA42A /* ObjectiveCWriter.swift */; };
-		42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD1214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift */; };
-		42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD7214F87A500DBA42A /* NameFormat.swift */; };
-		42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CA6CD9214F96E400DBA42A /* Sorting.swift */; };
 		42E473AC215368E300551EB9 /* LibTuring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E473A3215368E300551EB9 /* LibTuring.framework */; };
 		42E473B1215368E300551EB9 /* LibTuringPosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E473B0215368E300551EB9 /* LibTuringPosTests.swift */; };
 		42E473B3215368E300551EB9 /* LibTuring.h in Headers */ = {isa = PBXBuildFile; fileRef = 42E473A5215368E300551EB9 /* LibTuring.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,6 +80,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		427FBCFA215CA1F50015551C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Antlr4::Antlr4::Product";
+			remoteInfo = Antlr4;
+		};
+		427FBCFC215CA1F50015551C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Antlr4::Antlr4Tests::Product";
+			remoteInfo = Antlr4Tests;
+		};
+		427FBD15215CB5F30015551C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "Antlr4::Antlr4";
+			remoteInfo = Antlr4;
+		};
 		42E473AD215368E300551EB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 42CA6C8B214A7D3000DBA42A /* Project object */;
@@ -103,9 +137,18 @@
 		4251056F2153C9B30088CF36 /* TuringX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringX.swift; sourceTree = "<group>"; };
 		425105712153C9B30088CF36 /* NSObject_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject_Extension.swift; sourceTree = "<group>"; };
 		425105732153C9B30088CF36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Antlr4.xcodeproj; path = ../../../../antlr4/runtime/Swift/Antlr4.xcodeproj; sourceTree = "<group>"; };
+		427FBD04215CA35C0015551C /* TuringBaseListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringBaseListener.swift; sourceTree = "<group>"; };
+		427FBD05215CA35C0015551C /* TuringParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringParser.swift; sourceTree = "<group>"; };
+		427FBD06215CA35C0015551C /* TuringLexerATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringLexerATN.swift; sourceTree = "<group>"; };
+		427FBD07215CA35C0015551C /* TuringListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringListener.swift; sourceTree = "<group>"; };
+		427FBD08215CA35C0015551C /* TuringLexer.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TuringLexer.tokens; sourceTree = "<group>"; };
+		427FBD09215CA35C0015551C /* Turing.tokens */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Turing.tokens; sourceTree = "<group>"; };
+		427FBD0A215CA35C0015551C /* TuringParserATN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringParserATN.swift; sourceTree = "<group>"; };
+		427FBD0B215CA35C0015551C /* TuringLexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuringLexer.swift; sourceTree = "<group>"; };
+		427FBD12215CA7960015551C /* TuringGrammarTest.tg */ = {isa = PBXFileReference; lastKnownFileType = text; path = TuringGrammarTest.tg; sourceTree = "<group>"; };
 		428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringGrammarGenSubroutine.swift; sourceTree = "<group>"; };
 		428A6A912154BBC5008F7856 /* Turing.g4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Turing.g4; sourceTree = "<group>"; };
-		428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuringGrammarParser.swift; sourceTree = "<group>"; };
 		42CA6C93214A7D3000DBA42A /* Turing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Turing; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CA6C96214A7D3000DBA42A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		42CA6C9E214A7D6E00DBA42A /* GraphProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphProtocol.swift; sourceTree = "<group>"; };
@@ -165,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427FBD17215CB5F80015551C /* Antlr4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +242,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		427FBCF4215CA1F40015551C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				427FBCFB215CA1F50015551C /* Antlr4.framework */,
+				427FBCFD215CA1F50015551C /* Antlr4Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		427FBD03215CA35C0015551C /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				427FBD04215CA35C0015551C /* TuringBaseListener.swift */,
+				427FBD05215CA35C0015551C /* TuringParser.swift */,
+				427FBD06215CA35C0015551C /* TuringLexerATN.swift */,
+				427FBD07215CA35C0015551C /* TuringListener.swift */,
+				427FBD08215CA35C0015551C /* TuringLexer.tokens */,
+				427FBD09215CA35C0015551C /* Turing.tokens */,
+				427FBD0A215CA35C0015551C /* TuringParserATN.swift */,
+				427FBD0B215CA35C0015551C /* TuringLexer.swift */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
 		428A6A8B2154A10F008F7856 /* StateMachineSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,8 +297,9 @@
 		428A6A8E2154A143008F7856 /* TuringGrammar */ = {
 			isa = PBXGroup;
 			children = (
+				427FBD03215CA35C0015551C /* parser */,
+				427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */,
 				428A6A912154BBC5008F7856 /* Turing.g4 */,
-				428A6A922154BC1B008F7856 /* TuringGrammarParser.swift */,
 				428A6A8F2154A1ED008F7856 /* TuringGrammarGenSubroutine.swift */,
 			);
 			path = TuringGrammar;
@@ -271,11 +340,6 @@
 		42CA6C95214A7D3000DBA42A /* Turing */ = {
 			isa = PBXGroup;
 			children = (
-				428A6A8B2154A10F008F7856 /* StateMachineSource */,
-				42CA6CD6214F878200DBA42A /* Utility */,
-				42CA6CC7214A872E00DBA42A /* Subroutine */,
-				42CA6C9D214A7D6E00DBA42A /* CodeGen */,
-				42CA6CA5214A7D6F00DBA42A /* Graph */,
 				42CA6C96214A7D3000DBA42A /* main.swift */,
 			);
 			path = Turing;
@@ -311,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				42CA6CBF214A805C00DBA42A /* main.m */,
+				427FBD12215CA7960015551C /* TuringGrammarTest.tg */,
 				42CA6CC4214A81AE00DBA42A /* TestStateMachine.h */,
 				42CA6CC5214A81AE00DBA42A /* TestStateMachine.m */,
 			);
@@ -338,6 +403,11 @@
 		42E473A4215368E300551EB9 /* LibTuring */ = {
 			isa = PBXGroup;
 			children = (
+				428A6A8B2154A10F008F7856 /* StateMachineSource */,
+				42CA6CD6214F878200DBA42A /* Utility */,
+				42CA6CC7214A872E00DBA42A /* Subroutine */,
+				42CA6C9D214A7D6E00DBA42A /* CodeGen */,
+				42CA6CA5214A7D6F00DBA42A /* Graph */,
 				42E473A5215368E300551EB9 /* LibTuring.h */,
 				42E473A6215368E300551EB9 /* Info.plist */,
 			);
@@ -451,6 +521,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				427FBD16215CB5F30015551C /* PBXTargetDependency */,
 			);
 			name = LibTuring;
 			productName = LibTuring;
@@ -513,6 +584,12 @@
 			mainGroup = 42CA6C8A214A7D3000DBA42A;
 			productRefGroup = 42CA6C94214A7D3000DBA42A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 427FBCF4215CA1F40015551C /* Products */;
+					ProjectRef = 427FBCF3215CA1F40015551C /* Antlr4.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				42CA6C92214A7D3000DBA42A /* Turing */,
@@ -523,6 +600,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		427FBCFB215CA1F50015551C /* Antlr4.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Antlr4.framework;
+			remoteRef = 427FBCFA215CA1F50015551C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		427FBCFD215CA1F50015551C /* Antlr4Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = Antlr4Tests.xctest;
+			remoteRef = 427FBCFC215CA1F50015551C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		425105682153C9B30088CF36 /* Resources */ = {
@@ -568,29 +662,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42CA6CB5214A7D6F00DBA42A /* Edge.swift in Sources */,
-				42CA6CB7214A7D6F00DBA42A /* Graph.swift in Sources */,
-				42CA6CAC214A7D6F00DBA42A /* GraphProtocol.swift in Sources */,
-				42CA6CB6214A7D6F00DBA42A /* AdjacencyMatrixGraph.swift in Sources */,
-				42CA6CAF214A7D6F00DBA42A /* ProcessonFileReader.swift in Sources */,
-				42CA6CD8214F87A500DBA42A /* NameFormat.swift in Sources */,
-				42CA6CB8214A7D6F00DBA42A /* Vertex.swift in Sources */,
-				42CA6CB2214A7D6F00DBA42A /* ProcessonDiagram.swift in Sources */,
-				42CA6CB3214A7D6F00DBA42A /* Parameter.swift in Sources */,
-				42CA6CCE214A9C0400DBA42A /* ProcessonGenSubroutine.swift in Sources */,
-				42CA6CAD214A7D6F00DBA42A /* CodeWriter.swift in Sources */,
-				42CA6CC9214A875C00DBA42A /* Subroutine.swift in Sources */,
-				428A6A902154A1ED008F7856 /* TuringGrammarGenSubroutine.swift in Sources */,
-				42CA6CB4214A7D6F00DBA42A /* AdjacencyListGraph.swift in Sources */,
-				42CA6CD0214B763600DBA42A /* ObjectiveCWriter.swift in Sources */,
-				42CA6CAE214A7D6F00DBA42A /* ObjectiveCGen.swift in Sources */,
-				42CA6CD2214E2D2E00DBA42A /* MultiDimensionGenSubroutine.swift in Sources */,
-				42CA6CB0214A7D6F00DBA42A /* StateMachineSource.swift in Sources */,
-				42CA6CCB214A881400DBA42A /* SubroutineManager.swift in Sources */,
-				42CA6CDA214F96E400DBA42A /* Sorting.swift in Sources */,
-				42CA6CB1214A7D6F00DBA42A /* CodeGen.swift in Sources */,
+				427FBD35215CBD110015551C /* Parameter.swift in Sources */,
 				42CA6C97214A7D3000DBA42A /* main.swift in Sources */,
-				428A6A932154BC1B008F7856 /* TuringGrammarParser.swift in Sources */,
+				427FBD33215CBD110015551C /* StateMachineSource.swift in Sources */,
+				427FBD28215CBCFD0015551C /* ProcessonGenSubroutine.swift in Sources */,
+				427FBD24215CBCF10015551C /* TuringParserATN.swift in Sources */,
+				427FBD3A215CBD110015551C /* Vertex.swift in Sources */,
+				427FBD2B215CBD110015551C /* NameFormat.swift in Sources */,
+				427FBD39215CBD110015551C /* Graph.swift in Sources */,
+				427FBD2C215CBD110015551C /* Sorting.swift in Sources */,
+				427FBD26215CBCF70015551C /* TuringGrammarGenSubroutine.swift in Sources */,
+				427FBD37215CBD110015551C /* Edge.swift in Sources */,
+				427FBD20215CBCF10015551C /* TuringBaseListener.swift in Sources */,
+				427FBD30215CBD110015551C /* CodeWriter.swift in Sources */,
+				427FBD25215CBCF10015551C /* TuringLexer.swift in Sources */,
+				427FBD36215CBD110015551C /* AdjacencyListGraph.swift in Sources */,
+				427FBD27215CBCFD0015551C /* MultiDimensionGenSubroutine.swift in Sources */,
+				427FBD2D215CBD110015551C /* Subroutine.swift in Sources */,
+				427FBD21215CBCF10015551C /* TuringParser.swift in Sources */,
+				427FBD2F215CBD110015551C /* GraphProtocol.swift in Sources */,
+				427FBD23215CBCF10015551C /* TuringListener.swift in Sources */,
+				427FBD32215CBD110015551C /* ObjectiveCGen.swift in Sources */,
+				427FBD31215CBD110015551C /* ObjectiveCWriter.swift in Sources */,
+				427FBD34215CBD110015551C /* CodeGen.swift in Sources */,
+				427FBD22215CBCF10015551C /* TuringLexerATN.swift in Sources */,
+				427FBD2E215CBD110015551C /* SubroutineManager.swift in Sources */,
+				427FBD29215CBCFD0015551C /* ProcessonDiagram.swift in Sources */,
+				427FBD38215CBD110015551C /* AdjacencyMatrixGraph.swift in Sources */,
+				427FBD2A215CBCFD0015551C /* ProcessonFileReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,7 +707,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42E473BB2153697D00551EB9 /* Sorting.swift in Sources */,
+				427FBD1F215CB6970015551C /* TuringLexer.swift in Sources */,
+				427FBD1E215CB6930015551C /* TuringParserATN.swift in Sources */,
 				42E473BD2153697D00551EB9 /* ProcessonGenSubroutine.swift in Sources */,
+				427FBD13215CB5C60015551C /* TuringBaseListener.swift in Sources */,
 				42E473C12153697D00551EB9 /* GraphProtocol.swift in Sources */,
 				42E473C92153697D00551EB9 /* AdjacencyListGraph.swift in Sources */,
 				42E473C02153697D00551EB9 /* SubroutineManager.swift in Sources */,
@@ -618,11 +720,15 @@
 				42E473C82153697D00551EB9 /* Parameter.swift in Sources */,
 				42E473C62153697D00551EB9 /* StateMachineSource.swift in Sources */,
 				42E473C42153697D00551EB9 /* ObjectiveCGen.swift in Sources */,
+				427FBD14215CB5DB0015551C /* TuringGrammarGenSubroutine.swift in Sources */,
+				427FBD1D215CB68A0015551C /* TuringListener.swift in Sources */,
 				42E473BF2153697D00551EB9 /* Subroutine.swift in Sources */,
+				427FBD1B215CB6820015551C /* TuringParser.swift in Sources */,
 				42E473C32153697D00551EB9 /* ObjectiveCWriter.swift in Sources */,
 				42E473CD2153697D00551EB9 /* Vertex.swift in Sources */,
 				42E473BE2153697D00551EB9 /* MultiDimensionGenSubroutine.swift in Sources */,
 				42E473CB2153697D00551EB9 /* AdjacencyMatrixGraph.swift in Sources */,
+				427FBD1C215CB6860015551C /* TuringLexerATN.swift in Sources */,
 				42E473C22153697D00551EB9 /* CodeWriter.swift in Sources */,
 				42E473BC2153697D00551EB9 /* ProcessonDiagram.swift in Sources */,
 				42E473CC2153697D00551EB9 /* Graph.swift in Sources */,
@@ -642,6 +748,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		427FBD16215CB5F30015551C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Antlr4;
+			targetProxy = 427FBD15215CB5F30015551C /* PBXContainerItemProxy */;
+		};
 		42E473AE215368E300551EB9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 42E473A2215368E300551EB9 /* LibTuring */;
@@ -810,6 +921,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -820,6 +932,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZP37VL2MY8;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -867,6 +980,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuring;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -897,6 +1011,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.deanxu.LibTuring;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

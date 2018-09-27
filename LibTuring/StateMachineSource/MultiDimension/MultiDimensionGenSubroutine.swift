@@ -49,14 +49,19 @@ private class MDGraphSource: StateMachineSource {
     }
 }
 
-class MultiDimensionGenSubroutine: Subroutine {
-    var commandSequence: [String] {
+public class MultiDimensionGenSubroutine: Subroutine {
+    
+    public init() {
+        
+    }
+    
+    public var commandSequence: [String] {
         get {
             return ["md"]
         }
     }
     
-    func run(arguments: [String]) {
+    public func run(arguments: [String]) {
         guard arguments.count >= 3 else {
             fatalError("缺少参数 outputPath, classPrefix, dimensions")
         }
