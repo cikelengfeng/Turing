@@ -24,7 +24,24 @@ extension TransitionDescription {
             let newP = ParameterDescription(name: p.name.upperFirstLetter(), type: p.type)
             return newP
         }
-        let ret = TransitionDescription(name: self.name.upperFirstLetter(), param: newParam)
+        let checkStackTop: String?
+        if let cst = self.checkStackTop {
+            checkStackTop = cst.upperFirstLetter()
+        } else {
+            checkStackTop = nil
+        }
+        let op: StackOP?
+        if let so = self.stackOP {
+            switch so {
+            case .pop:
+                op = .pop
+            case .push(let symbol):
+                op = .push(symbol: symbol)
+            }
+        } else {
+            op = nil
+        }
+        let ret = TransitionDescription(name: self.name.upperFirstLetter(), checkStackTop: checkStackTop, stackOP: op, param: newParam)
         return ret
     }
 }

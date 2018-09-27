@@ -13,7 +13,37 @@ public struct ParameterDescription: Hashable {
     let type: String
 }
 
+public enum StackOP: Hashable {
+    case push(symbol: String)
+    case pop
+}
+
 public struct TransitionDescription: Hashable {
     let name: String
+    let checkStackTop: String?
+    let stackOP: StackOP?
     let param: [ParameterDescription]
+    
+    public init(name: String, checkStackTop: String?, stackOP: StackOP?, param: [ParameterDescription]) {
+        self.name = name
+        self.checkStackTop = checkStackTop
+        self.stackOP = stackOP
+        self.param = param
+    }
+    
+    public init(name: String, checkStackTop: String?) {
+        self.init(name: name, checkStackTop: checkStackTop, stackOP: nil, param: [])
+    }
+    
+    public init(name: String, stackOP: StackOP?) {
+        self.init(name: name, checkStackTop: nil, stackOP: stackOP, param: [])
+    }
+    
+    public init(name: String, checkStackTop: String?, stackOP: StackOP?) {
+        self.init(name: name, checkStackTop: checkStackTop, stackOP: stackOP, param: [])
+    }
+    
+    public init(name: String, param: [ParameterDescription]) {
+        self.init(name: name, checkStackTop: nil, stackOP: nil, param: param)
+    }
 }

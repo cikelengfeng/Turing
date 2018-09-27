@@ -1,4 +1,4 @@
-stack p1 p2 p3
+stack P
 initial dark
 dark > turnOn > light
 light > turnOff > dark 

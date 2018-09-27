@@ -59,7 +59,8 @@ public class TuringGrammarGenSubroutine: Subroutine {
             fatalError("missing state machine transition is empty!!!")
         }
         transitions.forEach { (t) in
-            guard let fs = t.transition_from(),
+            guard
+                let fs = t.transition_from(),
                 let ts = t.transition_to(),
                 let input = t.input()
                 else {
@@ -67,7 +68,28 @@ public class TuringGrammarGenSubroutine: Subroutine {
             }
             let fv = graph.createVertex(fs.IDENTIFIER()!.getText())
             let tv = graph.createVertex(ts.IDENTIFIER()!.getText())
-            graph.addDirectedEdge(fv, to: tv, withWeight: 1, desc: TransitionDescription(name: input.IDENTIFIER()!.getText(), param: []))
+            
+            let checkStackSymbol: String?
+            let pushOrPop: StackOP?
+            if let stackOP = t.stack_op() {
+                if let checkStack = stackOP.check_stack() {
+                    checkStackSymbol = checkStack.IDENTIFIER()!.getText()
+                } else {
+                    checkStackSymbol = nil
+                }
+                if let push = stackOP.push_stack() {
+                    pushOrPop = .push(symbol: push.IDENTIFIER()!.getText())
+                } else if let _ = stackOP.pop_stack() {
+                    pushOrPop = .pop
+                } else {
+                    pushOrPop = nil
+                }
+            } else {
+                checkStackSymbol = nil
+                pushOrPop = nil
+            }
+            
+            graph.addDirectedEdge(fv, to: tv, withWeight: 1, desc: TransitionDescription(name: input.IDENTIFIER()!.getText(), checkStackTop: checkStackSymbol, stackOP: pushOrPop))
         }
         let initialVertex = graph.createVertex(initial.IDENTIFIER()!.getText())
         return (graph: graph, initialVertex: initialVertex)
