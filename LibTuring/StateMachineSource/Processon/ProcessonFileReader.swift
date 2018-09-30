@@ -100,7 +100,7 @@ extension ProcessonTransition {
 //        let p = params.map { (pp) -> ParameterDescription in
 //            return ParameterDescription(name: pp.name, type: pp.type)
 //        }
-        let t = TransitionDescription(name: name, param: [])
+        let t = TransitionDescription(name: name)
         return t
     }
 }

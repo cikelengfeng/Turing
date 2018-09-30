@@ -42,7 +42,7 @@ private class MDGraphSource: StateMachineSource {
                 let dismiss = (fanoutIndex & mark) == 0
                 let fanoutV = vertices[fanoutIndex]
                 let changedDimension = dimensions[bit]
-                graph.addDirectedEdge(v, to: fanoutV, withWeight: 1, desc: TransitionDescription(name: (dismiss ? "Dismiss": "Get") + changedDimension, param: []))
+                graph.addDirectedEdge(v, to: fanoutV, withWeight: 1, desc: TransitionDescription(name: (dismiss ? "Dismiss": "Get") + changedDimension))
             }
         }
         return (graph, vertices[0])

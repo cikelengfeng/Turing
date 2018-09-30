@@ -22,28 +22,29 @@ public struct TransitionDescription: Hashable {
     let name: String
     let checkStackTop: String?
     let stackOP: StackOP?
-    let param: [ParameterDescription]
+//    let param: [ParameterDescription]
     
-    public init(name: String, checkStackTop: String?, stackOP: StackOP?, param: [ParameterDescription]) {
+    public init(name: String, checkStackTop: String?, stackOP: StackOP?) {
         self.name = name
         self.checkStackTop = checkStackTop
         self.stackOP = stackOP
-        self.param = param
+    }
+    
+    public init(name: String) {
+        self.init(name: name, checkStackTop: nil, stackOP: nil)
     }
     
     public init(name: String, checkStackTop: String?) {
-        self.init(name: name, checkStackTop: checkStackTop, stackOP: nil, param: [])
+        self.init(name: name, checkStackTop: checkStackTop, stackOP: nil)
     }
     
     public init(name: String, stackOP: StackOP?) {
-        self.init(name: name, checkStackTop: nil, stackOP: stackOP, param: [])
+        self.init(name: name, checkStackTop: nil, stackOP: stackOP)
     }
     
-    public init(name: String, checkStackTop: String?, stackOP: StackOP?) {
-        self.init(name: name, checkStackTop: checkStackTop, stackOP: stackOP, param: [])
-    }
-    
-    public init(name: String, param: [ParameterDescription]) {
-        self.init(name: name, checkStackTop: nil, stackOP: nil, param: param)
+    public var hashValue: Int {
+        get {
+            return "TransitionDescription".hashValue ^ name.hashValue
+        }
     }
 }

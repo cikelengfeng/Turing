@@ -75,11 +75,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/xudong/Downloads/abr.pos"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/xudong/Downloads/PDA.pos"
+            argument = "/Users/xudong/git/Turing/LibTuringTests/Pos/FSM.pos"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument

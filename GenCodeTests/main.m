@@ -92,38 +92,36 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         NSLog(@"Hello, World!");
         
-//        NSString *input = @"baba";
-//
-//        TestStateMachine *sm = [[TestStateMachine alloc] init];
-//        Test *delegate = [Test new];
-//        sm.delegate = delegate;
-//
-//        NSUInteger len = [input length];
-//        unichar buffer[len];
-//        [input getCharacters:buffer range:NSMakeRange(0, len)];
-//
-//        for(int i = 0; i < len; ++i) {
-//            char current = buffer[i];
-//            if (current == 'a') {
-//                [sm doA];
-//            } else if (current == 'b') {
-//                [sm doB];
-//            } else {
-//                [sm doEOF];
-//            }
-//        }
-//        [sm doEOF];
-//        switch (sm.state) {
-//            case TestStateFault:
-//                NSLog(@"%@ is not a^nb^n", input);
-//                break;
-//            case TestStateFinish:
-//                NSLog(@"%@ is a^nb^n", input);
-//                break;
-//            default:
-//                NSLog(@"FATAL");
-//                break;
-//        }
+        NSString *input = @"abab";
+
+        TestStateMachine *sm = [[TestStateMachine alloc] init];
+
+        NSUInteger len = [input length];
+        unichar buffer[len];
+        [input getCharacters:buffer range:NSMakeRange(0, len)];
+
+        for(int i = 0; i < len; ++i) {
+            char current = buffer[i];
+            if (current == 'a') {
+                [sm doA];
+            } else if (current == 'b') {
+                [sm doB];
+            } else {
+                [sm doEOF];
+            }
+        }
+        [sm doEOF];
+        switch (sm.state) {
+            case TestStateFault:
+                NSLog(@"%@ is not a^nb^n", input);
+                break;
+            case TestStateFinish:
+                NSLog(@"%@ is a^nb^n", input);
+                break;
+            default:
+                NSLog(@"FATAL");
+                break;
+        }
     }
     return 0;
 }

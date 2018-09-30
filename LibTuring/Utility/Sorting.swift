@@ -36,9 +36,7 @@ extension AbstractGraph where T == String {
 
 extension TransitionDescription {
     func sortingString() -> String {
-        return self.name + self.param.map({ (p) -> String in
-            return p.name + p.type
-        }).joined()
+        return self.name
     }
 }
 
@@ -50,11 +48,11 @@ extension Array where Element == TransitionDescription {
     }
 }
 
-extension Dictionary where Key == TransitionDescription {
-    func sortedKeysInLocalizedStandard() -> Array<Key> {
-        let arr = Array(self.keys)
-        return arr.sorted(by: { (t1, t2) -> Bool in
-            return t1.sortingString().localizedStandardCompare(t2.sortingString()) == .orderedAscending
+extension Dictionary where Key == String {
+    func sortedTransitionNamesInLocalizedStandard() -> Array<Key> {
+        let arr = self.keys.sorted (by: { (t1, t2) -> Bool in
+            return t1.localizedStandardCompare(t2) == .orderedAscending
         })
+        return arr
     }
 }

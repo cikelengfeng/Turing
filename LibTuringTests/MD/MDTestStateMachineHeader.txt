@@ -77,7 +77,7 @@ typedef NS_ENUM(NSUInteger, TestState) {
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES
-@property (assign,nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;
-@property (weak,nonatomic) id<TestObserver> observer;
-@property (weak,nonatomic) id<TestDelegate> delegate;
+@property (assign,nonatomic,readwrite) BOOL shouldEnterCurrentStateWhenObserverChanged;
+@property (weak,nonatomic,readwrite) id<TestObserver> observer;
+@property (weak,nonatomic,readwrite) id<TestDelegate> delegate;
 @end

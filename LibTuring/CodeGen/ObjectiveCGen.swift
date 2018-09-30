@@ -44,6 +44,8 @@ class ObjectiveCGen: CodeGen {
     
     func gen() {
         setupPublicMethodStore()
+        checkPDA()
+        
         setupWriter()
         
         writeImportHeaderCode(header)
@@ -115,22 +117,28 @@ class ObjectiveCGen: CodeGen {
             self.writeObserverSetterCode(w)
             //        writeStateSetterCode(writer)
             self.writeObserverEnterStateMethodDefinationCode(w)
+            if self.isPDA {
+                self.writePDAMethodDefinationCode(w)
+            }
             self.writePublicMethodImplCode(w)
         }
     }
     
     private func writeMemberInferfaceCode(_ writer: ObjectiveCWriter) {
-        writer.writeProperty(lifeCycle: [.assign], atomic: false, rw: [.readonly], selector: [], type: stateEnumName(), name: "state")
+        writer.writeProperty(lifeCycle: .assign, atomic: false, rw: .readonly, selector: [], type: stateEnumName(), name: "state")
         writer.writeLine("//default is YES")
-        writer.writeProperty(lifeCycle: [.assign], atomic: false, rw: [], selector: [], type: "BOOL", name: "shouldEnterCurrentStateWhenObserverChanged")
-        writer.writeProperty(lifeCycle: [.weak], atomic: false, rw: [], selector: [], type: "id<\(obersverProtocolName())>", name: "observer")
-        writer.writeProperty(lifeCycle: [.weak], atomic: false, rw: [], selector: [], type: "id<\(delegateProtocolName())>", name: "delegate")
+        writer.writeProperty(lifeCycle: .assign, atomic: false, rw: nil, selector: [], type: "BOOL", name: "shouldEnterCurrentStateWhenObserverChanged")
+        writer.writeProperty(lifeCycle: .weak, atomic: false, rw: nil, selector: [], type: "id<\(obersverProtocolName())>", name: "observer")
+        writer.writeProperty(lifeCycle: .weak, atomic: false, rw: nil, selector: [], type: "id<\(delegateProtocolName())>", name: "delegate")
         
     }
     
     private func writeMemberImplCode(_ writer: ObjectiveCWriter) {
         writer.writeInterface(name: stateMachineClassName(), categoryName: "", protocolArr: []) { (w) in
-            w.writeProperty(lifeCycle: [.assign], atomic: false, rw: [], selector: [], type: self.stateEnumName(), name: "state")
+            w.writeProperty(lifeCycle: .assign, atomic: false, rw: nil, selector: [], type: self.stateEnumName(), name: "state")
+            if self.isPDA {
+                w.writeProperty(lifeCycle: .strong, atomic: false, rw: nil, selector: [], type: "NSMutableArray<NSString *> *", name: "stack")
+            }
         }
     }
     
@@ -142,6 +150,10 @@ class ObjectiveCGen: CodeGen {
             writer.pushIndent()
             writer.writeLine("_state = state;")
             writer.writeLine("_shouldEnterCurrentStateWhenObserverChanged = YES;")
+            if self.isPDA {
+                writer.writeLine("_stack = [NSMutableArray array];")
+                writer.writeLine("[_stack addObject:@\"$\"];")
+            }
             writer.popIndent()
             writer.writeLine("}")
             writer.writeLine("return self;")
@@ -152,6 +164,36 @@ class ObjectiveCGen: CodeGen {
             writer.writeLine("return [self initWithState:\(self.stateName(forState: self.initialState))];")
             writer.popIndent()
         }
+    }
+    
+    private func writePDAMethodDefinationCode(_ writer: ObjectiveCWriter) {
+        writer.writeMethodDefination(isClassMethod: false, returnType: "BOOL", prefix: "checkStack", fragments: [(name: "Top", param: (type: "NSString *", name: "element"))]) { (w) in
+            writer.pushIndent()
+            writer.writeLine("return [self.stack.lastObject isEqualToString:element];")
+            writer.popIndent()
+        }
+        writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "pushStack", fragments: [(name: "WithElement", param: (type: "NSString *", name: "element"))]) { (w) in
+            writer.pushIndent()
+            writer.writeLine("[self.stack addObject:element];")
+            writer.popIndent()
+        }
+        writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "popStack", fragments: []) { (w) in
+            writer.pushIndent()
+            writer.writeLine("[self.stack removeLastObject];")
+            writer.popIndent()
+        }
+    }
+    
+    private func checkStackCallCode(paramName: String, finishLine: Bool) -> String {
+        return "[self checkStackTop:@\"\(paramName)\"]" + (finishLine ? ";" : "")
+    }
+    
+    private func pushStackCallCode(paramName: String, finishLine: Bool) -> String {
+        return "[self pushStackWithElement:@\"\(paramName)\"]" + (finishLine ? ";" : "")
+    }
+    
+    private func popStackCallCode(finishLine: Bool) -> String {
+        return "[self popStack]" + (finishLine ? ";" : "")
     }
     
     private func writeObserverSetterCode(_ writer: ObjectiveCWriter) {
@@ -177,14 +219,8 @@ class ObjectiveCGen: CodeGen {
 //    }
     
     private func writePublicMethodInterfaceCode(_ writer: ObjectiveCWriter) {
-        for method in publicMethodStore.sortedKeysInLocalizedStandard() {
-            
-            let f = method.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
-                return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
-            }
-            
-            let with = f.isEmpty ? "": "With"
-            writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: "do" + method.name + with, fragments: f)
+        for name in publicMethodStore.sortedTransitionNamesInLocalizedStandard() {
+            writer.writeMethodDeclaration(isClassMethod: false, returnType: nil, prefix: "do" + name, fragments: [])
         }
         
         writer.writeMethodDeclaration(isClassMethod: false, returnType: "instancetype", prefix: "initWith", fragments: [(name: "State", param: (type: stateEnumName(), name: "state"))])
@@ -192,42 +228,35 @@ class ObjectiveCGen: CodeGen {
     
     private func writePublicMethodImplCode(_ writer: ObjectiveCWriter) {
         let shouldTransitionVarName = "shouldTransition"
-        for method in publicMethodStore.sortedKeysInLocalizedStandard() {
+        for name in publicMethodStore.sortedTransitionNamesInLocalizedStandard() {
             
-            let edges = publicMethodStore[method]!
-            let f = method.param.map { (p) -> (name: String, param: (type: String, name: String)?) in
-                return (name: p.name, param: (type: p.type, name: p.name.lowerFirstLetter()))
-            }
-            
-            let with = f.isEmpty ? "": "With"
-            writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "do" + method.name + with, fragments: f) { (w) in
+            let edges = publicMethodStore[name]!
+            writer.writeMethodDefination(isClassMethod: false, returnType: nil, prefix: "do" + name, fragments: []) { (w) in
                 w.pushIndent()
-                if edges.count == 1 {
-                    let edge = edges[0]
-                    w.writeLine("if (\(self.stateName(forState: edge.from)) != self.state) {")
-                    w.pushIndent()
-                    w.writeLine("return;")
-                    w.popIndent()
-                    w.writeLine("}")
-                    w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
-                    self.writeDelegateShouldTransiteStateMethodCallCode(transitionDesc: method, shouldTransiteVarName: shouldTransitionVarName, paramName: self.stateName(forState: edge.to), w)
-                    w.writeLine("if (!\(shouldTransitionVarName)) {")
-                    w.pushIndent()
-                    w.writeLine("return;")
-                    w.popIndent()
-                    w.writeLine("}")
-                    self.writeObserverExitStateMethodCallCode(forState: edge.from, w)
-                    w.writeLine("self.state = \(self.stateName(forState: edge.to));")
-                    self.writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, w)
-                } else {
-                    for edge in self.sortedEdges(edges) {
+                for edge in self.sortedEdges(edges) {
+                    for transitionDesc in self.sortedDesc(edge) {
+                        if transitionDesc.name != name {
+                            continue
+                        }
                         w.writeLine("if (\(self.stateName(forState: edge.from)) == self.state) {")
                         w.pushIndent()
-                        w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
-                        self.writeDelegateShouldTransiteStateMethodCallCode(transitionDesc: method, shouldTransiteVarName: shouldTransitionVarName, paramName: self.stateName(forState: edge.to), w)
+                        if let cst = transitionDesc.checkStackTop {
+                            w.writeLine("BOOL \(shouldTransitionVarName) = \(self.checkStackCallCode(paramName: cst, finishLine: true))")
+                        } else {
+                            w.writeLine("BOOL \(shouldTransitionVarName) = YES;")
+                        }
+                        self.writeDelegateShouldTransiteStateMethodCallCode(transitionName: name, shouldTransiteVarName: shouldTransitionVarName, paramName: self.stateName(forState: edge.to), w)
                         w.writeLine("if (\(shouldTransitionVarName)) {")
                         w.pushIndent()
                         self.writeObserverExitStateMethodCallCode(forState: edge.from, w)
+                        if let sop = transitionDesc.stackOP {
+                            switch sop {
+                            case .pop:
+                                w.writeLine(self.popStackCallCode(finishLine: true))
+                            case .push(let symbol):
+                                w.writeLine(self.pushStackCallCode(paramName: symbol, finishLine: true))
+                            }
+                        }
                         w.writeLine("self.state = \(self.stateName(forState: edge.to));")
                         self.writeObserverEnterStateMethodCallCode(observerVarName: "self.observer" ,forState: edge.to, w)
                         w.writeLine("return;")
@@ -317,8 +346,8 @@ class ObjectiveCGen: CodeGen {
     private func writeDelegateDefinationCode(_ writer: ObjectiveCWriter) {
         writer.writeProtocolDeclaration(name: delegateProtocolName(), protocolArr: ["NSObject"]) { (w) in
             w.writeLine("@optional")
-            for desc in self.publicMethodStore.sortedKeysInLocalizedStandard() {
-                self.writeDelegateShouldTransiteStateMethodDefinationCode(transitionDesc: desc, w)
+            for name in self.publicMethodStore.sortedTransitionNamesInLocalizedStandard() {
+                self.writeDelegateShouldTransiteStateMethodDefinationCode(transitionName: name, w)
             }
         }
     }
@@ -330,15 +359,15 @@ class ObjectiveCGen: CodeGen {
         case call(paramName: String)
     }
     
-    private func delegateShouldTransiteStateMethodCode(transitionDesc desc: TransitionDescription, type: MethodCodeType) -> String {
+    private func delegateShouldTransiteStateMethodCode(transitionName name: String, type: MethodCodeType) -> String {
         
         switch type {
         case .defination:
-            return "-(BOOL)shouldSM:(\(stateMachineClassName()) *)stateMachine do\(desc.name)ThenTransiteFrom:(\(stateEnumName()))from to:(\(stateEnumName()))to"
+            return "-(BOOL)shouldSM:(\(stateMachineClassName()) *)stateMachine do\(name)ThenTransiteFrom:(\(stateEnumName()))from to:(\(stateEnumName()))to"
         case .call(let paramName):
-            return "shouldSM:self do\(desc.name)ThenTransiteFrom:self.state to:\(paramName)"
+            return "shouldSM:self do\(name)ThenTransiteFrom:self.state to:\(paramName)"
         case .selector:
-            return "shouldSM:do\(desc.name)ThenTransiteFrom:to:"
+            return "shouldSM:do\(name)ThenTransiteFrom:to:"
         }
         //z目前先将参数去掉，感觉参数没啥用
 //        for paramDesc in desc.param {
@@ -354,31 +383,44 @@ class ObjectiveCGen: CodeGen {
 //        }
     }
     
-    private func writeDelegateShouldTransiteStateMethodDefinationCode(transitionDesc desc: TransitionDescription, _ writer: ObjectiveCWriter) {
-        writer.writeLine(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .defination) + ";")
+    private func writeDelegateShouldTransiteStateMethodDefinationCode(transitionName name: String, _ writer: ObjectiveCWriter) {
+        writer.writeLine(delegateShouldTransiteStateMethodCode(transitionName: name, type: .defination) + ";")
     }
     
-    private func writeDelegateShouldTransiteStateMethodCallCode(transitionDesc desc: TransitionDescription, shouldTransiteVarName: String, paramName: String, _ writer: ObjectiveCWriter) {
-        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .selector)))]) {")
+    private func writeDelegateShouldTransiteStateMethodCallCode(transitionName name: String, shouldTransiteVarName: String, paramName: String, _ writer: ObjectiveCWriter) {
+        writer.writeLine("if ([self.delegate respondsToSelector:@selector(\(delegateShouldTransiteStateMethodCode(transitionName: name, type: .selector)))]) {")
         writer.pushIndent()
-        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(transitionDesc: desc, type: .call(paramName: paramName)))];")
+        writer.writeLine("\(shouldTransiteVarName) = [self.delegate \(delegateShouldTransiteStateMethodCode(transitionName: name, type: .call(paramName: paramName)))];")
         writer.popIndent()
         writer.writeLine("}")
     }
     
     
-    var publicMethodStore: [TransitionDescription: [Edge<String>]] = [:]
+    var publicMethodStore: [String: [Edge<String>]] = [:]
     
     //有很多边的TransitionDescription是一样的，这些边会合并为一个方法
     private func setupPublicMethodStore() {
         for edge in graph.edges {
             graph.transitionDesc(edge).forEach { (transition) in
-                var edgesWithTheSameTransition = publicMethodStore[transition] ?? []
+                var edgesWithTheSameTransition = publicMethodStore[transition.name] ?? []
                 edgesWithTheSameTransition.append(edge)
-                publicMethodStore[transition] = edgesWithTheSameTransition
+                publicMethodStore[transition.name] = edgesWithTheSameTransition
             }
         }
     }
+    
+    private var isPDA: Bool = false;
+    private func checkPDA() {
+        for edge in graph.edges {
+            for desc in graph.transitionDesc(edge) {
+                if desc.checkStackTop != nil || desc.stackOP != nil {
+                    isPDA = true
+                    return
+                }
+            }
+        }
+    }
+    
     
     private func sortedVertices() -> [Vertex<String>] {
         return graph.vertices.sortedInLocalizedStandard()

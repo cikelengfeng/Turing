@@ -69,14 +69,10 @@ class ObjectiveCWriter {
         writeLine("@end")
     }
     
-    func writeProperty(lifeCycle: [ObjectiveCLifeCycleModifier], atomic: Bool, rw: [ObjectiveCRWModifier], selector: [ObjectiveCSelectorModifier], type: String, name: String) {
-        let lfs = lifeCycle.map { (m) -> String in
-            return m.rawValue
-        }.joined(separator: ",")
+    func writeProperty(lifeCycle: ObjectiveCLifeCycleModifier?, atomic: Bool, rw: ObjectiveCRWModifier?, selector: [ObjectiveCSelectorModifier], type: String, name: String) {
+        let lfs = (lifeCycle ?? .strong).rawValue
         let ats = atomic ? "atomic" : "nonatomic"
-        let rws = rw.map { (m) -> String in
-            return m.rawValue
-        }.joined(separator: ",")
+        let rws = (rw ?? .readwrite).rawValue
         let ss = selector.map { (s) -> String in
             return s.asString()
         }.joined(separator: ",")

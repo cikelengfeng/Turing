@@ -1,4 +1,12 @@
-stack P
-initial dark
-dark > turnOn > light
-light > turnOff > dark 
+initial s0
+s0 > a > s1 [push p]
+s0 > b > fault
+s0 > EOF > fault
+s1 > a > s1 [push p]
+s1 > b > s2 [pop]
+s1 > EOF > fault
+s2 > a > fault
+s2 > b > s2 [check p pop]
+s2 > b > fault [check $]
+s2 > EOF > fault [check p]
+s2 > EOF > finish [check $]

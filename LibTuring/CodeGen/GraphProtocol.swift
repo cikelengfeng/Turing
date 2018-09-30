@@ -20,10 +20,6 @@ extension AbstractGraph {
 
 extension TransitionDescription {
     func upperCased() -> TransitionDescription {
-        let newParam = self.param.map { (p) -> ParameterDescription in
-            let newP = ParameterDescription(name: p.name.upperFirstLetter(), type: p.type)
-            return newP
-        }
         let checkStackTop: String?
         if let cst = self.checkStackTop {
             checkStackTop = cst.upperFirstLetter()
@@ -36,12 +32,12 @@ extension TransitionDescription {
             case .pop:
                 op = .pop
             case .push(let symbol):
-                op = .push(symbol: symbol)
+                op = .push(symbol: symbol.upperFirstLetter())
             }
         } else {
             op = nil
         }
-        let ret = TransitionDescription(name: self.name.upperFirstLetter(), checkStackTop: checkStackTop, stackOP: op, param: newParam)
+        let ret = TransitionDescription(name: self.name.upperFirstLetter(), checkStackTop: checkStackTop, stackOP: op)
         return ret
     }
 }

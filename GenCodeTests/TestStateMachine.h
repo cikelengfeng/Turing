@@ -1,28 +1,39 @@
 #import <Foundation/Foundation.h>
 @class TestStateMachine;
 typedef NS_ENUM(NSUInteger, TestState) {
-    TestStateDark,
-    TestStateLight,
+    TestStateFault,
+    TestStateFinish,
+    TestStateS0,
+    TestStateS1,
+    TestStateS2,
 };
 @protocol TestObserver <NSObject>
 @optional
-- (void)onEnterDark:(TestStateMachine *)stateMachine;
-- (void)onExitDark:(TestStateMachine *)stateMachine;
-- (void)onEnterLight:(TestStateMachine *)stateMachine;
-- (void)onExitLight:(TestStateMachine *)stateMachine;
+- (void)onEnterFault:(TestStateMachine *)stateMachine;
+- (void)onExitFault:(TestStateMachine *)stateMachine;
+- (void)onEnterFinish:(TestStateMachine *)stateMachine;
+- (void)onExitFinish:(TestStateMachine *)stateMachine;
+- (void)onEnterS0:(TestStateMachine *)stateMachine;
+- (void)onExitS0:(TestStateMachine *)stateMachine;
+- (void)onEnterS1:(TestStateMachine *)stateMachine;
+- (void)onExitS1:(TestStateMachine *)stateMachine;
+- (void)onEnterS2:(TestStateMachine *)stateMachine;
+- (void)onExitS2:(TestStateMachine *)stateMachine;
 @end
 @protocol TestDelegate <NSObject>
 @optional
--(BOOL)shouldSM:(TestStateMachine *)stateMachine doTurnOffThenTransiteFrom:(TestState)from to:(TestState)to;
--(BOOL)shouldSM:(TestStateMachine *)stateMachine doTurnOnThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doAThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doBThenTransiteFrom:(TestState)from to:(TestState)to;
+-(BOOL)shouldSM:(TestStateMachine *)stateMachine doEOFThenTransiteFrom:(TestState)from to:(TestState)to;
 @end
 @interface TestStateMachine: NSObject 
-- (void)doTurnOff;
-- (void)doTurnOn;
+- (void)doA;
+- (void)doB;
+- (void)doEOF;
 - (instancetype)initWithState:(TestState)state;
 @property (assign,nonatomic,readonly) TestState state;
 //default is YES
-@property (assign,nonatomic) BOOL shouldEnterCurrentStateWhenObserverChanged;
-@property (weak,nonatomic) id<TestObserver> observer;
-@property (weak,nonatomic) id<TestDelegate> delegate;
+@property (assign,nonatomic,readwrite) BOOL shouldEnterCurrentStateWhenObserverChanged;
+@property (weak,nonatomic,readwrite) id<TestObserver> observer;
+@property (weak,nonatomic,readwrite) id<TestDelegate> delegate;
 @end

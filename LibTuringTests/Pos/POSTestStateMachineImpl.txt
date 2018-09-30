@@ -1,7 +1,7 @@
 //这是自动生成的文件，不要修改，否则你的修改将被覆盖
 #import "TestStateMachine.h"
 @interface TestStateMachine () 
-@property (assign,nonatomic) TestState state;
+@property (assign,nonatomic,readwrite) TestState state;
 @end
 @implementation TestStateMachine
 - (instancetype)initWithState:(TestState)state {
