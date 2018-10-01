@@ -201,7 +201,7 @@ class ObjectiveCGen: CodeGen {
         writer.pushIndent()
         writer.writeLine("BOOL obChanged = _observer != observer;")
         writer.writeLine("_observer = observer;")
-        writer.writeLine("if (!self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {")
+        writer.writeLine("if (self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {")
         writer.pushIndent()
         writeObserverEnterCurrentStateMethodCallCode(observerVarName: "_observer" ,writer)
         writer.popIndent()
