@@ -20,7 +20,7 @@
 - (void)setObserver:(id<TestObserver>)observer {
     BOOL obChanged = _observer != observer;
     _observer = observer;
-    if (!self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {
+    if (self.shouldEnterCurrentStateWhenObserverChanged && obChanged) {
         [self notifyObserverEnterCurrentState:_observer];
     }
 }
