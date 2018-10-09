@@ -1,12 +1,12 @@
 initial s0
-s0 > a > s1 [push p]
+s0 > a [push p] > s1
 s0 > b > fault
 s0 > EOF > fault
-s1 > a > s1 [push p]
-s1 > b > s2 [pop]
+s1 > a [push p] > s1
+s1 > b [pop] > s2
 s1 > EOF > fault
 s2 > a > fault
-s2 > b > s2 [check p pop]
-s2 > b > fault [check $]
-s2 > EOF > fault [check p]
-s2 > EOF > finish [check $]
+s2 > b [check p pop] > s2
+s2 > b [check $] > fault
+s2 > EOF [check p] > fault
+s2 > EOF [check $] > finish

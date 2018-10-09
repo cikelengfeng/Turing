@@ -19,18 +19,6 @@ public protocol TuringListener: ParseTreeListener {
 	 */
 	func exitEntry(_ ctx: TuringParser.EntryContext)
 	/**
-	 * Enter a parse tree produced by {@link TuringParser#stack_define}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func enterStack_define(_ ctx: TuringParser.Stack_defineContext)
-	/**
-	 * Exit a parse tree produced by {@link TuringParser#stack_define}.
-	 - Parameters:
-	   - ctx: the parse tree
-	 */
-	func exitStack_define(_ ctx: TuringParser.Stack_defineContext)
-	/**
 	 * Enter a parse tree produced by {@link TuringParser#state_machine_define}.
 	 - Parameters:
 	   - ctx: the parse tree

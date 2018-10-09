@@ -12,9 +12,9 @@ open class TuringLexer: Lexer {
      }()
 
 	internal static let _sharedContextCache:PredictionContextCache = PredictionContextCache()
-	public static let CHECK=1, PUSH=2, POP=3, STACK=4, INITIAL=5, ACTION=6, 
-                   LEFT_SQUARE_BRACKET=7, RIGHT_SQUARE_BRACKET=8, EQUAL=9, 
-                   IDENTIFIER=10, WS=11, COMMENT=12, LINE_COMMENT=13
+	public static let CHECK=1, PUSH=2, POP=3, INITIAL=4, ACTION=5, LEFT_SQUARE_BRACKET=6, 
+                   RIGHT_SQUARE_BRACKET=7, EQUAL=8, IDENTIFIER=9, WS=10, 
+                   COMMENT=11, LINE_COMMENT=12
 	public static let channelNames: [String] = [
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	]
@@ -24,17 +24,15 @@ open class TuringLexer: Lexer {
 	]
 
 	public static let ruleNames: [String] = [
-		"CHECK", "PUSH", "POP", "STACK", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", 
-		"RIGHT_SQUARE_BRACKET", "EQUAL", "IDENTIFIER", "LETTER", "WS", "COMMENT", 
-		"LINE_COMMENT"
+		"CHECK", "PUSH", "POP", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", "RIGHT_SQUARE_BRACKET", 
+		"EQUAL", "IDENTIFIER", "LETTER", "WS", "COMMENT", "LINE_COMMENT"
 	]
 
 	private static let _LITERAL_NAMES: [String?] = [
-		nil, "'check'", "'push'", "'pop'", "'stack'", "'initial'", "'>'", "'['", 
-		"']'", "'='"
+		nil, "'check'", "'push'", "'pop'", "'initial'", "'>'", "'['", "']'", "'='"
 	]
 	private static let _SYMBOLIC_NAMES: [String?] = [
-		nil, "CHECK", "PUSH", "POP", "STACK", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", 
+		nil, "CHECK", "PUSH", "POP", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", 
 		"RIGHT_SQUARE_BRACKET", "EQUAL", "IDENTIFIER", "WS", "COMMENT", "LINE_COMMENT"
 	]
 	public static let VOCABULARY: Vocabulary = Vocabulary(_LITERAL_NAMES, _SYMBOLIC_NAMES)
@@ -59,7 +57,6 @@ open class TuringLexer: Lexer {
 		return tokenNames
 	}()
 
-	
 	open func getTokenNames() -> [String?]? {
 		return tokenNames
 	}

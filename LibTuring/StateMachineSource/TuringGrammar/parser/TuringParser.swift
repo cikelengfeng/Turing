@@ -13,27 +13,25 @@ open class TuringParser: Parser {
      }()
 	internal static let _sharedContextCache: PredictionContextCache = PredictionContextCache()
 	public enum Tokens: Int {
-		case EOF = -1, CHECK = 1, PUSH = 2, POP = 3, STACK = 4, INITIAL = 5, ACTION = 6, 
-                 LEFT_SQUARE_BRACKET = 7, RIGHT_SQUARE_BRACKET = 8, EQUAL = 9, 
-                 IDENTIFIER = 10, WS = 11, COMMENT = 12, LINE_COMMENT = 13
+		case EOF = -1, CHECK = 1, PUSH = 2, POP = 3, INITIAL = 4, ACTION = 5, 
+                 LEFT_SQUARE_BRACKET = 6, RIGHT_SQUARE_BRACKET = 7, EQUAL = 8, 
+                 IDENTIFIER = 9, WS = 10, COMMENT = 11, LINE_COMMENT = 12
 	}
-	public static let RULE_entry = 0, RULE_stack_define = 1, RULE_state_machine_define = 2, 
-                   RULE_initial_define = 3, RULE_transition_define = 4, 
-                   RULE_transition_from = 5, RULE_transition_to = 6, RULE_input = 7, 
-                   RULE_stack_op = 8, RULE_check_stack = 9, RULE_push_stack = 10, 
-                   RULE_pop_stack = 11
+	public static let RULE_entry = 0, RULE_state_machine_define = 1, RULE_initial_define = 2, 
+                   RULE_transition_define = 3, RULE_transition_from = 4, 
+                   RULE_transition_to = 5, RULE_input = 6, RULE_stack_op = 7, 
+                   RULE_check_stack = 8, RULE_push_stack = 9, RULE_pop_stack = 10
 	public static let ruleNames: [String] = [
-		"entry", "stack_define", "state_machine_define", "initial_define", "transition_define", 
+		"entry", "state_machine_define", "initial_define", "transition_define", 
 		"transition_from", "transition_to", "input", "stack_op", "check_stack", 
 		"push_stack", "pop_stack"
 	]
 
 	private static let _LITERAL_NAMES: [String?] = [
-		nil, "'check'", "'push'", "'pop'", "'stack'", "'initial'", "'>'", "'['", 
-		"']'", "'='"
+		nil, "'check'", "'push'", "'pop'", "'initial'", "'>'", "'['", "']'", "'='"
 	]
 	private static let _SYMBOLIC_NAMES: [String?] = [
-		nil, "CHECK", "PUSH", "POP", "STACK", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", 
+		nil, "CHECK", "PUSH", "POP", "INITIAL", "ACTION", "LEFT_SQUARE_BRACKET", 
 		"RIGHT_SQUARE_BRACKET", "EQUAL", "IDENTIFIER", "WS", "COMMENT", "LINE_COMMENT"
 	]
 	public static let VOCABULARY: Vocabulary = Vocabulary(_LITERAL_NAMES, _SYMBOLIC_NAMES)
@@ -58,7 +56,6 @@ open class TuringParser: Parser {
 		return tokenNames
 	}()
 
-	
 	open func getTokenNames() -> [String?]? {
 		return tokenNames
 	}
@@ -89,9 +86,6 @@ open class TuringParser: Parser {
 			return getRuleContext(State_machine_defineContext.self,0)
 		}
 		open func EOF() -> TerminalNode? { return getToken(TuringParser.Tokens.EOF.rawValue, 0) }
-		open func stack_define() -> Stack_defineContext? {
-			return getRuleContext(Stack_defineContext.self,0)
-		}
 		open override func getRuleIndex() -> Int { return TuringParser.RULE_entry }
 		override
 		open func enterRule(_ listener: ParseTreeListener) {
@@ -110,87 +104,15 @@ open class TuringParser: Parser {
 	open func entry() throws -> EntryContext {
 		var _localctx: EntryContext = EntryContext(_ctx, getState())
 		try enterRule(_localctx, 0, TuringParser.RULE_entry)
-		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(25)
-		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	if (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == TuringParser.Tokens.STACK.rawValue
-		 	      return testSet
-		 	 }()) {
-		 		setState(24)
-		 		try stack_define()
-
-		 	}
-
-		 	setState(27)
+		 	setState(22)
 		 	try state_machine_define()
-		 	setState(28)
+		 	setState(23)
 		 	try match(TuringParser.Tokens.EOF.rawValue)
-
-		}
-		catch ANTLRException.recognition(let re) {
-			_localctx.exception = re
-			_errHandler.reportError(self, re)
-			try _errHandler.recover(self, re)
-		}
-
-		return _localctx
-	}
-	open class Stack_defineContext:ParserRuleContext {
-		open func STACK() -> TerminalNode? { return getToken(TuringParser.Tokens.STACK.rawValue, 0) }
-		open func IDENTIFIER() -> Array<TerminalNode> { return getTokens(TuringParser.Tokens.IDENTIFIER.rawValue) }
-		open func IDENTIFIER(_ i:Int) -> TerminalNode?{
-			return getToken(TuringParser.Tokens.IDENTIFIER.rawValue, i)
-		}
-		open override func getRuleIndex() -> Int { return TuringParser.RULE_stack_define }
-		override
-		open func enterRule(_ listener: ParseTreeListener) {
-			if listener is TuringListener {
-			 	(listener as! TuringListener).enterStack_define(self)
-			}
-		}
-		override
-		open func exitRule(_ listener: ParseTreeListener) {
-			if listener is TuringListener {
-			 	(listener as! TuringListener).exitStack_define(self)
-			}
-		}
-	}
-	@discardableResult
-	open func stack_define() throws -> Stack_defineContext {
-		var _localctx: Stack_defineContext = Stack_defineContext(_ctx, getState())
-		try enterRule(_localctx, 2, TuringParser.RULE_stack_define)
-		var _la: Int = 0
-		defer {
-	    		try! exitRule()
-	    }
-		do {
-		 	try enterOuterAlt(_localctx, 1)
-		 	setState(30)
-		 	try match(TuringParser.Tokens.STACK.rawValue)
-		 	setState(32) 
-		 	try _errHandler.sync(self)
-		 	_la = try _input.LA(1)
-		 	repeat {
-		 		setState(31)
-		 		try match(TuringParser.Tokens.IDENTIFIER.rawValue)
-
-
-		 		setState(34); 
-		 		try _errHandler.sync(self)
-		 		_la = try _input.LA(1)
-		 	} while (//closure
-		 	 { () -> Bool in
-		 	      let testSet: Bool = _la == TuringParser.Tokens.IDENTIFIER.rawValue
-		 	      return testSet
-		 	 }())
 
 		}
 		catch ANTLRException.recognition(let re) {
@@ -228,24 +150,24 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func state_machine_define() throws -> State_machine_defineContext {
 		var _localctx: State_machine_defineContext = State_machine_defineContext(_ctx, getState())
-		try enterRule(_localctx, 4, TuringParser.RULE_state_machine_define)
+		try enterRule(_localctx, 2, TuringParser.RULE_state_machine_define)
 		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(36)
+		 	setState(25)
 		 	try initial_define()
-		 	setState(38) 
+		 	setState(27) 
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	repeat {
-		 		setState(37)
+		 		setState(26)
 		 		try transition_define()
 
 
-		 		setState(40); 
+		 		setState(29); 
 		 		try _errHandler.sync(self)
 		 		_la = try _input.LA(1)
 		 	} while (//closure
@@ -283,15 +205,15 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func initial_define() throws -> Initial_defineContext {
 		var _localctx: Initial_defineContext = Initial_defineContext(_ctx, getState())
-		try enterRule(_localctx, 6, TuringParser.RULE_initial_define)
+		try enterRule(_localctx, 4, TuringParser.RULE_initial_define)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(42)
+		 	setState(31)
 		 	try match(TuringParser.Tokens.INITIAL.rawValue)
-		 	setState(43)
+		 	setState(32)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -337,24 +259,20 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func transition_define() throws -> Transition_defineContext {
 		var _localctx: Transition_defineContext = Transition_defineContext(_ctx, getState())
-		try enterRule(_localctx, 8, TuringParser.RULE_transition_define)
+		try enterRule(_localctx, 6, TuringParser.RULE_transition_define)
 		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(45)
+		 	setState(34)
 		 	try transition_from()
-		 	setState(46)
+		 	setState(35)
 		 	try match(TuringParser.Tokens.ACTION.rawValue)
-		 	setState(47)
+		 	setState(36)
 		 	try input()
-		 	setState(48)
-		 	try match(TuringParser.Tokens.ACTION.rawValue)
-		 	setState(49)
-		 	try transition_to()
-		 	setState(51)
+		 	setState(38)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	if (//closure
@@ -362,11 +280,15 @@ open class TuringParser: Parser {
 		 	      let testSet: Bool = _la == TuringParser.Tokens.LEFT_SQUARE_BRACKET.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(50)
+		 		setState(37)
 		 		try stack_op()
 
 		 	}
 
+		 	setState(40)
+		 	try match(TuringParser.Tokens.ACTION.rawValue)
+		 	setState(41)
+		 	try transition_to()
 
 		}
 		catch ANTLRException.recognition(let re) {
@@ -396,13 +318,13 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func transition_from() throws -> Transition_fromContext {
 		var _localctx: Transition_fromContext = Transition_fromContext(_ctx, getState())
-		try enterRule(_localctx, 10, TuringParser.RULE_transition_from)
+		try enterRule(_localctx, 8, TuringParser.RULE_transition_from)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(53)
+		 	setState(43)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -433,13 +355,13 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func transition_to() throws -> Transition_toContext {
 		var _localctx: Transition_toContext = Transition_toContext(_ctx, getState())
-		try enterRule(_localctx, 12, TuringParser.RULE_transition_to)
+		try enterRule(_localctx, 10, TuringParser.RULE_transition_to)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(55)
+		 	setState(45)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -470,13 +392,13 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func input() throws -> InputContext {
 		var _localctx: InputContext = InputContext(_ctx, getState())
-		try enterRule(_localctx, 14, TuringParser.RULE_input)
+		try enterRule(_localctx, 12, TuringParser.RULE_input)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(57)
+		 	setState(47)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -517,16 +439,16 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func stack_op() throws -> Stack_opContext {
 		var _localctx: Stack_opContext = Stack_opContext(_ctx, getState())
-		try enterRule(_localctx, 16, TuringParser.RULE_stack_op)
+		try enterRule(_localctx, 14, TuringParser.RULE_stack_op)
 		var _la: Int = 0
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(59)
+		 	setState(49)
 		 	try match(TuringParser.Tokens.LEFT_SQUARE_BRACKET.rawValue)
-		 	setState(61)
+		 	setState(51)
 		 	try _errHandler.sync(self)
 		 	_la = try _input.LA(1)
 		 	if (//closure
@@ -534,22 +456,22 @@ open class TuringParser: Parser {
 		 	      let testSet: Bool = _la == TuringParser.Tokens.CHECK.rawValue
 		 	      return testSet
 		 	 }()) {
-		 		setState(60)
+		 		setState(50)
 		 		try check_stack()
 
 		 	}
 
-		 	setState(65)
+		 	setState(55)
 		 	try _errHandler.sync(self)
 		 	switch (TuringParser.Tokens(rawValue: try _input.LA(1))!) {
 		 	case .PUSH:
-		 	 	setState(63)
+		 	 	setState(53)
 		 	 	try push_stack()
 
 		 		break
 
 		 	case .POP:
-		 	 	setState(64)
+		 	 	setState(54)
 		 	 	try pop_stack()
 
 		 		break
@@ -559,7 +481,7 @@ open class TuringParser: Parser {
 		 	default:
 		 		break
 		 	}
-		 	setState(67)
+		 	setState(57)
 		 	try match(TuringParser.Tokens.RIGHT_SQUARE_BRACKET.rawValue)
 
 		}
@@ -591,15 +513,15 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func check_stack() throws -> Check_stackContext {
 		var _localctx: Check_stackContext = Check_stackContext(_ctx, getState())
-		try enterRule(_localctx, 18, TuringParser.RULE_check_stack)
+		try enterRule(_localctx, 16, TuringParser.RULE_check_stack)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(69)
+		 	setState(59)
 		 	try match(TuringParser.Tokens.CHECK.rawValue)
-		 	setState(70)
+		 	setState(60)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -631,15 +553,15 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func push_stack() throws -> Push_stackContext {
 		var _localctx: Push_stackContext = Push_stackContext(_ctx, getState())
-		try enterRule(_localctx, 20, TuringParser.RULE_push_stack)
+		try enterRule(_localctx, 18, TuringParser.RULE_push_stack)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(72)
+		 	setState(62)
 		 	try match(TuringParser.Tokens.PUSH.rawValue)
-		 	setState(73)
+		 	setState(63)
 		 	try match(TuringParser.Tokens.IDENTIFIER.rawValue)
 
 		}
@@ -670,13 +592,13 @@ open class TuringParser: Parser {
 	@discardableResult
 	open func pop_stack() throws -> Pop_stackContext {
 		var _localctx: Pop_stackContext = Pop_stackContext(_ctx, getState())
-		try enterRule(_localctx, 22, TuringParser.RULE_pop_stack)
+		try enterRule(_localctx, 20, TuringParser.RULE_pop_stack)
 		defer {
 	    		try! exitRule()
 	    }
 		do {
 		 	try enterOuterAlt(_localctx, 1)
-		 	setState(75)
+		 	setState(65)
 		 	try match(TuringParser.Tokens.POP.rawValue)
 
 		}

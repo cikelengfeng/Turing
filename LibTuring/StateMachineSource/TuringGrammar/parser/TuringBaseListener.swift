@@ -28,19 +28,6 @@ open class TuringBaseListener: TuringListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	open func enterStack_define(_ ctx: TuringParser.Stack_defineContext) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	open func exitStack_define(_ ctx: TuringParser.Stack_defineContext) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	open func enterState_machine_define(_ ctx: TuringParser.State_machine_defineContext) { }
 	/**
 	 * {@inheritDoc}
