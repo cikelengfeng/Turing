@@ -26,10 +26,6 @@ public class TuringGrammarGenSubroutine: Subroutine {
         guard arguments.count >= 3 else {
             fatalError("缺少参数 turingFilePath, outputPath, classPrefix")
         }
-        // arguments[0] is always the program_name
-        //        let processonFilePath = "/Users/xudong/Downloads/Light.pos"
-        //        let outputPath = "/Users/xudong/git/Turing/GenCodeTests/"
-        //        let classPrefix = "Test"
         let turingFilePath = arguments[0]
         let outputPath = arguments[1]
         let classPrefix = arguments[2]

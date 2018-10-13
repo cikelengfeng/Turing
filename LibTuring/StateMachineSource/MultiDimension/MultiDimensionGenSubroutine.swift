@@ -35,9 +35,9 @@ private class MDGraphSource: StateMachineSource {
             let v = vertices[loopState]
             for bit in 0..<dimensions.count {
                 let mark = 1 << bit
-                //将loopstate当前bit位取反，就是扇出节点的索引
+                //将loopstate当前bit位取反，就是扇出节点的索引（这个前提是一次只能改变一个维度的值）
                 //如0001代表四个维度，前三个维度没有值，第四个维度有值
-                //这个状态的扇出只有四个：1001，0101，0011，0000，即每个bit位依次取反（这个前提是一次只能改变一个维度的值）
+                //这个状态的扇出只有四个：1001，0101，0011，0000，即每个bit位依次取反
                 let fanoutIndex = (loopState & (~mark)) | (loopState ^ mark)
                 let dismiss = (fanoutIndex & mark) == 0
                 let fanoutV = vertices[fanoutIndex]
